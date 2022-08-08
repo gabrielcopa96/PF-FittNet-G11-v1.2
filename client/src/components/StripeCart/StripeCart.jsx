@@ -43,19 +43,19 @@ const CheckoutForm = () => {
 
   let userId = localStorage.getItem('userId');
 
+
+  const usuarioId = localStorage.getItem('userId');
+  const name = localStorage.getItem("name");
   useEffect(() => {
     dispatch(getUser(userId))
 
   }, [userId])
 
-  const usuarioId = localStorage.getItem('userId');
-  const name = localStorage.getItem("name");
   const [detailUser, setDetailUser] = useState({ ///--------------Nano details
     userName: user.name,
     email: user.userName
   })
-
-
+  
   const type = localStorage.getItem("type");
   const avatar = localStorage.getItem("avatar");
 
