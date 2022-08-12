@@ -14,7 +14,7 @@ import axios from 'axios';
 const queryClient = new QueryClient();
 
 
-axios.defaults.baseURL = 'https://backend-fittnet-production.up.railway.app/';
+axios.defaults.baseURL = 'https://backend-fittnet.onrender.com/';
 
 
 ReactDOM.render(
