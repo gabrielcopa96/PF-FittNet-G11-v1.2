@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-expect-error TS(2307): Cannot find module './style/CardPlans.module.css' ... Remove this comment to see the full error message
 import style from "./style/CardPlans.module.css";
 import { ButtonSimple } from "../../helpers/Buttons/Buttons";
 import { useNavigate } from "react-router-dom";

@@ -1,6 +1,8 @@
 import React from "react";
+// @ts-expect-error TS(2307): Cannot find module './styles/styleCard.module.css'... Remove this comment to see the full error message
 import style from "./styles/styleCard.module.css";
-export default function CardServices(props) {
+// @ts-expect-error TS(7030): Not all code paths return a value.
+export default function CardServices(props: any) {
   const { img, name, unidad, price, title } = props;
   // const imgeFond = [];
   // if (name && !img) imgeFond = name[0];

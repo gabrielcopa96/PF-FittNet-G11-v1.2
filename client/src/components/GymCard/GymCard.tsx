@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-expect-error TS(2307): Cannot find module './styles/GymCard.module.css' o... Remove this comment to see the full error message
 import style from "./styles/GymCard.module.css";
 import { useNavigate } from "react-router-dom";
 import { updateFavouriteGym } from "../../redux/actions/index";
@@ -7,18 +8,21 @@ import { IoIosHeart } from "react-icons/io";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
 
-export default function GymCard(props) {
+export default function GymCard(props: any) {
   const navigate = useNavigate();
 
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const user = useSelector((state) => state.user);
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const userId = localStorage.getItem("userId");
 
   const dispatch = useDispatch();
 
-  const handleFavourite = (e, gymId) => {
+  const handleFavourite = (e: any, gymId: any) => {
     e.preventDefault();
     if (userId) {
+      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
       dispatch(updateFavouriteGym(gymId, userId));
     } else {
       SweetAlrtTem("No puedes agregar a favorito si no estas logueado","info");
@@ -63,7 +67,7 @@ export default function GymCard(props) {
             >
               {props.favourite}
             </span>
-            {user.favourite?.some((x) => x === props.id) ? (
+            {user.favourite?.some((x: any) => x === props.id) ? (
               <IoIosHeart
                 onClick={(e) => handleFavourite(e, props.id)}
                 style={{ color: "red", cursor: "pointer" }}

@@ -8,6 +8,7 @@ import {
   BackgroundTwo,
 } from "../../helpers/Backround/Background";
 import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
+// @ts-expect-error TS(2307): Cannot find module './styles/styleDesactive.module... Remove this comment to see the full error message
 import style from "./styles/styleDesactive.module.css";
 
 export default function DeactivateAccount() {
@@ -16,7 +17,7 @@ export default function DeactivateAccount() {
 
   const { userId } = useParams();
 
-  function onChange(e) {
+  function onChange(e: any) {
     setPassword(e.target.value);
 
     if (password.length < 2) {
@@ -29,23 +30,28 @@ export default function DeactivateAccount() {
     }
   }
 
-  function onSubmit(e) {
+  function onSubmit(e: any) {
     e.preventDefault();
 
+    // @ts-expect-error TS(2532): Object is possibly 'undefined'.
     if (userId.length > 3 && password && !error) {
       let object = { userId, password };
 
+      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(object, "lo que sale el get al back");
 
       axios
         .put(`/api/service/deleteuseraccount/`, object)
         .then((response) => {
+          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(response.data);
           SweetAlrt("Exito!", response.data, "success");
           // window.alert(response.data)
+          // @ts-expect-error TS(2304): Cannot find name 'window'.
           return (window.location = "http://localhost:3000/");
         })
         .catch((error) => {
+          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.lgo(error);
         });
       setPassword(""); // limpio el estado
@@ -70,13 +76,13 @@ export default function DeactivateAccount() {
                 name="password"
                 placeholder="Password"
                 required
-                onChange={(e) => onChange(e)}
+                onChange={(e: any) => onChange(e)}
               />
               {/* Bloque button */}
               <InputSecond
                 type="submit"
                 value="Confirmar"
-                onClick={(e) => onSubmit(e)}
+                onClick={(e: any) => onSubmit(e)}
               />
             </div>
             {error ? (

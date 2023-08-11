@@ -1,3 +1,4 @@
+// @ts-expect-error TS(1208): 'gym2.tsx' cannot be compiled under '--isolatedMod... Remove this comment to see the full error message
 // import { useState } from "react";
 // import styles from "./style/client.module.css";
 // import { gymValidate } from "./controlers/validaciones";

@@ -1,9 +1,11 @@
 import React from "react";
 // import PartnerCard from "../PartnerCard/PartnerCard";
+// @ts-expect-error TS(2307): Cannot find module './style/PartnerCards.module.cs... Remove this comment to see the full error message
 import styles from "./style/PartnerCards.module.css";
 import { useSelector } from "react-redux";
 
 export default function PartnerCards() {
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const partners = useSelector((state) => state.partners);
 
   return (
@@ -23,7 +25,7 @@ export default function PartnerCards() {
           </thead>
           <tbody>
             {partners.length
-              ? partners.map((u) => {
+              ? partners.map((u: any) => {
                   return (
                     <tr key={u.id}>
                       <td key={`1${u.id}`}>{u.type ? u.type : null}</td>

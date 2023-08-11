@@ -1,9 +1,11 @@
 import React from "react";
 // import UserCard from "../UserCard/UserCard";
+// @ts-expect-error TS(2307): Cannot find module './style/UserCards.module.css' ... Remove this comment to see the full error message
 import styles from "./style/UserCards.module.css";
 import { useSelector } from "react-redux";
 
 export default function UserCards() {
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const users = useSelector((state) => state.users);
 
   return (
@@ -30,7 +32,7 @@ export default function UserCards() {
           </thead>
           <tbody>
             {users.length
-              ? users.map((u) => {
+              ? users.map((u: any) => {
                   return (
                     <tr key={u.id}>
                       <td key={`1${u.id}`}>{u.type ? u.type : null}</td>

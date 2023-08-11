@@ -1,10 +1,10 @@
 
 
-export default function CalcDist(lat1, lon1, lat2, lon2){
+export default function CalcDist(lat1: any, lon1: any, lat2: any, lon2: any){
 
 let RadioTierra = 6400;//6371;
 
-const toRad = (num) => {
+const toRad = (num: any) => {
     return num * Math.PI /180
 }
 

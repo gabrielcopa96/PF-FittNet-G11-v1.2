@@ -11,7 +11,9 @@ export default function Finances() {
     const dispatch = useDispatch();
   
     useEffect(()=>{
+      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
       dispatch(getUser(userId))
+      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
       dispatch(getAllSales(userId))// eslint-disable-next-line
     },[userId])
 

@@ -6,6 +6,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+// @ts-expect-error TS(2307): Cannot find module './styles/StripeCart.module.css... Remove this comment to see the full error message
 import styles from "./styles/StripeCart.module.css";
 import axios from "axios";
 import { NavBar3 } from "../GymDetail/NavBar3";
@@ -29,24 +30,34 @@ const stripePromise = loadStripe(
 
 
 
+// @ts-expect-error TS(7030): Not all code paths return a value.
 const CheckoutForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const cart = useSelector((state) => state.cart);
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const allcart = useSelector((state) => state.gymDetail);
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const user = useSelector((state) => state.user);
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   localStorage.setItem('phone', allcart.phone)
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   localStorage.setItem('nameGym', allcart.name)
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   let userId = localStorage.getItem('userId');
 
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const usuarioId = localStorage.getItem('userId');
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const name = localStorage.getItem("name");
   useEffect(() => {
+    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
     dispatch(getUser(userId))
 
   }, [userId])
@@ -56,7 +67,9 @@ const CheckoutForm = () => {
     email: user.userName
   })
   
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const type = localStorage.getItem("type");
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const avatar = localStorage.getItem("avatar");
 
   const [statusClient, setStatusClient] = useState({
@@ -69,6 +82,7 @@ const CheckoutForm = () => {
     phonmeGim: allcart.phone
   })
 
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const idCart = useSelector((state) => state.getCart);
   const [imgBack, setImgBack] = useState(
     Math.floor(Math.random() * (26 - 1) + 1)
@@ -79,7 +93,7 @@ const CheckoutForm = () => {
     imgBack +
     ".jpeg";
 
-  async function functionEditStatus(detalle) {
+  async function functionEditStatus(detalle: any) {
     const put = await axios({
       method: "put",
       url: "/api/shopcart",
@@ -89,27 +103,28 @@ const CheckoutForm = () => {
       .then((res) => {
         return res.data;
       })
+      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       .catch((error) => console.log(error));
     return put;
   }
 
-  const handleSubmit = async (e) => {
-    var detalle = cart.map((c) => ({
+  const handleSubmit = async (e: any) => {
+    var detalle = cart.map((c: any) => ({
       user: usuarioId,
       services: c._id,
       gyms: statusClient.id2,
       price: c.price.$numberDecimal,
       quantity: c.qty,
       total: c.qty * c.price.$numberDecimal,
-      status: "Payed",
+      status: "Payed"
     }));
 
-    var saleDetail = cart.map((c) => ({
+    var saleDetail = cart.map((c: any) => ({
       sericesName: c.name,
       gymName: allcart.name,
       price: c.price.$numberDecimal,
       quantity: c.qty,
-      total: c.qty * c.price.$numberDecimal,
+      total: c.qty * c.price.$numberDecimal
     }));
 
     const det = {
@@ -120,8 +135,10 @@ const CheckoutForm = () => {
       },
       saleDetail: saleDetail,
     };
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
+      // @ts-expect-error TS(2322): Type 'StripeCardElement | null' is not assignable ... Remove this comment to see the full error message
       card: elements.getElement(CardElement),
     });
     if (!error) {
@@ -135,13 +152,18 @@ const CheckoutForm = () => {
           return response
         })
         .catch((error) => {
+          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(error);
         });
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(compra.data)
+      // @ts-expect-error TS(2339): Property 'data' does not exist on type 'void | Axi... Remove this comment to see the full error message
       if (compra.data === 'todomal') {
+        // @ts-expect-error TS(2554): Expected 3 arguments, but got 2.
         SweetAlrt(`Su pago fue rechazado ${name}`, "Intente con otra tarjeta")
         return navigate(`/home/${type}/${name}/${usuarioId}/${avatar}`);
       }
+      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<Axios... Remove this comment to see the full error message
       dispatch(updateClientGym(detalle));
       SendEmail(det);
       SweetAlrtTem(`Su compra fue realizada con exito ${name}`, "success");
@@ -204,6 +226,7 @@ const CheckoutForm = () => {
                 <div className={styles.contButton}>
                   <div>
                     {/* <Link to={`/home/${type}/${name}/${usuarioId}/${avatar}`}> */}
+                    // @ts-expect-error TS(2322): Type 'number' is not assignable to type 'To'.
                     <Link to={-1}>
                       <ButtonSimple
                         onClick={() => clearCart()}
@@ -213,7 +236,7 @@ const CheckoutForm = () => {
                     </Link>
                   </div>
                   <ButtonSimple
-                    onClick={(e) => handleSubmit(e)}
+                    onClick={(e: any) => handleSubmit(e)}
                     title="PAGAR"
                     padding="0 1rem"
                   />
@@ -232,6 +255,7 @@ export default function StripeCart() {
   return (
     <div>
       <Elements stripe={stripePromise}>
+        // @ts-expect-error TS(2786): 'CheckoutForm' cannot be used as a JSX component.
         <CheckoutForm />
       </Elements>
     </div>

@@ -8,7 +8,8 @@ import axios from "axios";
 // Esta función sirve para crear un gym           
 //----------------------------------------------------------------------------
 
-export async function createOneGym(dataForNewGym) {
+// @ts-expect-error TS(7030): Not all code paths return a value.
+export async function createOneGym(dataForNewGym: any) {
     // new Gym es el objeto que guarda toda la info para crear el nuevo gym
     
     const newGym = await axios({
@@ -21,8 +22,10 @@ export async function createOneGym(dataForNewGym) {
         .then((res) => {
           return res.data;
         })
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
+    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(newGym, 'cuando crea el gym');
 
     if (newGym) return true;
@@ -34,7 +37,8 @@ export async function createOneGym(dataForNewGym) {
 // Esta función sirve para editar la info de un gym       
 //----------------------------------------------------------------------------
 
-export async function editOneGym(dataForEditGym) {
+// @ts-expect-error TS(7030): Not all code paths return a value.
+export async function editOneGym(dataForEditGym: any) {
     // new Gym es el objeto que guarda toda la info para editar el nuevo gym
     
     const editGym = await axios({
@@ -47,8 +51,10 @@ export async function editOneGym(dataForEditGym) {
         .then((res) => {
           return res.data;
         })
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
+    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(editGym, 'cuando edita el gym');
 
     if (editGym) return true;
@@ -60,7 +66,8 @@ export async function editOneGym(dataForEditGym) {
 // Esta función sirve para crear un nuevo servicio
 //----------------------------------------------------------------------------
 
-export async function createOneService(dataForNewService) {
+// @ts-expect-error TS(7030): Not all code paths return a value.
+export async function createOneService(dataForNewService: any) {
     // new Gym es el objeto que guarda toda la info para crear el nuevo servicio
 
     const newService = await axios({
@@ -73,8 +80,10 @@ export async function createOneService(dataForNewService) {
         .then((res) => {
           return res.data;
         })
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
+    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(newService, 'cuando crea el service');
 
     if (newService) return true;
@@ -86,7 +95,8 @@ export async function createOneService(dataForNewService) {
 // Esta función sirve para editar un servicio creado
 //----------------------------------------------------------------------------
 
-export async function editOneService(dataForEditService) {
+// @ts-expect-error TS(7030): Not all code paths return a value.
+export async function editOneService(dataForEditService: any) {
     // new Gym es el objeto que guarda toda la info para crear el nuevo servicio
 
     const editService = await axios({
@@ -99,8 +109,10 @@ export async function editOneService(dataForEditService) {
         .then((res) => {
           return res.data;
         })
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
+    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(editService, 'cuando edita el service');
 
     if (editService) return true;

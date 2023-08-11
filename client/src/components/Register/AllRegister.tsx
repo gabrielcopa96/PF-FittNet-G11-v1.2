@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserGeo } from "../../redux/actions/index";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+// @ts-expect-error TS(2307): Cannot find module './styles/AllRegister.module.cs... Remove this comment to see the full error message
 import styles from "./styles/AllRegister.module.css";
 import { regexEmail, regexName } from "../../asets/helpers/regexValidators";
 
@@ -18,6 +19,7 @@ import {
 export default function AllRegister() {
   const dispatch = useDispatch();
   const geolocation = useSelector(
+    // @ts-expect-error TS(2571): Object is of type 'unknown'.
     (state) => state.currentUserDetails.currentGeo
   );
 
@@ -35,12 +37,14 @@ export default function AllRegister() {
   // const [disableSubmit, setDisableSubmit] = useState(true)
 
   useEffect(() => {
+    // @ts-expect-error TS(2552): Cannot find name 'navigator'. Did you mean 'naviga... Remove this comment to see the full error message
     navigator.geolocation.getCurrentPosition(
-      function (position) {
+      function (position: any) {
         const payload = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
+        // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
         dispatch(setUserGeo(payload));
         setGeoloc({
           lat: position.coords.latitude
@@ -51,7 +55,8 @@ export default function AllRegister() {
             : geolocation.longitude,
         });
       },
-      function (error) {
+      function (error: any) {
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(error);
       },
       {
@@ -60,10 +65,11 @@ export default function AllRegister() {
     ); // eslint-disable-next-line
   }, []);
 
-  function onSubmit(e) {
+  function onSubmit(e: any) {
     e.preventDefault();
     let userCreate;
 
+    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("está saliendo el post ", userCreate);
 
     //---------------------------------------------------------------------
@@ -82,12 +88,15 @@ export default function AllRegister() {
         type: type,
       };
 
+      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
       SweetAlrt("Estamos procesando su solicitud!");
+      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("está saliendo el post ", userCreate);
 
       axios
         .post("/api/service/register", userCreate)
         .then((res) => {
+          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(res.data, "-> respuesta del post de creación de cuenta");
           // El nombre de usuario ya existe o es incorrecto, por favor indique otro username
           //
@@ -108,9 +117,11 @@ export default function AllRegister() {
             setEmail("");
           }
           if (typeof res.data === "string") {
+            // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
             SweetAlrt(res.data);
           }
         })
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
     }
     if (!name || !email || !password || !type) {
@@ -119,7 +130,7 @@ export default function AllRegister() {
     }
   }
 
-  function onChangeName(e) {
+  function onChangeName(e: any) {
     setName(e.target.value);
     if (name.length < 3) {
       setError("El nombre es requerido");
@@ -130,7 +141,7 @@ export default function AllRegister() {
     }
   }
 
-  function onChangeEmail(e) {
+  function onChangeEmail(e: any) {
     setEmail(e.target.value);
     if (email.length < 3) {
       setError("El Email es requerido");
@@ -141,7 +152,7 @@ export default function AllRegister() {
     }
   }
 
-  function onChangePassword(e) {
+  function onChangePassword(e: any) {
     setPassword(e.target.value);
     if (password.length < 2) {
       setError("Necesita introducir una contraseña");
@@ -152,7 +163,7 @@ export default function AllRegister() {
     }
   }
 
-  function onChangeType(e) {
+  function onChangeType(e: any) {
     setType(e.target.value);
 
     setError("");
@@ -222,6 +233,7 @@ export default function AllRegister() {
                 name="select"
                 className={styles.selectTypeClient}
                 onChange={(e) =>
+                  // @ts-expect-error TS(2812): Property 'value' does not exist on type 'EventTarg... Remove this comment to see the full error message
                   e.target.value === "Tipo de cliente" ? null : onChangeType(e)
                 }
               >

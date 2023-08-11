@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getPartnerDetails } from "../../redux/actions/index";
 import { setUserGeo } from '../../services/servicesQuery';
+// @ts-expect-error TS(2307): Cannot find module './styles/LoginInit.module.css'
 import styles from "./styles/LoginInit.module.css";
 import jwt_decode from "jwt-decode";
 import { useQuery } from "@tanstack/react-query";
@@ -12,7 +13,6 @@ import {
   BackgroundOne,
 } from "../../helpers/Backround/Background";
 import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
-import { SweetAlrt } from "../../asets/helpers/sweetalert"; // , SweetAlrt2, SweetAlrtTem
 
 export default function LoginInit() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function LoginInit() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      function (position) {
+      function (position: any) {
         let geoPayload = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -35,7 +35,7 @@ export default function LoginInit() {
           longitude: geoPayload.longitude,
         })
       },
-      function (error) {
+      function (error: any) {
         console.log(error);
       },
       {
@@ -44,6 +44,7 @@ export default function LoginInit() {
     ); // eslint-disable-next-line
   }, []);
 
+  // @ts-expect-error TS(2769): No overload matches this call.
   const { data: geoLocalizacion, isLoading: loadingGeo, isError: errorGeo } = useQuery( "geolocalizacion", setUserGeo(geo) )
 
 
@@ -60,7 +61,7 @@ export default function LoginInit() {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
 
-  const handleCallbackGoogle = async (response) => {
+  const handleCallbackGoogle = async (response: any) => {
     const userObject = jwt_decode(response.credential);
     if (!token || !userId) {
       console.log("ENTRO A GENERAR TOKEN", response.credential);
@@ -71,7 +72,7 @@ export default function LoginInit() {
       const finalizacionData = await googleData.data;
       // dispatch(getUser(finalizacionData.usuario._id));
       localStorage.setItem("token", response.credential);
-      document.getElementById("signInDiv").hidden = true;
+      (document as any).getElementById("signInDiv").hidden = true;
       localStorage.setItem("userId", finalizacionData.user.userId);
       localStorage.setItem("type", finalizacionData.user.type);
       localStorage.setItem("avatar", finalizacionData.user.avatar);
@@ -81,7 +82,7 @@ export default function LoginInit() {
       const { avatar } = finalizacionData.usuario;
 
       if (finalizacionData.usuario.type === "partner") {
-        dispatch(getPartnerDetails(userId));
+        dispatch((getPartnerDetails(userId) as any));
       }
 
 
@@ -102,13 +103,13 @@ export default function LoginInit() {
   };
 
   useEffect(() => {
-    window.google?.accounts.id.initialize({
+    (window as any).google?.accounts.id.initialize({
       client_id:
         "157510772086-98ehfc8l140rpqoer006k78qugr3e62l.apps.googleusercontent.com",
       callback: handleCallbackGoogle,
     });
 
-    window.google?.accounts.id.renderButton(
+    (window as any).google?.accounts.id.renderButton(
       document.getElementById("signInDiv"),
       {
         theme: "outline",
@@ -118,11 +119,9 @@ export default function LoginInit() {
     );
   });
 
-  async function onSubmit(e) {
+  async function onSubmit(e: any) {
     e.preventDefault();
     let userLogin = {};
-
-    console.log("se está intentando hacer el post");
 
     if (username && password) {
       userLogin = { username: username, password: password };
@@ -139,8 +138,6 @@ export default function LoginInit() {
           return res.data;
         })
         .catch((error) => console.log(error));
-
-        console.log(login, "ESTE ES EL QUE ANDO BUSCANDO")
 
       if (login.login) {
         console.log(login, " lo que responde el back si se autentica el user");
@@ -220,7 +217,7 @@ export default function LoginInit() {
               name="email"
               placeholder="Email"
               required
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e: any) => setUsername(e.target.value)}
             />
 
             <InputPrymary
@@ -229,13 +226,13 @@ export default function LoginInit() {
               name="password"
               placeholder="Contraseña"
               required
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: any) => setPassword(e.target.value)}
             />
 
             <InputSecond
               type="submit"
               value="Ingresar"
-              onClick={(e) => onSubmit(e)}
+              onClick={(e: any) => onSubmit(e)}
             />
 
             <div id="signInDiv" style={{ paddingTop: "1.5rem" }}></div>

@@ -1,8 +1,9 @@
 import React from "react";
+// @ts-expect-error TS(2307): Cannot find module './styles/stylesButtons.module.... Remove this comment to see the full error message
 import styles from "./styles/stylesButtons.module.css";
 
 //? Boton primario - es el boton principal con el tamaño normal
-export const ButtonPrimary = (props) => {
+export const ButtonPrimary = (props: any) => {
   const { onClick, title, padding } = props;
 
   return (
@@ -16,7 +17,7 @@ export const ButtonPrimary = (props) => {
   );
 };
 
-export const ButtonSimple = (props) => {
+export const ButtonSimple = (props: any) => {
   const { onClick, title, padding } = props;
   return (
     <div
@@ -30,12 +31,13 @@ export const ButtonSimple = (props) => {
 };
 
 //? Boton primario pero version mas chica - es el boton principal pero con un tamaño mas chico
-export const ButtonPrimarySmall = (props) => {
+export const ButtonPrimarySmall = (props: any) => {
   const { onClick, title, padding } = props;
   return (
     <div
       onClick={onClick}
       className={styles.btnPrimarioSmall}
+      // @ts-expect-error TS(2322): Type '{ children: any; onClick: any; className: an... Remove this comment to see the full error message
       styles={{ padding: padding }}
     >
       {title}
@@ -45,7 +47,7 @@ export const ButtonPrimarySmall = (props) => {
 
 //? Boton secundario
 
-export const ButtonSecondarySimple = (props) => {
+export const ButtonSecondarySimple = (props: any) => {
   const { onClick, title, padding } = props;
   return (
     <div
@@ -58,7 +60,7 @@ export const ButtonSecondarySimple = (props) => {
   );
 };
 
-export const ButtonBack = (props) => {
+export const ButtonBack = (props: any) => {
   const { onClick, title, padding } = props;
 
   return (
@@ -72,7 +74,7 @@ export const ButtonBack = (props) => {
   );
 };
 
-export const ButtonSecondaryDeslice = (props) => {
+export const ButtonSecondaryDeslice = (props: any) => {
   const { onClick, title, padding } = props;
 
   return (
@@ -86,7 +88,7 @@ export const ButtonSecondaryDeslice = (props) => {
   );
 };
 
-export const ButtonDetailGym = (props) => {
+export const ButtonDetailGym = (props: any) => {
   const {onClick, title, padding } = props;
 
   return (
@@ -96,7 +98,7 @@ export const ButtonDetailGym = (props) => {
   )
 }
 
-export const ButtonHomePA = (props) => {
+export const ButtonHomePA = (props: any) => {
   const {onClick, title, padding } = props;
 
   return (

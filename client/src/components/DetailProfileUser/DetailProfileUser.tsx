@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
+// @ts-expect-error TS(2307): Cannot find module './styles/detailProfile.module.... Remove this comment to see the full error message
 import styles from "./styles/detailProfile.module.css";
 import { MdLocationOn, MdLocationOff } from "react-icons/md";
 import { useEffect } from "react";
@@ -19,13 +20,20 @@ export default function DetailProfileUser() {
 
   const dispatch = useDispatch();
 
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const user = useSelector((state) => state.user);
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const gyms = useSelector((state) => state.gyms);
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const gymDetail = useSelector((state) => state.gymDetail);
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const token = localStorage.getItem("token");
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const type = localStorage.getItem("type");
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const avatar = localStorage.getItem("avatar");
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const name = localStorage.getItem("name");
 
   const [isOpen, setisOpen] = useState({
@@ -40,23 +48,26 @@ export default function DetailProfileUser() {
 
   useEffect(() => {
     if (!token) {
+      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
       dispatch(getUser(userId));
     }
     if (token) {
+      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
       instantCallback(getUserGoogleForToken(token));
     }
     if (gyms.length === 0) {
+      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
       instantCallback(getAllGyms());
     }
     if (Object.keys(gymDetail).length === 0) {
+      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
       instantCallback(getGymDetail(userId));
     }
   }, [userId, instantCallback]);
 
   const { info, favourite } = user;
 
-  const filtroDeMisFavoritos = gyms.filter((x) =>
-    favourite?.some((y) => y === x._id)
+  const filtroDeMisFavoritos = gyms.filter((x: any) => favourite?.some((y: any) => y === x._id)
   );
 
   const pages = [];
@@ -77,7 +88,7 @@ export default function DetailProfileUser() {
     indexItem
   );
 
-  const handleNext = (e) => {
+  const handleNext = (e: any) => {
     e.preventDefault();
 
     if(currentItemsFavorite.length > 0) {
@@ -85,7 +96,7 @@ export default function DetailProfileUser() {
     }
   };
 
-  const handlePrev = (e) => {
+  const handlePrev = (e: any) => {
     e.preventDefault();
 
     if(currentItemsFavorite.length > 0) {
@@ -282,7 +293,7 @@ export default function DetailProfileUser() {
               </h3>
               <div className={styles.containerFavourite}>
                 {currentItemsFavorite?.length > 0 ? (
-                  currentItemsFavorite.map((x, y) => (
+                  currentItemsFavorite.map((x: any, y: any) => (
                     <div
                       style={{
                         color: "#f0f0f0",

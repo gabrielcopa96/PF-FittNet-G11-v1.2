@@ -7,6 +7,7 @@ import {
   BackgroundTwo,
 } from "../../helpers/Backround/Background";
 import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
+// @ts-expect-error TS(2307): Cannot find module './styles/stylePasword.module.c... Remove this comment to see the full error message
 import style from "./styles/stylePasword.module.css";
 
 // Esta es la ruta del back que podemos usar
@@ -35,6 +36,7 @@ import style from "./styles/stylePasword.module.css";
 // let obj2 = {userId: userId, newPassword: newPassword, secretToken: secretToken}
 // Me responde con un mensaje de confirmación
 
+// @ts-expect-error TS(7030): Not all code paths return a value.
 export default function ResetPassword() {
   // Esta función sirve para cuando alguien quiere recuperar una contraseña que olvidó.
   // Pienso envíar una solicitud directamente al back (ver bien a qué ruta), y luego
@@ -53,16 +55,18 @@ export default function ResetPassword() {
   const [copyNewPassword, setCopyNewPassword] = useState("");
   const [error, setError] = useState("");
 
-  function onSubmit(e) {
+  function onSubmit(e: any) {
     e.preventDefault();
 
     if (!error && userName && !newPassword && !copyNewPassword) {
       let object = { userName: userName };
+      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(
         "envío el objeto al back la solicitud al back para enviar el correo electrónico"
       );
       axios
         .get("/api/service/updatepassword", { params: object })
+        // @ts-expect-error TS(7030): Not all code paths return a value.
         .then((response) => {
           if (response.data.message) {
             return SweetAlrt("Atencion", response.data.message, "warning");
@@ -73,17 +77,19 @@ export default function ResetPassword() {
           setValidation(true);
         })
         .catch((error) => {
+          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(error);
         });
     } else {
       setError("Campos incompletos");
+       // @ts-expect-error TS(2304): Cannot find name 'setTimeout'.
        setTimeout(() => {
          setError("");
        }, 3000);
     }
   }
 
-  function onSubmitForm(e) {
+  function onSubmitForm(e: any) {
     e.preventDefault();
     if (!error && userId && newPassword && copyNewPassword) {
       if (newPassword === copyNewPassword) {
@@ -92,6 +98,7 @@ export default function ResetPassword() {
           newPassword: newPassword,
           secretToken: secretToken,
         };
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(
           form,
           "Tengo que enviar el formulario al back para el cambio de clave"
@@ -99,12 +106,15 @@ export default function ResetPassword() {
         axios
           .post("/api/service/updatepassword", form)
           .then((response) => {
+            // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
             console.log(response.data);
             // window.alert(response.data)
             SweetAlrt("Exito", response.data, "info");
+            // @ts-expect-error TS(2304): Cannot find name 'window'.
             return (window.location = "http://localhost:3000/login");
           })
           .catch((error) => {
+            // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
             console.log(error);
           });
 
@@ -146,14 +156,14 @@ export default function ResetPassword() {
                   name="email"
                   placeholder="Email"
                   required
-                  onChange={(e) => setuserName(e.target.value)}
+                  onChange={(e: any) => setuserName(e.target.value)}
                 />
 
                 {/* Bloque button */}
                 <InputSecond
                   type="submit"
                   value="Enviar"
-                  onClick={(e) => onSubmit(e)}
+                  onClick={(e: any) => onSubmit(e)}
                 />
               </div>
               <h6>{error ? error : null}</h6>
@@ -186,7 +196,7 @@ export default function ResetPassword() {
                   name="secretToken"
                   placeholder="Token de seguridad"
                   required
-                  onChange={(e) => setSecretToken(e.target.value)}
+                  onChange={(e: any) => setSecretToken(e.target.value)}
                 />
                 <InputPrymary
                   type="password"
@@ -194,7 +204,7 @@ export default function ResetPassword() {
                   name="newPassword"
                   placeholder="New Password"
                   required
-                  onChange={(e) => setNewPassword(e.target.value)}
+                  onChange={(e: any) => setNewPassword(e.target.value)}
                 />
                 <InputPrymary
                   type="password"
@@ -202,14 +212,14 @@ export default function ResetPassword() {
                   name="newPassword"
                   placeholder="New Password"
                   required
-                  onChange={(e) => setCopyNewPassword(e.target.value)}
+                  onChange={(e: any) => setCopyNewPassword(e.target.value)}
                 />
 
                 {/* Bloque button */}
                 <InputSecond
                   type="submit"
                   value="Confirmar"
-                  onClick={(e) => onSubmitForm(e)}
+                  onClick={(e: any) => onSubmitForm(e)}
                 />
               </div>
               {/* <input

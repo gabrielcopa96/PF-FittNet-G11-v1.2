@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+// @ts-expect-error TS(2307): Cannot find module './styles/Incomes.module.css' o... Remove this comment to see the full error message
 import styles from './styles/Incomes.module.css'
 import { Bar } from 'react-chartjs-2';
 import { getCart, getMySales, getUser } from "../../redux/actions";
@@ -31,19 +32,25 @@ export default function ClientsGraph() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
     dispatch(getMySales(userId))// eslint-disable-next-line
+    // @ts-expect-error TS(2345): Argument of type '((dispatch: any) => Promise<any>... Remove this comment to see the full error message
     dispatch(getCart())
   }, [userId])
 
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const cart = useSelector((state) => state.allCart)
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const partnerGyms = useSelector((state) => state.user);
 
+  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log('partnergyms', partnerGyms.gyms)
 
 
-  const saless = cart.filter(st => st.status === 'Payed')
-    .filter(g => g.gyms ? g : null)
+  const saless = cart.filter((st: any) => st.status === 'Payed')
+    .filter((g: any) => g.gyms ? g : null)
   // .filter(clien => (clien.gyms._id==partnerGyms.gyms.map(a=>a._id))?clien:null)
+  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log('clients', saless)
 
   const partnerClients = []
@@ -56,6 +63,7 @@ export default function ClientsGraph() {
       }
     }
   }
+  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log('partnerClients', partnerClients)
   const clientsUnique = [...new Set(partnerClients)]
 
@@ -66,22 +74,29 @@ export default function ClientsGraph() {
       userId: c.user._id
     }
   })
+  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log(newObject, 'el nuevo array de clientes únicos')
   let resul = []
 
   for (var i = 0; i < newObject.length; i++) {
+    // @ts-expect-error TS(2532): Object is possibly 'undefined'.
     if (!resul[newObject[i].gymId]) {
+      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(newObject[i].gymId)
+      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
       resul[newObject[i].gymId] = [newObject[i].userId]
 
     } else {
+      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
       if (!resul[newObject[i].gymId].includes(newObject[i].userId)) {
+        // @ts-expect-error TS(2532): Object is possibly 'undefined'.
         resul[newObject[i].gymId].push(newObject[i].userId)
       }
 
     }
 
   }
+  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log(resul, 'luego de un ardo trabajo')
 
   const options = {
@@ -121,6 +136,7 @@ export default function ClientsGraph() {
 
   return (
     <div>
+      // @ts-expect-error TS(2322): Type '{ responsive: boolean; plugins: { legend: { ... Remove this comment to see the full error message
       <Bar options={options} data={data} />;
     </div>
   )

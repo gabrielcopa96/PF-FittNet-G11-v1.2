@@ -5,7 +5,7 @@ export const getUsers = async () => {
     return response.data;
 }
 
-export const setUserGeo = (payload) => {
+export const setUserGeo = (payload: any) => {
     try {
         const response = {
             data: {

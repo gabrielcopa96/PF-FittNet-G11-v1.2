@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -11,14 +11,14 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import store from './redux/store/index';
 import axios from 'axios';
 
-const queryClient = new QueryClient();
-
+const queryClient: QueryClient = new QueryClient();
 
 axios.defaults.baseURL = 'https://backend-fittnet.onrender.com/';
 
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-ReactDOM.render(
-  <React.StrictMode>
+root.render(
+  <StrictMode>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <BrowserRouter>
@@ -27,7 +27,5 @@ ReactDOM.render(
         </BrowserRouter>
       </Provider>
     </QueryClientProvider>
-  </React.StrictMode>,
-
-  document.getElementById('root')
+  </StrictMode>
 );

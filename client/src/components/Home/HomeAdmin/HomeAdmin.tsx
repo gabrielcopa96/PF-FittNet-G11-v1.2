@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { getLockAccounts } from "../../../redux/actions";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+// @ts-expect-error TS(2307): Cannot find module './styles/style.module.css' or ... Remove this comment to see the full error message
 import style from "./styles/style.module.css";
 import { ButtonHomePA } from "../../../helpers/Buttons/Buttons";
 
@@ -23,9 +24,13 @@ export default function HomeAdmin() {
 
   // Necesito una barra de búsqueda con filtros
   useEffect(() => {
+    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
     dispatch(getAllSales(userId))
+    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
     dispatch(getAllPartners());
+    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
     dispatch(getAllUsers());
+    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
     dispatch(getLockAccounts());// eslint-disable-next-line
   }, [userId]);
 
@@ -40,7 +45,7 @@ export default function HomeAdmin() {
 
           <div className={style.contButtonH1}>
             <ButtonHomePA
-              onClick={(e) => {
+              onClick={(e: any) => {
                 setView("finances");
               }}
               title="Finanzas"
@@ -49,7 +54,7 @@ export default function HomeAdmin() {
 
           <div className={style.contButtonHg}>
             <ButtonHomePA
-              onClick={(e) => {
+              onClick={(e: any) => {
                 setView("partners");
               }}
               title="Partner"
@@ -57,7 +62,7 @@ export default function HomeAdmin() {
           </div>
           <div className={style.contButtonHg}>
             <ButtonHomePA
-              onClick={(e) => {
+              onClick={(e: any) => {
                 setView("users");
               }}
               title="Users"
@@ -81,7 +86,7 @@ export default function HomeAdmin() {
           </div> */}
           <div className={style.contButtonHg}>
             <ButtonHomePA
-              onClick={(e) => {
+              onClick={(e: any) => {
                 setView("blockAccount");
               }}
               title="Bloquear cuenta"
@@ -89,7 +94,7 @@ export default function HomeAdmin() {
           </div>
           <div className={style.contButtonHg}>
             <ButtonHomePA
-              onClick={(e) => {
+              onClick={(e: any) => {
                 setView("deleteAccount");
               }}
               title="Eliminar cuenta"
@@ -103,6 +108,7 @@ export default function HomeAdmin() {
           {view === "users" && <Users />}
           {/* {view === "viewPartner" && <ViewPartner />} */}
           {/* {view === "viewUser" && <ViewUsers />} */}
+          // @ts-expect-error TS(2786): 'DeteleteAccount' cannot be used as a JSX componen... Remove this comment to see the full error message
           {view === "deleteAccount" && <DeteleteAccount />}
           {view === "blockAccount" && <BlockAccount />}
         </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// @ts-expect-error TS(2307): Cannot find module './styles/GymCards.module.css' ... Remove this comment to see the full error message
 import style from "./styles/GymCards.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { CardShop } from "../../helpers/Cards/Cards.jsx";
@@ -11,6 +12,7 @@ export default function GymsCards() {
     dispatch(sortByDistance("menor")); // eslint-disable-next-line
   }, []);
 
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const gyms = useSelector((state) => state.pageToShow);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,14 +29,14 @@ export default function GymsCards() {
 
   const currentGyms = gyms.slice(indexFirstItem, indexItem);
 
-  const handleNext = (e) => {
+  const handleNext = (e: any) => {
     e.preventDefault();
     if (currentPage <= pages.length - 1) {
       setCurrentPage((prev) => prev + 1);
     }
   };
 
-  const handlePrev = (e) => {
+  const handlePrev = (e: any) => {
     e.preventDefault();
     if (currentPage !== 1) {
       setCurrentPage((prev) => prev - 1);
@@ -42,7 +44,7 @@ export default function GymsCards() {
   };
 
 
-  const handleClickPage = (page) => {
+  const handleClickPage = (page: any) => {
     setCurrentPage(page)
   }
 
@@ -50,9 +52,10 @@ export default function GymsCards() {
   return (
     <div className={style.mainBoxCards}>
       <div className={style.boxCards}>
+        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         {console.log()}
         {gyms.length
-          ? currentGyms.map((x, y) => (
+          ? currentGyms.map((x: any, y: any) => (
               <CardShop
                 key={y}
                 id={x._id}
@@ -84,6 +87,7 @@ export default function GymsCards() {
                   onClick={() => handleClickPage(page)}
                   style={{ cursor: "pointer" }}
                   className={(currentPage === page) ? style.itemActive : null}
+                  // @ts-expect-error TS(2322): Type '{ children: number; onClick: () => void; sty... Remove this comment to see the full error message
                   value={page}
                 >
                   {page}

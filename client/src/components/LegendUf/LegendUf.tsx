@@ -1,7 +1,11 @@
 import React from "react";
+// @ts-expect-error TS(2307): Cannot find module '../../asets/images/benefits(uf... Remove this comment to see the full error message
 import img from "../../asets/images/benefits(uf).jpg";
+// @ts-expect-error TS(2307): Cannot find module '../../asets/images/benefits(uf... Remove this comment to see the full error message
 import img2 from "../../asets/images/benefits(uf)2.jpg";
+// @ts-expect-error TS(2307): Cannot find module '../../asets/images/benefits(uf... Remove this comment to see the full error message
 import img3 from "../../asets/images/benefits(uf)3.jpeg";
+// @ts-expect-error TS(2307): Cannot find module '../LegendUf/style/LegendUf.mod... Remove this comment to see the full error message
 import style from "../LegendUf/style/LegendUf.module.css";
 import { ButtonSecondaryDeslice } from "../../helpers/Buttons/Buttons.jsx";
 import { useNavigate } from "react-router-dom";
@@ -10,12 +14,16 @@ import { ScrollContainer, Animator, ScrollPage, Fade, Zoom, Move } from 'react-s
 export default function LegendUf() {
   const navigate = useNavigate();
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const name = localStorage.getItem("name");
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const type = localStorage.getItem("type");
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const idUser = localStorage.getItem("userId");
 
+  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const avatar = localStorage.getItem("avatar");
 
   const Scrll0 =  Fade()

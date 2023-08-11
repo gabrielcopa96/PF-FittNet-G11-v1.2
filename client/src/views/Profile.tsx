@@ -3,8 +3,6 @@ import DetailProfileUser from "../components/DetailProfileUser/DetailProfileUser
 import DetailProfilePartner from "../components/DetailProfilePartner/DetailProfilePartner";
 import DetailProfileAdmin from "../components/DetailProfileAdmin/DetailProfileAdmin";
 
-
-
 export default function Profile() {
     let { type } = useParams();
     

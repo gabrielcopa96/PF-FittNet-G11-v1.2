@@ -52,7 +52,10 @@ const initialState = {
   allCart:[]
 };
 
-export default function rootReducer(state = initialState, { type, payload }) {
+export default function rootReducer(state = initialState, {
+  type,
+  payload
+}: any) {
   switch (type) {
     case SET_USER_GEO:
       if (payload.error) {
@@ -202,18 +205,22 @@ export default function rootReducer(state = initialState, { type, payload }) {
       const all =
         payload === "ascendente"
           ? qualification.sort(function (a, b) {
+            // @ts-expect-error TS(2339): Property 'raiting' does not exist on type 'never'.
             if (b.raiting > a.raiting) {
               return -1;
             }
+            // @ts-expect-error TS(2339): Property 'raiting' does not exist on type 'never'.
             if (a.raiting > b.raiting) {
               return 1;
             }
             return 0;
           })
           : qualification.sort(function (a, b) {
+            // @ts-expect-error TS(2339): Property 'raiting' does not exist on type 'never'.
             if (a.raiting > b.raiting) {
               return -1;
             }
+            // @ts-expect-error TS(2339): Property 'raiting' does not exist on type 'never'.
             if (b.raiting > a.raiting) {
               return 1;
             }
@@ -231,11 +238,13 @@ export default function rootReducer(state = initialState, { type, payload }) {
         payload === "ascendente"
           ? price.sort((a, b) => {
             if (
+              // @ts-expect-error TS(2339): Property 'price' does not exist on type 'never'.
               Number(b.price.$numberDecimal) > Number(a.price.$numberDecimal)
             ) {
               return -1;
             }
             if (
+              // @ts-expect-error TS(2339): Property 'price' does not exist on type 'never'.
               Number(a.price.$numberDecimal) > Number(b.price.$numberDecimal)
             ) {
               return 1;
@@ -244,11 +253,13 @@ export default function rootReducer(state = initialState, { type, payload }) {
           })
           : price.sort((a, b) => {
             if (
+              // @ts-expect-error TS(2339): Property 'price' does not exist on type 'never'.
               Number(a.price.$numberDecimal) > Number(b.price.$numberDecimal)
             ) {
               return -1;
             }
             if (
+              // @ts-expect-error TS(2339): Property 'price' does not exist on type 'never'.
               Number(b.price.$numberDecimal) > Number(a.price.$numberDecimal)
             ) {
               return 1;
@@ -265,25 +276,44 @@ export default function rootReducer(state = initialState, { type, payload }) {
       const gym = state.gyms;
       const geo = state.currentGeo;
       const gymsDist = gym.map((g) => {
+        // @ts-expect-error TS(2339): Property 'latitude' does not exist on type 'never'... Remove this comment to see the full error message
         let distanceCalc = CalcDist(geo.latitude, geo.longitude, g.latitude.$numberDecimal, g.longitude.$numberDecimal)
         let newGymD = {
+          // @ts-expect-error TS(2339): Property '_id' does not exist on type 'never'.
           _id: g._id,
+          // @ts-expect-error TS(2339): Property 'name' does not exist on type 'never'.
           name: g.name,
+          // @ts-expect-error TS(2339): Property 'price' does not exist on type 'never'.
           price: g.price,
+          // @ts-expect-error TS(2339): Property 'raiting' does not exist on type 'never'.
           raiting: g.raiting ? g.raiting : 0,
+          // @ts-expect-error TS(2339): Property 'image' does not exist on type 'never'.
           image: g.image,
+          // @ts-expect-error TS(2339): Property 'logo' does not exist on type 'never'.
           logo: g.logo,
+          // @ts-expect-error TS(2339): Property 'phone' does not exist on type 'never'.
           phone: g.phone,
+          // @ts-expect-error TS(2339): Property 'email' does not exist on type 'never'.
           email: g.email,
+          // @ts-expect-error TS(2339): Property 'services' does not exist on type 'never'... Remove this comment to see the full error message
           services: g.services,
+          // @ts-expect-error TS(2339): Property 'trainers' does not exist on type 'never'... Remove this comment to see the full error message
           trainers: g.trainers ? g.trainer : [],
+          // @ts-expect-error TS(2339): Property 'clients' does not exist on type 'never'.
           clients: g.clients ? g.clients : [],
+          // @ts-expect-error TS(2339): Property 'latitude' does not exist on type 'never'... Remove this comment to see the full error message
           latitude: g.latitude,
+          // @ts-expect-error TS(2339): Property 'longitude' does not exist on type 'never... Remove this comment to see the full error message
           longitude: g.longitude,
+          // @ts-expect-error TS(2339): Property 'socialNetworks' does not exist on type '... Remove this comment to see the full error message
           socialNetworks: g.socialNetworks,
+          // @ts-expect-error TS(2339): Property 'gymActive' does not exist on type 'never... Remove this comment to see the full error message
           gymActive: g.gymActive,
+          // @ts-expect-error TS(2339): Property 'favourite' does not exist on type 'never... Remove this comment to see the full error message
           favourite: g.favourite,
+          // @ts-expect-error TS(2339): Property 'address' does not exist on type 'never'.
           address: g.address,
+          // @ts-expect-error TS(2339): Property 'uEnd' does not exist on type 'never'.
           uEnd: g.uEnd,
           distance: distanceCalc
         }
@@ -311,8 +341,10 @@ export default function rootReducer(state = initialState, { type, payload }) {
         payload === "all"
           ? category
           : category.filter((e) =>
-            e.services.map((e) => e.name).includes(payload)
+            // @ts-expect-error TS(2339): Property 'services' does not exist on type 'never'... Remove this comment to see the full error message
+            e.services.map((e: any) => e.name).includes(payload)
           );
+      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("Esto es en redux", filtCateg);
       const newPage3 = filtCateg.slice(payload.offset, payload.limit);
       return {
@@ -324,6 +356,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
       const searc = state.gyms;
       const buscador = payload
         ? searc.filter((e) =>
+          // @ts-expect-error TS(2339): Property 'name' does not exist on type 'never'.
           e.name.toLowerCase().includes(payload.toLowerCase())
         )
         : searc;
@@ -334,6 +367,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
         pageToShow: newPage5,
       };
     case POST_USER_GOOGLE:
+      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(payload);
       return {
         ...state,
@@ -417,23 +451,30 @@ export default function rootReducer(state = initialState, { type, payload }) {
         allCart: payload
       }
     case ADD_TO_CART:
+      // @ts-expect-error TS(2339): Property '_id' does not exist on type 'never'.
       const item = state.products.find(prod => prod._id === payload.id) //la clase q me matche con el id
+      // @ts-expect-error TS(2339): Property '_id' does not exist on type 'never'.
       const inCart = state.cart.find(item => item._id === payload.id)
       return {
         ...state,
         cart: inCart ?
           state.cart.map(item =>
+            // @ts-expect-error TS(2339): Property '_id' does not exist on type 'never'.
             item._id === payload.id
+              // @ts-expect-error TS(2698): Spread types may only be created from object types... Remove this comment to see the full error message
               ? { ...item, qty: item.qty + 1 }
               : item
           )
+          // @ts-expect-error TS(2698): Spread types may only be created from object types... Remove this comment to see the full error message
           : [...state.cart, { ...item, qty: 1 }]
       };
     case REMOVE_FROM_CART:
       return {
         ...state,
         cart: state.cart.map(item =>
+          // @ts-expect-error TS(2339): Property '_id' does not exist on type 'never'.
           item._id === payload.id
+            // @ts-expect-error TS(2698): Spread types may only be created from object types... Remove this comment to see the full error message
             ? { ...item, qty: item.qty === 0 ? 0 : item.qty - 1 }
             : item
         )
@@ -454,9 +495,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
         deseaseAttribute: payload,
       };
     case PUT_FAVOURITE:
-      const objFav = []
+      const objFav: any = []
       state.pageToShow.forEach(x => {
+        // @ts-expect-error TS(2339): Property '_id' does not exist on type 'never'.
         if (x._id === payload.gym._id) {
+          // @ts-expect-error TS(2339): Property 'favourite' does not exist on type 'never... Remove this comment to see the full error message
           x.favourite = payload.gym.favourite
         }
         objFav.push(x)

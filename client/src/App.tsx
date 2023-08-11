@@ -3,15 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import InitRegister from "./views/InitRegister";
 import Login from "./views/Login";
 import "./App.css";
+import { type JSXElementConstructor, type ReactElement } from "react";
 
 
-function App() {
+function App(): ReactElement<JSXElementConstructor<HTMLElement>> {
   return (
     <>
       <LayoutLanding />
-      
       <LayoutUser />
-      
       <LayoutOffUser />
       
       <Routes>

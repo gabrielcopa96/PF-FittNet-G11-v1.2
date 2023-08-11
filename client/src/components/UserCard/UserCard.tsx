@@ -1,8 +1,10 @@
 import React from "react";
+// @ts-expect-error TS(2307): Cannot find module './style/UserCard.module.css' o... Remove this comment to see the full error message
 import styles from './style/UserCard.module.css';
 
 
-export default function UserCards(props) {
+export default function UserCards(props: any) {
+    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(props, 'las props')
     return (
         <div className={styles.boxSingleCard2}>
