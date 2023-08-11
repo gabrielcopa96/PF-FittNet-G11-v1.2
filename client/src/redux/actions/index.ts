@@ -34,7 +34,6 @@ export function setUserGeo(payload: any) {
 }
 
 export function getUser(userId: any) { //----------------------------- nano ////----
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log('sale la acción con id', userId)
   return async (dispatch: any) => {
     try {
@@ -70,10 +69,9 @@ export function getAllUsers() {
         type: GET_ALL_USERS,
         payload: response.data,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: GET_ALL_USERS,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     };
@@ -88,10 +86,9 @@ export function postUser(payload: any) {
         type: POST_USER,
         payload: response.data,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: POST_USER,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     }
@@ -109,10 +106,9 @@ export const getUserGoogleForToken = (payload: any) => async (dispatch: any) => 
       type: GET_USER_TOKEN_GOOGLE,
       payload: userGoogle.data.user
     })
-  } catch (error) {
+  } catch (error: any) {
     dispatch({
       type: GET_USER_TOKEN_GOOGLE,
-      // @ts-expect-error TS(2571): Object is of type 'unknown'.
       payload: { error: error.message },
     });
   };
@@ -276,47 +272,20 @@ export function getMyGyms(partnerId: any) {
         headers: { "X-Requested-With": "XMLHttpRequest" },
         //  withCredentials: true
       });
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(parternGyms.data, "actions");
 
       dispatch({
         type: GET_MY_GYMS,
         payload: parternGyms.data,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: GET_MY_GYMS,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     };
   };
 }
-
-// export function getMyGyms(partnerId) { 
-//   // Esta ruta la consume el admin (va a estar protegida), y me trae información del
-//   // perfil del admin que la solicita
-//   return async (dispatch) => {
-//     try {
-//       const parternGyms = await axios({
-//         method: "get", url: `/api/partner/gyms/mygyms/${partnerId}`,
-//         headers: { "X-Requested-With": "XMLHttpRequest" }, withCredentials: true
-//       });
-//       console.log(parternGyms.data, "actions");
-
-//       dispatch({
-//         type: GET_MY_GYMS,
-//         payload: parternGyms.data,
-//       });
-//     } catch (err) {
-//       dispatch({
-//         type: GET_MY_GYMS,
-//         payload: { error: err.message },
-//       });
-//     };
-//   };
-// }
-
 
 export function getAllGyms() {
   return async (dispatch: any) => {
@@ -326,10 +295,9 @@ export function getAllGyms() {
         type: GET_ALL_GYMS,
         payload: response.data,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: GET_ALL_GYMS,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     }
@@ -345,10 +313,9 @@ export function getGymDetail(id: any) {
         type: GET_GYM_DETAIL,
         payload: response.data,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: GET_GYM_DETAIL,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     }
@@ -367,7 +334,6 @@ export function updatePartnerData({
 }: any) {
   return async (dispatch: any) => {
     try {
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("ESTA SALIENDO EL FORM DE PARTNER")
       const result = await axios.put(`/api/partner/profile/edit/${id}`, {
         id: id,
@@ -380,16 +346,14 @@ export function updatePartnerData({
         socialNetworks: socialNetworks,
 
       });
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("esto es la action", result)
       return dispatch({
         type: POST_PARTNER,
         payload: result.data,
       });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({
         type: POST_PARTNER,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: error.message },
       });
     }
@@ -398,7 +362,6 @@ export function updatePartnerData({
 
 export function getPartnerDetails(id: any) {
   return async (dispatch: any) => {
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log('sale la accion de los detalles del partner')
     try {
       const response = await axios.get(`/api/partner/profile/${id}`);
@@ -406,10 +369,9 @@ export function getPartnerDetails(id: any) {
         type: GET_PARTNER,
         payload: response.data.partner,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: GET_PARTNER,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     }
@@ -434,10 +396,9 @@ export function getMySales(id: any) {
         type: GET_MY_SALES,
         payload: response.data,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: GET_MY_SALES,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     }
@@ -459,10 +420,9 @@ export function createGym({
         type: POST_GYM,
         payload: response.data,
       });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({
         type: POST_GYM,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: error.message },
       });
     }
@@ -476,10 +436,9 @@ export function setGymsGeo(payload: any) {
         type: SET_GYMS_GEO,
         payload: payload,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: SET_GYMS_GEO,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     }
@@ -514,10 +473,9 @@ export function createService({
         type: POST_SERVICES,
         payload: result.data,
       });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({
         type: POST_SERVICES,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: error.message },
       });
     }
@@ -533,10 +491,9 @@ export function setCurrentPage(payload: any) {
         type: SET_CURRENT_PAGE,
         payload: payload,
       });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({
         type: SET_CURRENT_PAGE,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: error.message },
       });
     }
@@ -550,10 +507,9 @@ export function setPageNumber(payload: any) {
         type: SET_PAGE_NUMBER,
         payload: payload,
       });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({
         type: SET_PAGE_NUMBER,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: error.message },
       });
     }
@@ -567,10 +523,9 @@ export function setCurrentLimit(payload: any) {
         type: SET_CURRENT_LIMIT,
         payload: payload,
       });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({
         type: SET_CURRENT_LIMIT,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: error.message },
       });
     }
@@ -590,14 +545,12 @@ export const updateUserInfo = (id: any, body: any) => async (dispatch: any) => {
         headers: { "X-Requested-With": "XMLHttpRequest" },
       }
     );
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(dataNewUser.data);
     dispatch({
       type: PUT_USER_INFO,
       payload: dataNewUser.data.updUser,
     });
   } catch (error) {
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("error: ", error);
   }
 
@@ -606,7 +559,6 @@ export const updateUserInfo = (id: any, body: any) => async (dispatch: any) => {
 
 // CARRITO DE COMPRAS USUARIO FINAL
 //--------------------------------------------------------------------------------
-// @ts-expect-error TS(7030): Not all code paths return a value.
 export const getCart = () => {
   try {
     return async (dispatch: any) => {
@@ -617,7 +569,6 @@ export const getCart = () => {
       })
     };
   } catch (error) {
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(error)
   }
 
@@ -634,7 +585,6 @@ export function addToCart(itemID: any) {
         },
       });
     } catch (error) {
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(error);
     }
   };
@@ -649,7 +599,6 @@ export const removeFromCart = (itemID: any) => {
         },
       });
     } catch (error) {
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(error);
     }
   };
@@ -663,7 +612,6 @@ export const postCart = (body: any) => {
 }
 
 export function editStatus(statusCart: any) {
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log(statusCart, 'statuscart')
   return async (dispatch: any) => {
     const put = await axios({
@@ -676,7 +624,6 @@ export function editStatus(statusCart: any) {
       .then((res) => {
         return res.data;
       })
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       .catch((error) => console.log(error));
     return put
   };
@@ -766,7 +713,6 @@ export const updateFavouriteGym = (id: any, user: any) => async (dispatch: any) 
       payload: newFavourite.data,
     });
   } catch (error) {
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("error: ", error);
   }
 
@@ -787,7 +733,6 @@ export function getAttributeDesease() {
         payload: json.data
       })
     } catch (error) {
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("error: ", error)
     }
   };
@@ -815,10 +760,9 @@ export function getMarketing() { // Voy a usar esta action para el admin
         type: GET_MARKETING,
         payload: response.data,
       });
-    } catch (err) {
+    } catch (err: any) {
       dispatch({
         type: GET_MARKETING,
-        // @ts-expect-error TS(2571): Object is of type 'unknown'.
         payload: { error: err.message },
       });
     };

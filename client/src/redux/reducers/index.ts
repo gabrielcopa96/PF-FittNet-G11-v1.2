@@ -96,12 +96,6 @@ export default function rootReducer(state = initialState, {
         partnersToShow: payload,
       };
     case GET_PARTNER:
-      // if (payload.error) {
-      //   return {
-      //     ...state,
-      //     errors: payload.error,
-      //   };
-      // }
       return {
         ...state,
         partnerDetails: payload,
