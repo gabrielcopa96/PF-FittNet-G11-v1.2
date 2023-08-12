@@ -1,19 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-// @ts-expect-error TS(2307): Cannot find module '../styles/style.module.css' or... Remove this comment to see the full error message
 import styles from "../styles/style.module.css";
 import { SweetAlrt, SweetAlrtTem } from "../../../../asets/helpers/sweetalert";
 
-// @ts-expect-error TS(7030): Not all code paths return a value.
-export default function DeteleteAccount() {
+export default function DeteleteAccount(): JSX.Element | undefined {
   const [userId, setUserId] = useState("");
   const [user, setUser] = useState({});
 
   async function getUserById(e: any) {
     e.preventDefault();
     if (userId.length > 5) {
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(userId, "voy a buscar el user por id a la db");
       // Voy a tener que mandar headers
       const getUser = await axios({
@@ -25,28 +22,22 @@ export default function DeteleteAccount() {
         .then((res) => {
           return res.data;
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(getUser, "la respuesta del back");
       if (getUser === null) return SweetAlrtTem("Id no encontrado", "error");
-      // if (getUser.user === null) return window.alert('Id no encontrado')
       setUser(getUser);
     }
   }
 
   async function deteleUserById(e: any) {
     e.preventDefault();
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
-    console.log(user._id, "voy a borrar el user por id a la db");
-    // @ts-expect-error TS(2304): Cannot find name 'window'.
-    window.confirm(`Confirma que quiere eliminar el usuario ${user.name}`);
+    console.log((user as any)._id, "voy a borrar el user por id a la db");
+    window.confirm(`Confirma que quiere eliminar el usuario ${(user as any).name}`);
 
     // Voy a tener que mandar headers
     // console.log("está saliendo el post ", userLogin);
-    // @ts-expect-error TS(2339): Property '_id' does not exist on type '{}'.
-    if (userId.length && user._id) {
+    if (userId.length && (user as any)._id) {
       const userDelete = await axios({
         method: "delete",
         url: "/api/admin/delete",
@@ -57,10 +48,8 @@ export default function DeteleteAccount() {
         .then((res) => {
           return res.data;
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(userDelete, "si lo borra responde");
       if (userDelete === undefined)
         return SweetAlrtTem("No se pudo eliminar el usuario", "error");
@@ -75,8 +64,7 @@ export default function DeteleteAccount() {
     }
   }
 
-  // @ts-expect-error TS(2339): Property '_id' does not exist on type '{}'.
-  if (!user._id) {
+  if (!(user as any)._id) {
     return (
       <div className={styles.mainDeleteAccount}>
         <h4
@@ -109,7 +97,6 @@ export default function DeteleteAccount() {
             type="text"
             value={userId}
             onChange={(e) => {
-              // @ts-expect-error TS(2812): Property 'value' does not exist on type 'EventTarg... Remove this comment to see the full error message
               setUserId(e.target.value);
             }}
           />
@@ -136,8 +123,7 @@ export default function DeteleteAccount() {
     );
   }
 
-  // @ts-expect-error TS(2339): Property '_id' does not exist on type '{}'.
-  if (user._id) {
+  if ((user as any)._id) {
     return (
       <div className={styles.mainDeleteAccount}>
         <h4
@@ -198,8 +184,7 @@ export default function DeteleteAccount() {
                 <span
                   style={{ color: "var(--color-primD2)", marginLeft: ".5rem" }}
                 >
-                // @ts-expect-error TS(2339): Property 'type' does not exist on type '{}'.
-                {user.type ? user.type : null}
+                {(user as any).type ? (user as any).type : null}
                 </span>
               </h4>
               <h4>
@@ -207,8 +192,7 @@ export default function DeteleteAccount() {
                 <span
                   style={{ color: "var(--color-primD2)", marginLeft: ".4rem" }}
                 >
-                // @ts-expect-error TS(2339): Property 'name' does not exist on type '{}'.
-                {user.name ? user.name : null}
+                {(user as any).name ? (user as any).name : null}
                 </span>
               </h4>
               <h4>
@@ -216,8 +200,7 @@ export default function DeteleteAccount() {
                 <span
                   style={{ color: "var(--color-primD2)", marginLeft: ".4rem" }}
                 >
-                // @ts-expect-error TS(2339): Property 'userName' does not exist on type '{}'.
-                {user.userName ? user.userName : null}
+                {(user as any).userName ? (user as any).userName : null}
                 </span>
               </h4>
               <h4 style={{ paddingBottom: ".8rem" }}>
@@ -225,8 +208,7 @@ export default function DeteleteAccount() {
                 <span
                   style={{ color: "var(--color-primD2)", marginLeft: ".4rem" }}
                 >
-                // @ts-expect-error TS(2339): Property '_id' does not exist on type '{}'.
-                {user._id ? user._id : null}
+                {(user as any)._id ? (user as any)._id : null}
                 </span>
               </h4>
             </div>

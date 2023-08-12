@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// @ts-expect-error TS(2307): Cannot find module './style/client.module.css' or ... Remove this comment to see the full error message
 import styles from "./style/client.module.css";
 import { partnerValidacion } from "./controlers/validaciones";
 import { useDispatch, useSelector } from "react-redux";

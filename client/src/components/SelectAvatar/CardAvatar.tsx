@@ -1,13 +1,9 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
-// @ts-expect-error TS(2305): Module '"../../redux/actions/index"' has no export... Remove this comment to see the full error message
-import { postAvatar } from "../../redux/actions/index";
 
 import axios from "axios";
 
-// @ts-expect-error TS(2307): Cannot find module './styles/avatar.module.css' or... Remove this comment to see the full error message
 import styles from "./styles/avatar.module.css";
 import { useDispatch } from "react-redux";
 

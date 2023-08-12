@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { NavBar3 } from "./NavBar3";
 import CartItem from "../CartItem/CartItem";
 import { clearGymDetail } from "../../redux/actions";
-// @ts-expect-error TS(2307): Cannot find module './styles/style.module.css' or ... Remove this comment to see the full error message
 import style from "./styles/style.module.css";
 import { getUser } from "../../redux/actions";
 

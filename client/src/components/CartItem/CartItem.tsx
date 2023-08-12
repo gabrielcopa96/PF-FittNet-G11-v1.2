@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/actions";
-// @ts-expect-error TS(2307): Cannot find module './styles/style.module.css' or ... Remove this comment to see the full error message
 import style from "./styles/style.module.css";
 
 export default function CartItem({

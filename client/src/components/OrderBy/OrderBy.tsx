@@ -7,7 +7,6 @@ import {
 } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-// @ts-expect-error TS(2307): Cannot find module './styles/OrderBy.module.css' o... Remove this comment to see the full error message
 import styles from "./styles/OrderBy.module.css";
 
 
@@ -50,8 +49,8 @@ export default function OrderBy() {
   }
   const categorys = gyms.map((e: any) => e.services.map((e: any) => e.name)).flat();
   const categ = new Set(categorys);
-  let result = [...categ];
-  let ordenados = result.sort((a: any, b) => a.localeCompare(b));
+  // let result = [...categ];
+  // let ordenados = result.sort((a: any, b) => a.localeCompare(b));
   // console.log("Esto es en orderBy: ", ordenados);
 
   return (
@@ -69,11 +68,11 @@ export default function OrderBy() {
       </select>
       <select className={styles.select} onChange={(e) => handleChangeCateg(e)}>
         <option value="all">Categoria</option>
-        {ordenados.map((e: any) => (
+        {/* {ordenados.map((e: any) => (
           <option key={e} value={e}>
             {e}
           </option>
-        ))}
+        ))} */}
       </select>
       <select className={styles.select} onChange={(e) => handleChangePrecio(e)}>
         <option>Precio</option>

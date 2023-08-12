@@ -1,16 +1,13 @@
-import React from "react";
 import { useState, useEffect } from "react";
-
 import validate from "./validation";
-// @ts-expect-error TS(2307): Cannot find module './styles/form.module.css' or i... Remove this comment to see the full error message
 import styles from "./styles/form.module.css";
 import { updateUserInfo } from "../../redux/actions/index";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import MapUser from "../MapsAndGeo/MapUser";
 import { getAttributeDesease } from "../../redux/actions/index";
-import { InputPrimaryFormUsers } from "../../helpers/Inputs/Inputs.jsx";
-import { ButtonSecondaryDeslice } from "../../helpers/Buttons/Buttons.jsx";
+import { InputPrimaryFormUsers } from "../../helpers/Inputs/Inputs";
+import { ButtonSecondaryDeslice } from "../../helpers/Buttons/Buttons";
 import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
 
 export default function FormUser() {
@@ -216,8 +213,7 @@ export default function FormUser() {
           <div>
             <label style={{ fontWeight: "700" }}>Avatar: </label>
             <select
-              // @ts-expect-error TS(2339): Property 'avatar' does not exist on type '{}'.
-              className={error.avatar ? styles.inputError : styles.input}
+              className={(error as any).avatar ? styles.inputError : styles.input}
               name="avatar"
               onChange={(e) => handleSelect(e)}
             >
@@ -228,7 +224,6 @@ export default function FormUser() {
               <option>Estructurado</option>
               <option>Energetico</option>
             </select>
-            // @ts-expect-error TS(2339): Property 'avatar' does not exist on type '{}'.
             {(error as any).avatar && <p className={styles.parrafo}>{(error as any).avatar}</p>}
           </div>
           <div

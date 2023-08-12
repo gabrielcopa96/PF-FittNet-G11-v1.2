@@ -1,5 +1,3 @@
-import React from 'react'
-// @ts-expect-error TS(2307): Cannot find module './styles/GeneralActions.module... Remove this comment to see the full error message
 import styles from "./styles/GeneralActions.module.css";
 import { useParams, useNavigate } from "react-router-dom";
 

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { SweetAlrt } from "../../asets/helpers/sweetalert";
-// @ts-expect-error TS(2307): Cannot find module './styles/stylePasword.module.c... Remove this comment to see the full error message
 import style from "./styles/stylePasword.module.css";
 import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
 import {
@@ -69,7 +68,7 @@ export default function UpdatePasword() {
           "Atencion",
           "Verifique los datos del formulario",
           "warning",
-          // @ts-expect-error TS(2554): Expected 3 arguments, but got 4.
+          //@ts-ignore
           true
         );
         // window.alert("Verifique los datos del formulario");
@@ -79,7 +78,7 @@ export default function UpdatePasword() {
         "Atencion",
         "Verigique los datos del formulario",
         "error",
-        // @ts-expect-error TS(2554): Expected 3 arguments, but got 4.
+        //@ts-ignore
         true
       );
       // window.alert("Verifique los datos del formulario");

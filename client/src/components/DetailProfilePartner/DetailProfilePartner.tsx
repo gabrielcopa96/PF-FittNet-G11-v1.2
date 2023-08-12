@@ -4,7 +4,6 @@ import { useParams, Link } from "react-router-dom";
 import { getPartnerDetails } from "../../redux/actions";
 import { getUser } from "../../redux/actions";
 
-// @ts-expect-error TS(2307): Cannot find module './styles/DetailProfilePartner.... Remove this comment to see the full error message
 import styles from "./styles/DetailProfilePartner.module.css";
 
 export default function DetailProfilePartner(): JSX.Element {

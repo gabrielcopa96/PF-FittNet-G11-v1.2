@@ -6,7 +6,6 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-// @ts-expect-error TS(2307): Cannot find module './styles/StripeCart.module.css... Remove this comment to see the full error message
 import styles from "./styles/StripeCart.module.css";
 import axios from "axios";
 import { NavBar3 } from "../GymDetail/NavBar3";
@@ -17,7 +16,6 @@ import {
   clearCart,
   updateClientGym,
 } from "../../redux/actions";
-import { Link } from "react-router-dom";
 import { SendEmail } from "./SendEmail";
 import { BackgroundOne } from "../../helpers/Backround/Background";
 import { ButtonSimple } from "../../helpers/Buttons/Buttons";
@@ -28,19 +26,14 @@ const stripePromise = loadStripe(
   "pk_test_51L7OPdEPCpA0H6YFBVpVX0fFBJbIIUnXcU4hSY5uUZwQth9mmogZEiwUzXyXi5aJLSb43EzWLXcMPk75NBTjFGEC00usvaG53P"
 );
 
-
-
 const CheckoutForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const cart = useSelector((state) => state.cart);
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const allcart = useSelector((state) => state.gymDetail);
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const user = useSelector((state) => state.user);
+  const cart = useSelector((state: any) => state.cart);
+  const allcart = useSelector((state: any) => state.gymDetail);
+  const user = useSelector((state: any) => state.user);
 
   localStorage.setItem('phone', allcart.phone)
   localStorage.setItem('nameGym', allcart.name)
@@ -58,7 +51,7 @@ const CheckoutForm = () => {
     userName: user.name,
     email: user.userName
   })
-  
+
   const type = localStorage.getItem("type");
   const avatar = localStorage.getItem("avatar");
 
@@ -140,9 +133,9 @@ const CheckoutForm = () => {
         .catch((error) => {
           console.log(error);
         });
-        console.log((compra as any).data)
+      console.log((compra as any).data)
       if ((compra as any).data === 'todomal') {
-        // @ts-expect-error TS(2554): Expected 3 arguments, but got 2.
+        // @ts-ignore
         SweetAlrt(`Su pago fue rechazado ${name}`, "Intente con otra tarjeta")
         return navigate(`/home/${type}/${name}/${usuarioId}/${avatar}`);
       }
@@ -155,7 +148,7 @@ const CheckoutForm = () => {
       SweetAlrtTem(`Su compra NO fue realizada con exito ${name}`, "error");
     }
   };
-  
+
   if (imgBack) {
     return (
       <div className={styles.container}>

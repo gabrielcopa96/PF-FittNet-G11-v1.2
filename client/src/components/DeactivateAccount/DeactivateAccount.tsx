@@ -7,7 +7,6 @@ import {
   BackgroundTwo,
 } from "../../helpers/Backround/Background";
 import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
-// @ts-expect-error TS(2307): Cannot find module './styles/styleDesactive.module... Remove this comment to see the full error message
 import style from "./styles/styleDesactive.module.css";
 
 export default function DeactivateAccount(): JSX.Element {
@@ -32,8 +31,7 @@ export default function DeactivateAccount(): JSX.Element {
   function onSubmit(e: any) {
     e.preventDefault();
 
-    // @ts-expect-error TS(2532): Object is possibly 'undefined'.
-    if (userId.length > 3 && password && !error) {
+    if ((userId as any).length > 3 && password && !error) {
       let object = { userId, password };
 
       axios

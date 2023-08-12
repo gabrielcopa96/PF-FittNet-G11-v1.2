@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserGeo } from "../../redux/actions/index";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-// @ts-expect-error TS(2307): Cannot find module './styles/AllRegister.module.cs... Remove this comment to see the full error message
 import styles from "./styles/AllRegister.module.css";
 import { regexEmail, regexName } from "../../asets/helpers/regexValidators";
 

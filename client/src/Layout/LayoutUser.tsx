@@ -1,5 +1,4 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
-
 import GymDetail from "../components/GymDetail/GymDetail";
 import Profile from "../views/Profile";
 import FormUser from "../components/Forms/FormUser";
@@ -11,7 +10,6 @@ import StripeCart from "../components/StripeCart/StripeCart";
 import Home from "../views/Home";
 import GymsForUsersMap from "../components/MapsAndGeo/GymsForUsers";
 import type { JSXElementConstructor, ReactElement } from 'react';
-
 
 
 const MainLayoutUser = (): ReactElement<JSXElementConstructor<HTMLElement>> => {
@@ -48,4 +46,4 @@ export const LayoutUser = (): ReactElement<JSXElementConstructor<HTMLElement>> =
   )
 }
 
-export default LayoutUser
+export default LayoutUser;

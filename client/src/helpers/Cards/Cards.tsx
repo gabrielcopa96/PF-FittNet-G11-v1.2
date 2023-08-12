@@ -1,17 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
 import { updateFavouriteGym } from "../../redux/actions/index";
-
 import axios from "axios";
-
-// @ts-expect-error TS(2307): Cannot find module './styles/stylesCards.module.cs... Remove this comment to see the full error message
 import styles from "./styles/stylesCards.module.css";
 import { IoIosHeart } from "react-icons/io";
 import { AiFillStepForward, AiOutlineShoppingCart } from "react-icons/ai";
 import { JSXElementConstructor, ReactElement, useState } from "react";
-import { EditMyGyms } from "../../components/Home/HomePartner/ViewsPartner/EditMyGyms.jsx";
+import { EditMyGyms } from "../../components/Home/HomePartner/ViewsPartner/EditMyGyms";
 
 export const CardAvatares = (props: any): ReactElement<JSXElementConstructor<HTMLElement>> => {
   const { image } = props;
@@ -51,11 +47,9 @@ export const CardAvatarAdicional = (props: any): ReactElement<JSXElementConstruc
     // Hay que avaluar la respuesta y retornar un swit altert
     // console.log(avatarSelect, 'Respuesta a avatarSelect')
 
-    // @ts-expect-error TS(2532): Object is possibly 'undefined'.
-    if (avatarSelect.data.ok === false) {
+    if ((avatarSelect as any).data.ok === false) {
       // Si el userId es invalido
-      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
-      return SweetAlrtTem(`${avatarSelect.data.msg}`, "warning");
+      return SweetAlrtTem(`${(avatarSelect as any).data.msg}`, "warning");
     }
 
     let avatarId = avatarSelect
@@ -141,8 +135,7 @@ export const CardShop = (props: any): ReactElement<JSXElementConstructor<HTMLEle
 
   const userId = localStorage.getItem("userId");
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state: any) => state.user);
 
   const dispatch = useDispatch();
 

@@ -2,7 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAdmin } from "../../redux/actions";
-// @ts-expect-error TS(2307): Cannot find module './styles/detailProfileAdmin.mo... Remove this comment to see the full error message
 import styles from "./styles/detailProfileAdmin.module.css";
 
 export default function DetailProfileAdmin(): JSX.Element {

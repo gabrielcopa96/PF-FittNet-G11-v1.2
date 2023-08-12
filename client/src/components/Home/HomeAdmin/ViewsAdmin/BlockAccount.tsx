@@ -6,18 +6,14 @@ import { getLockAccounts } from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { SweetAlrt, SweetAlrtTem } from "../../../../asets/helpers/sweetalert";
-// @ts-expect-error TS(2307): Cannot find module '../styles/style.module.css' or... Remove this comment to see the full error message
 import styles from "../styles/style.module.css";
 
-// @ts-expect-error TS(2591): Cannot find name 'require'. Do you need to install... Remove this comment to see the full error message
-const { regexEmail } = require("../../../../asets/helpers/regexValidators");
+import { regexEmail } from "../../../../asets/helpers/regexValidators";
 
 // Necesito un form con un input, un botón de agregar y otro de quitar
 // Necesito una lista los correos baneados
-
-export default function BlockAccount() {
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const lockAccounts = useSelector((state) => state.lockAccounts);
+export default function BlockAccount(): JSX.Element {
+  const lockAccounts = useSelector((state: any) => state.lockAccounts);
   const dispatch = useDispatch();
 
   let [userName, setUserName] = useState("");
@@ -25,15 +21,13 @@ export default function BlockAccount() {
   let [submit, setSubmit] = useState(true);
 
   useEffect(() => {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getLockAccounts());
+    dispatch((getLockAccounts() as any));
     setSubmit(false);
   }, [submit]);
 
   async function addLockAccount(e: any) {
     e.preventDefault();
     if (userName && !error) {
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("trato de agregar la cuenta", userName);
       // le paso la solicitud al back para agrerar la cuenta
       const addAccount = await axios({
@@ -44,7 +38,6 @@ export default function BlockAccount() {
         // withCredentials: true,
       })
         .then((res) => {
-          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(res.data);
           if (res.data === null) {
             return SweetAlrtTem(
@@ -59,7 +52,6 @@ export default function BlockAccount() {
           );
           setSubmit(true);
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
     }
   }
@@ -67,7 +59,6 @@ export default function BlockAccount() {
   async function removeLockAccount(e: any) {
     e.preventDefault();
     if (userName && !error) {
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("trato de quitar la cuenta", userName);
       // le paso la solicitud al back para remover a cuenta
       const removeAccount = await axios({
@@ -78,7 +69,6 @@ export default function BlockAccount() {
         // withCredentials: true,
       })
         .then((res) => {
-          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(res.data);
           if (res.data === null) {
             return SweetAlrtTem(`Cuenta inexistente.`, "info");
@@ -90,7 +80,6 @@ export default function BlockAccount() {
           );
           setSubmit(true);
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
     }
   }

@@ -1,5 +1,3 @@
-import React from 'react'
-// @ts-expect-error TS(2307): Cannot find module './styles/Advertising.module.cs... Remove this comment to see the full error message
 import styles from "./styles/Advertising.module.css";
 
 export default function Advertising(): JSX.Element {

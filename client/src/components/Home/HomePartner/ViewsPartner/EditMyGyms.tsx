@@ -1,7 +1,6 @@
-import React from "react";
 import UpdateGym from "../../../UpDatePartner/gym";
 
-export function EditMyGyms(props: any) {
+export function EditMyGyms(props: any): JSX.Element {
   const { idGym } = props;
   return (
     <div>

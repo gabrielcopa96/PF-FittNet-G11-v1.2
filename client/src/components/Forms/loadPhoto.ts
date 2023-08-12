@@ -3,8 +3,7 @@ const dragZone= document.getElementById("result-image")
 const img= (document as any).getElementById("img-result")
 
 (dragZone as any).addEventListener('click', () => (fileInput as any).click)
-(dragZone as any).addEventListener('dragover', () => {
-    // @ts-expect-error TS(2304): Cannot find name 'e'.
+(dragZone as any).addEventListener('dragover', (e: any) => {
     e.preventDefault()
     //dragZone.classList.add("classname styles")
     

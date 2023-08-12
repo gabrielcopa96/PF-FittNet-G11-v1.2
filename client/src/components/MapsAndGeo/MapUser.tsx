@@ -1,12 +1,11 @@
-import React, { useMemo, useEffect, useState, useRef } from "react";
+import { useMemo, useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useDispatch } from "react-redux";
 import { setUserGeo } from "../../redux/actions/index";
-import {ButtonSimple} from "../../helpers/Buttons/Buttons.jsx";
-// @ts-expect-error TS(2307): Cannot find module './styles/mapGyms.module.css' o... Remove this comment to see the full error message
+import { ButtonSimple } from "../../helpers/Buttons/Buttons";
 import styles from "./styles/mapGyms.module.css";
 
-export default function MapUser() {
+export default function MapUser(): JSX.Element {
   const dispatch = useDispatch();
 
   const [lat, setLat] = useState(null);
@@ -71,15 +70,15 @@ export default function MapUser() {
         {lat === null || lng === null ? (
           <div>Loading...</div>
         ) : (
-          // @ts-expect-error TS(2322): Type '{ children: Element[]; center: never[]; zoom... Remove this comment to see the full error message
+          // @ts-ignore
           <MapContainer center={[lat, lng]} zoom={15}>
             <TileLayer
-              // @ts-expect-error TS(2322): Type '{ attribution: string; url: string; }' is no... Remove this comment to see the full error message
+              // @ts-ignore
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-              // @ts-expect-error TS(2322): Type '{ children: Element; draggable: boolean; eve... Remove this comment to see the full error message
+              // @ts-ignore
               draggable={true}
               eventHandlers={eventHandlers}
               position={[lat, lng]}
@@ -105,7 +104,7 @@ export default function MapUser() {
         <span style={{ color: "var(--color-primD1)" }}>{lat} </span>, Longitud:{" "}
         <span style={{ color: "var(--color-primD1)" }}>{lng}</span>
       </div>
-      <div className={message ? styles.ubicationDiv : null}>
+      <div className={message ? styles.ubicationDiv : ""}>
         {message ? message : null}
       </div>
     </div>

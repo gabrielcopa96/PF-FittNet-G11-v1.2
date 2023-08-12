@@ -1,15 +1,11 @@
 import { useNavigate, Link } from "react-router-dom";
-
 import { useSelector } from "react-redux";
-
-import { ButtonSecondaryDeslice } from "../../../helpers/Buttons/Buttons.jsx";
-
-// @ts-expect-error TS(2307): Cannot find module '../styles/Landing.module.css' ... Remove this comment to see the full error message
+import { ButtonSecondaryDeslice } from "../../../helpers/Buttons/Buttons";
 import styles from "../styles/Landing.module.css";
 
 
 //? ESTE ES MI CARD DEL PACK BALANCE CARE
-export const CardPromoBalance = () => {
+export const CardPromoBalance = (): JSX.Element => {
   return (
     <div className={styles.promoBalance}>
       <h2 className={styles.balanceTitulo}>Pack Balance Care</h2>
@@ -81,7 +77,6 @@ export const PortadaFittnet = () => {
             <br />
             {!idUser ? (
               <Link to="/login">
-                // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
                 <button className={styles.btn}>Empezá aquí</button>
               </Link>
             ) : avatar ? (

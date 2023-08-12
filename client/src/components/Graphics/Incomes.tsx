@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/Incomes.module.css' o... Remove this comment to see the full error message
+import { useEffect } from "react";
 import styles from './styles/Incomes.module.css'
 import { getMySales, getUser } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,

@@ -1,7 +1,6 @@
-// @ts-expect-error TS(2307): Cannot find module './styles/styleCard.module.css'... Remove this comment to see the full error message
 import style from "./styles/styleCard.module.css";
 
-export default function CardServices(props: any) {
+export default function CardServices(props: any): JSX.Element | undefined {
   const { img, name, unidad, price, title } = props;
 
   if (title == "true") {

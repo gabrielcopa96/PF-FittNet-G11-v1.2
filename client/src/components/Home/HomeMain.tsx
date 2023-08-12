@@ -4,8 +4,7 @@ import SelecAvatar from "../SelectAvatar/SelectAvatar";
 import GymCards from "../GymCards/GymCards";
 import { getAllGyms, getUserGoogleForToken, setUserGeo } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { ButtonBack } from "../../helpers/Buttons/Buttons.jsx";
-// @ts-expect-error TS(2307): Cannot find module './styles/homeMain.module.css' ... Remove this comment to see the full error message
+import { ButtonBack } from "../../helpers/Buttons/Buttons";
 import styles from "./styles/homeMain.module.css";
 import Sarch from "../Search/Search";
 import OrderBy from "../OrderBy/OrderBy";

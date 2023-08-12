@@ -1,13 +1,8 @@
-import React from "react";
-// @ts-expect-error TS(2307): Cannot find module '../../asets/images/benefits(uf... Remove this comment to see the full error message
 import img from "../../asets/images/benefits(uf).jpg";
-// @ts-expect-error TS(2307): Cannot find module '../../asets/images/benefits(uf... Remove this comment to see the full error message
 import img2 from "../../asets/images/benefits(uf)2.jpg";
-// @ts-expect-error TS(2307): Cannot find module '../../asets/images/benefits(uf... Remove this comment to see the full error message
 import img3 from "../../asets/images/benefits(uf)3.jpeg";
-// @ts-expect-error TS(2307): Cannot find module '../LegendUf/style/LegendUf.mod... Remove this comment to see the full error message
 import style from "../LegendUf/style/LegendUf.module.css";
-import { ButtonSecondaryDeslice } from "../../helpers/Buttons/Buttons.jsx";
+import { ButtonSecondaryDeslice } from "../../helpers/Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
 import { ScrollContainer, Animator, ScrollPage, Fade, Zoom, Move } from 'react-scroll-motion';
 

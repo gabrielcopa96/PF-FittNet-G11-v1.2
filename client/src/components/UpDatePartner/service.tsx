@@ -1,5 +1,4 @@
 import { useState } from "react";
-// @ts-expect-error TS(2307): Cannot find module './style/client.module.css' or ... Remove this comment to see the full error message
 import styles from "./style/client.module.css";
 import {
   serviceValidate,
@@ -12,7 +11,7 @@ import { SweetAlrt, SweetAlrtTem } from "../../asets/helpers/sweetalert";
 import { createOneService, editOneService } from "./controlers/Functions";
 import { useEffect } from "react";
 
-export default function Services() {
+export default function Services(): JSX.Element {
   const dispatch = useDispatch();
   const dataPartner = useSelector((state: any) => state.myGyms);
   let myGyms = dataPartner.gyms ? dataPartner.gyms : [];
@@ -132,7 +131,7 @@ export default function Services() {
     // donde cada objeto es un servicio asociado a ese gym en particular
 
     if (typeof validateS === "string") {
-      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
+      // @ts-ignore
       return SweetAlrt(validateS);
     }
 
@@ -146,7 +145,7 @@ export default function Services() {
     ) {
       return SweetAlrtTem("Completa los campos  minimo requeridos", "warning");
     } else {
-      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
+      // @ts-ignore
       SweetAlrt("Estamos procesando su solicitud!");
 
       let dataForNewService = {
@@ -164,7 +163,7 @@ export default function Services() {
         SweetAlrt("Exito", "Servicio creado", "success");
         dispatch((getMyGyms(userId) as any));
       } else {
-        // @ts-expect-error TS(2554): Expected 3 arguments, but got 2.
+        // @ts-ignore
         SweetAlrt("Ocurrió un error y el servicio no fue creado", "error");
       }
       setNewService({
@@ -568,7 +567,6 @@ export default function Services() {
                   ? newService.duration
                   : editService.duration
               }
-              // onClick={(e) => validateSubmit(e)}
               onChange={(e) => handleChange(e)}
             />
             {typeAction === "create" && newService.duration
@@ -589,9 +587,8 @@ export default function Services() {
         {typeAction === "create" && (
           <button
             className={styles.btnCreateEditGym}
-            onClick={(e) => {
-              // @ts-expect-error TS(2554): Expected 0 arguments, but got 1.
-              onClickCreateService(e);
+            onClick={() => {
+              onClickCreateService();
             }}
           >
             Crear servicio

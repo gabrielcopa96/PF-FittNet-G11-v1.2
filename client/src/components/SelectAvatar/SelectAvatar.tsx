@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAvatars } from "../../redux/actions";
-import { CardAvatarAdicional } from "../../helpers/Cards/Cards.jsx";
+import { CardAvatarAdicional } from "../../helpers/Cards/Cards";
 
-// @ts-expect-error TS(2307): Cannot find module './styles/avatar.module.css' or... Remove this comment to see the full error message
 import styles from "./styles/avatar.module.css";
 
 export default function SelectAvatar(): JSX.Element {

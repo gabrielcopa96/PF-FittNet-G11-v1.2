@@ -3,11 +3,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUserGoogleForToken, getMarketing } from "../../redux/actions/index";
 import { CardsPlansPartner } from "../../helpers/Cards/Cards";
-import { ButtonPrimary } from "../../helpers/Buttons/Buttons.jsx";
+import { ButtonPrimary } from "../../helpers/Buttons/Buttons";
 import { PortadaFittnet, Hero } from "../Landing/componentsLanding/componentsLanding";
 import { ScrollContainer, Animator, ScrollPage, Fade } from "react-scroll-motion";
-
-// @ts-expect-error TS(2307): Cannot find module '../Landing/styles/Landing.modu... Remove this comment to see the full error message
 import style from "../Landing/styles/Landing.module.css";
 
 export default function LandingInfo(): JSX.Element {

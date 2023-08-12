@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/Incomes.module.css' o... Remove this comment to see the full error message
 import styles from './styles/Incomes.module.css'
 import { getAllSales, getUser } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -28,7 +26,7 @@ import {
     Legend
   );
 
-export default function IncomesAdmin(){
+export default function IncomesAdmin(): JSX.Element {
 
   let { userId } = useParams();
     
@@ -94,7 +92,6 @@ export default function IncomesAdmin(){
           <h2>Grafica por Ingresos</h2>
           <div className={styles.doubleContainer}>
             <div className={styles.doubleContainer}>
-              {/* // @ts-expect-error TS(2322): Type '{ responsive: boolean; plugins: { legend: { ... Remove this comment to see the full error message */}
               {/* <Bar  data={data} options={options}/> */}
             </div>
           </div>

@@ -7,7 +7,6 @@ import {
   BackgroundTwo,
 } from "../../helpers/Backround/Background";
 import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
-// @ts-expect-error TS(2307): Cannot find module './styles/stylePasword.module.c... Remove this comment to see the full error message
 import style from "./styles/stylePasword.module.css";
 
 // Esta es la ruta del back que podemos usar

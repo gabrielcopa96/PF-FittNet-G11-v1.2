@@ -1,10 +1,5 @@
-import React from "react";
 import PartnerCards from "../../../PartnerCards/PartnerCards";
 
-export default function Partners() {   
-
-    return (
-        <PartnerCards/>
-    )
-
+export default function Partners(): JSX.Element {   
+    return <PartnerCards/>
 }

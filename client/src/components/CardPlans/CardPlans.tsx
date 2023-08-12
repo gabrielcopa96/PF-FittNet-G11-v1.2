@@ -1,4 +1,3 @@
-// @ts-expect-error TS(2307): Cannot find module './style/CardPlans.module.css' ... Remove this comment to see the full error message
 import style from "./style/CardPlans.module.css";
 
 export default function CardPlans(): JSX.Element {

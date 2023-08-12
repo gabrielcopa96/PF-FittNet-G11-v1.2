@@ -5,10 +5,9 @@ import {
   setPageNumber,
   setCurrentLimit,
 } from "../../redux/actions/index";
-// @ts-expect-error TS(2307): Cannot find module './styles/paginated.module.css'... Remove this comment to see the full error message
 import style from "./styles/paginated.module.css";
 
-export default function Paginated() {
+export default function Paginated(): JSX.Element {
 
   const dispatch = useDispatch();
 
@@ -130,8 +129,6 @@ export default function Paginated() {
                   <span
                     onClick={() => pagination(page)}
                     style={{ cursor: "pointer" }}
-                    // @ts-expect-error TS(2322): Type '{ children: number; onClick: () => void; sty... Remove this comment to see the full error message
-                    value={currentPage}
                   >
                     {page}
                   </span>

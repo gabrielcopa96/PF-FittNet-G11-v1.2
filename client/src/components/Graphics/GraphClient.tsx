@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/Incomes.module.css' o... Remove this comment to see the full error message
 import styles from './styles/Incomes.module.css'
 import { Bar } from 'react-chartjs-2';
 import { getCart, getMySales, getUser } from "../../redux/actions";
@@ -47,7 +46,7 @@ export default function ClientsGraph(): JSX.Element {
   // .filter(clien => (clien.gyms._id==partnerGyms.gyms.map(a=>a._id))?clien:null)
   console.log('clients', saless)
 
-  const partnerClients = []
+  const partnerClients: any = []
 
 
   for (let i = 0; i < partnerGyms.gyms.length; i++) {
@@ -58,32 +57,32 @@ export default function ClientsGraph(): JSX.Element {
     }
   }
   console.log('partnerClients', partnerClients)
-  const clientsUnique = [...new Set(partnerClients)]
+  // const clientsUnique: any = [...new Set(partnerClients)]
 
 
-  let newObject = clientsUnique.map((c) => {
-    return {
-      gymId: c.gyms.name,
-      userId: c.user._id
-    }
-  })
-  console.log(newObject, 'el nuevo array de clientes únicos')
-  let resul = []
+  // let newObject = clientsUnique.map((c) => {
+  //   return {
+  //     gymId: c.gyms.name,
+  //     userId: c.user._id
+  //   }
+  // })
+  // console.log(newObject, 'el nuevo array de clientes únicos')
+  // let resul = []
 
-  for (var i = 0; i < newObject.length; i++) {
-    if (!resul[newObject[i].gymId]) {
-      console.log(newObject[i].gymId)
-      resul[newObject[i].gymId] = [newObject[i].userId]
+  // for (var i = 0; i < newObject.length; i++) {
+  //   if (!resul[newObject[i].gymId]) {
+  //     console.log(newObject[i].gymId)
+  //     resul[newObject[i].gymId] = [newObject[i].userId]
 
-    } else {
-      if (!resul[newObject[i].gymId].includes(newObject[i].userId)) {
-        resul[newObject[i].gymId].push(newObject[i].userId)
-      }
+  //   } else {
+  //     if (!resul[newObject[i].gymId].includes(newObject[i].userId)) {
+  //       resul[newObject[i].gymId].push(newObject[i].userId)
+  //     }
 
-    }
+  //   }
 
-  }
-  console.log(resul, 'luego de un ardo trabajo')
+  // }
+  // console.log(resul, 'luego de un ardo trabajo')
 
   const options = {
     responsive: true,
@@ -98,31 +97,30 @@ export default function ClientsGraph(): JSX.Element {
     },
   };
 
-  const labels = partnerClients.map(gy => gy.gyms.name).filter((k, index, array) => {
-    return index === array.indexOf(k)
-});  
-//   const qtys = partnerClients.map(gy => gy..name).filter((k, index, array) => {
-//     return index === array.indexOf(k)
-// });  
-//   const ddata = partnerClients.filter((p,i) =>p.user.name==='Fernando'?+1:0)
-//   console.log('data', ddata)
+  // const labels = partnerClients.map(gy => gy.gyms.name).filter((k, index, array) => {
+  //   return index === array.indexOf(k)
+  // });
+  //   const qtys = partnerClients.map(gy => gy..name).filter((k, index, array) => {
+  //     return index === array.indexOf(k)
+  // });  
+  //   const ddata = partnerClients.filter((p,i) =>p.user.name==='Fernando'?+1:0)
+  //   console.log('data', ddata)
 
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: 'Clientes por gimnasio',
-        data: labels.map(()=>Math.ceil(Math.random()*25)),
-        // .filter((k, index, array) => {return index === array.indexOf(k)}),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      }
-    ],
-  };
+  // const data = {
+  //   labels,
+  //   datasets: [
+  //     {
+  //       label: 'Clientes por gimnasio',
+  //       data: labels.map(() => Math.ceil(Math.random() * 25)),
+  //       // .filter((k, index, array) => {return index === array.indexOf(k)}),
+  //       borderColor: 'rgb(255, 99, 132)',
+  //       backgroundColor: 'rgba(255, 99, 132, 0.5)',
+  //     }
+  //   ],
+  // };
 
   return (
     <div>
-      {/* // @ts-expect-error TS(2322): Type '{ responsive: boolean; plugins: { legend: { ... Remove this comment to see the full error message */}
       {/* <Bar options={options} data={data} />; */}
     </div>
   )

@@ -1,10 +1,7 @@
-import React from "react";
-// import UserCard from "../UserCard/UserCard";
-// @ts-expect-error TS(2307): Cannot find module './style/UserCards.module.css' ... Remove this comment to see the full error message
 import styles from "./style/UserCards.module.css";
 import { useSelector } from "react-redux";
 
-export default function UserCards() {
+export default function UserCards(): JSX.Element {
   const users = useSelector((state: any) => state.users);
 
   return (

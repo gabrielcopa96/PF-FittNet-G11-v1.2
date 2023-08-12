@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getPartnerDetails } from "../../redux/actions/index";
 import { setUserGeo } from '../../services/servicesQuery';
-// @ts-expect-error TS(2307): Cannot find module './styles/LoginInit.module.css'
 import styles from "./styles/LoginInit.module.css";
 import jwt_decode from "jwt-decode";
 import { useQuery } from "@tanstack/react-query";
@@ -44,7 +43,7 @@ export default function LoginInit(): JSX.Element {
     ); // eslint-disable-next-line
   }, []);
 
-  // @ts-expect-error TS(2769): No overload matches this call.
+  // @ts-ignore
   const { data: geoLocalizacion, isLoading: loadingGeo, isError: errorGeo } = useQuery( "geolocalizacion", setUserGeo(geo) )
 
 

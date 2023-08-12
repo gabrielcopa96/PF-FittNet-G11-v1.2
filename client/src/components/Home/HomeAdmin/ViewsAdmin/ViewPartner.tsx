@@ -1,11 +1,10 @@
-import React from "react";
 import Advertising from "../../../PartnerHomeComponents/Advertising";
 import GeneralActions from "../../../PartnerHomeComponents/GeneralActions";
 import ClientsGraph from "../../../Graphics/GraphClient";
 
-export default function ViewPartner() {
+export default function ViewPartner(): JSX.Element {
     return (
-        <div>
+        <>
             <div style={{padding: "10px"}}>
                 <a style={{padding: "10px", color: "#fff", fontSize:"18px" }} 
                 href="/home/partner/tincho/eliddelusuario">Experiencia partner</a>
@@ -14,7 +13,7 @@ export default function ViewPartner() {
             <Advertising/>
             <GeneralActions/>
             <ClientsGraph />
-        </div>
+        </>
     )
 
 }

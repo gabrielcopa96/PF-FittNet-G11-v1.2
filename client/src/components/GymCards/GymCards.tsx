@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/GymCards.module.css' ... Remove this comment to see the full error message
 import style from "./styles/GymCards.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { CardShop } from "../../helpers/Cards/Cards.jsx";
+import { CardShop } from "../../helpers/Cards/Cards";
 import { sortByDistance } from "../../redux/actions";
 
 export default function GymsCards(): JSX.Element {
@@ -12,8 +11,7 @@ export default function GymsCards(): JSX.Element {
     dispatch(sortByDistance("menor")); // eslint-disable-next-line
   }, []);
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const gyms = useSelector((state) => state.pageToShow);
+  const gyms = useSelector((state: any) => state.pageToShow);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -52,8 +50,6 @@ export default function GymsCards(): JSX.Element {
   return (
     <div className={style.mainBoxCards}>
       <div className={style.boxCards}>
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
-        {console.log()}
         {gyms.length
           ? currentGyms.map((x: any, y: any) => (
               <CardShop
@@ -86,9 +82,7 @@ export default function GymsCards(): JSX.Element {
                 <span
                   onClick={() => handleClickPage(page)}
                   style={{ cursor: "pointer" }}
-                  className={(currentPage === page) ? style.itemActive : null}
-                  // @ts-expect-error TS(2322): Type '{ children: number; onClick: () => void; sty... Remove this comment to see the full error message
-                  value={page}
+                  className={(currentPage === page) ? style.itemActive : ""}
                 >
                   {page}
                 </span>

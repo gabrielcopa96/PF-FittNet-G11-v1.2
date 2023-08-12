@@ -1,11 +1,10 @@
-import React from "react";
 import Services from "../../../UpDatePartner/service";
 
-export function EditMyServices () {
+export function EditMyServices (): JSX.Element {
     return (
-        <div>
+        <>
             Editar mis servicios
             <Services/>
-        </div>
+        </>
     )
 }

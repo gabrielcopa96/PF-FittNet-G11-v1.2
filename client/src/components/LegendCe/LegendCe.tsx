@@ -1,4 +1,3 @@
-// @ts-expect-error TS(2307): Cannot find module './styles/LegendCe.module.css' ... Remove this comment to see the full error message
 import style from "./styles/LegendCe.module.css";
 import Slider from "../Slider/Slider";
 import CardPlans from "../CardPlans/CardPlans";

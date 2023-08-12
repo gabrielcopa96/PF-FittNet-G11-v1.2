@@ -1,9 +1,7 @@
-// import PartnerCard from "../PartnerCard/PartnerCard";
-// @ts-expect-error TS(2307): Cannot find module './style/PartnerCards.module.cs... Remove this comment to see the full error message
 import styles from "./style/PartnerCards.module.css";
 import { useSelector } from "react-redux";
 
-export default function PartnerCards() {
+export default function PartnerCards(): JSX.Element {
   const partners = useSelector((state: any) => state.partners);
 
   return (

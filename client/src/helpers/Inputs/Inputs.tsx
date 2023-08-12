@@ -1,5 +1,4 @@
 import type { JSXElementConstructor, ReactElement } from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/stylesInputs.module.c... Remove this comment to see the full error message
 import styles from "./styles/stylesInputs.module.css";
 
 export const InputPrymary = (props: any): ReactElement<JSXElementConstructor<HTMLElement>> => {
@@ -52,7 +51,7 @@ export const InputPrimaryFormUsers = (props: any): ReactElement<JSXElementConstr
         className={styles.InputAlternative}
         placeholder={placeholder}
         onChange={onChange}
-        // @ts-expect-error TS(2322): Type '{ type: any; value: any; name: any; classNam... Remove this comment to see the full error message
+        // @ts-ignore
         padding={padding}
         style={inputStylesLinea}
       />

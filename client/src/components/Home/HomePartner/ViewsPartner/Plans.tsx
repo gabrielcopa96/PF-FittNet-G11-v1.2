@@ -1,25 +1,21 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlans } from "../../../../redux/actions";
 import axios from "axios";
 import CheckOut from "./CheckOut";
 import { useState } from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/mygym.module.css' or ... Remove this comment to see the full error message
 import style from "./styles/mygym.module.css";
 import { ButtonSimple } from "../../../../helpers/Buttons/Buttons";
 
 
-export function Plans() {
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const plan = useSelector((state) => state.plans);
+export function Plans(): JSX.Element {
+  const plan = useSelector((state: any) => state.plans);
   const dispatch = useDispatch();
   const [datos, setDatos] = useState("");
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const idPartner = useSelector((state) => state.user);
+  const idPartner = useSelector((state: any) => state.user);
 
   useEffect(() => {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getPlans());
+    dispatch((getPlans() as any));
   }, []);
 
   async function onSubmit(value: any) {
@@ -41,19 +37,14 @@ export function Plans() {
     })
       .then((data) => {
         setDatos(data.data);
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.info("contenido de data", data);
       })
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       .catch((err) => console.error(err));
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
-    console.log("todopiola");
   }
 
   return (
     <div>
       <div className={style.cont}>
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         {console.log(plan)}
         {plan.length
           ? plan.map((p: any) => {

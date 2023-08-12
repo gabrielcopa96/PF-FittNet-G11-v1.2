@@ -1,5 +1,4 @@
-import React, { JSXElementConstructor, ReactElement } from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/stylesButtons.module.... Remove this comment to see the full error message
+import type { JSXElementConstructor, ReactElement } from "react";
 import styles from "./styles/stylesButtons.module.css";
 
 //? Boton primario - es el boton principal con el tamaño normal
@@ -37,8 +36,7 @@ export const ButtonPrimarySmall = (props: any): ReactElement<JSXElementConstruct
     <div
       onClick={onClick}
       className={styles.btnPrimarioSmall}
-      // @ts-expect-error TS(2322): Type '{ children: any; onClick: any; className: an
-      styles={{ padding: padding }}
+      style={{ padding: padding }}
     >
       {title}
     </div>

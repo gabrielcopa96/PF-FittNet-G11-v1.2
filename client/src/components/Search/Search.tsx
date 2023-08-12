@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// @ts-expect-error TS(2307): Cannot find module './styles/Search.module.css' or... Remove this comment to see the full error message
 import styles from "./styles/Search.module.css";
 import {  getSearch } from "../../redux/actions";
 

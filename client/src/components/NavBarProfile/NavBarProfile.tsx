@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Logout from "../Logout/Logout";
 import { getUserGoogleForToken, getUser } from "../../redux/actions/index";
-// @ts-expect-error TS(2307): Cannot find module './style/NavBarProfile.module.c... Remove this comment to see the full error message
 import style from "./style/NavBarProfile.module.css";
 import { useDispatch } from "react-redux";
 import { useCallback } from "react";

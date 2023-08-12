@@ -1,8 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
-// @ts-expect-error TS(2307): Cannot find module './styles/detailProfile.module.... Remove this comment to see the full error message
-import styles from "./styles/detailProfile.module.css";
 import { MdLocationOn, MdLocationOff } from "react-icons/md";
 import { useEffect } from "react";
 import {
@@ -11,7 +9,8 @@ import {
   getGymDetail,
   getUser,
 } from "../../redux/actions/index";
-import { NavBar3 } from "../GymDetail/NavBar3.jsx";
+import { NavBar3 } from "../GymDetail/NavBar3";
+import styles from "./styles/detailProfile.module.css"
 
 export default function DetailProfileUser(): JSX.Element {
   let { userId } = useParams();

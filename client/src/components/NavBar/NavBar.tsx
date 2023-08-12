@@ -1,10 +1,8 @@
-import React from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/NavBar.module.css' or... Remove this comment to see the full error message
 import style from "./styles/NavBar.module.css";
 import {
   ButtonSimple,
   ButtonSecondarySimple,
-} from "../../helpers/Buttons/Buttons.jsx";
+} from "../../helpers/Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
 
 export default function NavBar(): JSX.Element {

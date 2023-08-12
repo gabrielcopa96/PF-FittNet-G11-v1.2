@@ -1,24 +1,23 @@
 import { useMemo, useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import {  useSelector } from "react-redux";
-// @ts-expect-error TS(2307): Cannot find module './styles/mapGyms.module.css' o... Remove this comment to see the full error message
+import { useSelector } from "react-redux";
 import styles from "./styles/mapGyms.module.css";
 import CalcDist from "./controlers/calcDist";
 
-export default function GymsForUsersMap() {
+export default function GymsForUsersMap(): JSX.Element {
 
   const gymsState = useSelector((state: any) => state.gyms);
   const geoState = useSelector((state: any) => state.currentGeo);
-  
-  
+
+
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
-  
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      function (position: any) {          
+      function (position: any) {
         setLat(position.coords.latitude);
-        setLng(position.coords.longitude);         
+        setLng(position.coords.longitude);
         setCenterCoords({
           lat: position.coords.latitude ? position.coords.latitude : geoState.latitude,
           lng: position.coords.longitude ? position.coords.longitude : geoState.longitude
@@ -30,23 +29,23 @@ export default function GymsForUsersMap() {
       {
         enableHighAccuracy: true,
       }
-      ); // eslint-disable-next-line
-    }, [])
-    
-    const [centerCoords, setCenterCoords] = useState({
-      lat: lat,
-      lng: lng,
-    });
-    
-    const gymsToShow = Array.isArray(gymsState) && gymsState.map((g) => {
-      const newMarker = {
-        id: g._id,
-        name: g.name,
-        lat: g.latitude.$numberDecimal,
-        lng: g.longitude.$numberDecimal
-      }
-      return newMarker
-    }) 
+    ); // eslint-disable-next-line
+  }, [])
+
+  const [centerCoords, setCenterCoords] = useState({
+    lat: lat,
+    lng: lng,
+  });
+
+  const gymsToShow = Array.isArray(gymsState) && gymsState.map((g) => {
+    const newMarker = {
+      id: g._id,
+      name: g.name,
+      lat: g.latitude.$numberDecimal,
+      lng: g.longitude.$numberDecimal
+    }
+    return newMarker
+  })
 
   const markerRef = useRef(null);
   const eventHandlers = useMemo(
@@ -56,8 +55,6 @@ export default function GymsForUsersMap() {
         if (marker != null) {
           setLat((marker as any).getLatLng().lat);
           setLng((marker as any).getLatLng().lng);
-          // console.log(marker.getLatLng().lat, marker.getLatLng().lng)
-          // setDist((CalcDist(gymsToShow[0].lat, gymsToShow[0].lng, marker.getLatLng().lat, marker.getLatLng().lng))*1000)
         }
       },
     }), // eslint-disable-next-line
@@ -78,15 +75,15 @@ export default function GymsForUsersMap() {
         {centerCoords.lat === null || centerCoords.lng === null ? (
           <div>Loading...</div>
         ) : (
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
+          // @ts-ignore
           <MapContainer center={[centerCoords.lat, centerCoords.lng]} zoom={15}>
             <TileLayer
-              // @ts-expect-error TS(2322): Type '{ attribution: string; url: string; }' is no... Remove this comment to see the full error message
+              //@ts-ignore
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-              // @ts-expect-error TS(2322): Type '{ children: Element; draggable: boolean; eve... Remove this comment to see the full error message
+              //@ts-ignore
               draggable={true}
               eventHandlers={eventHandlers}
               position={[lat, lng]}
@@ -99,7 +96,7 @@ export default function GymsForUsersMap() {
             {(gymsToShow as any).map((gym: any) => {
               return (
                 <Marker
-                  // @ts-expect-error TS(2322): Type '{ children: Element; draggable: boolean; pos... Remove this comment to see the full error message
+                  //@ts-ignore  
                   draggable={false}
                   position={[gym.lat, gym.lng]}
                 >
@@ -122,9 +119,8 @@ export default function GymsForUsersMap() {
           </MapContainer>
         )}
       </div>
-      <div style={{marginTop: "1rem", fontSize: "1rem"}}>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-        La ubicacion actual es: Latitud: <span style={{color: "var(--color-prim"}}>{lat}</span>, Longitud: <span style={{color: "var(--color-prim"}}>{lng}</span>
+      <div style={{ marginTop: "1rem", fontSize: "1rem" }}>
+        La ubicacion actual es: Latitud: <span style={{ color: "var(--color-prim" }}>{lat}</span>, Longitud: <span style={{ color: "var(--color-prim" }}>{lng}</span>
       </div>
     </div>
   );

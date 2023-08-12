@@ -5,7 +5,6 @@ import { SweetAlrt } from "../../asets/helpers/sweetalert";
 import { ButtonSimple } from "../../helpers/Buttons/Buttons";
 import { getCart, postCart } from "../../redux/actions/index";
 import CardServices from "../CardCarritoService/CardServices";
-// @ts-expect-error TS(2307): Cannot find module './styles/style.module.css' or ... Remove this comment to see the full error message
 import style from "./styles/style.module.css";
 
 export function NavBar3({
@@ -18,7 +17,7 @@ export function NavBar3({
 }: any): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
+  // @ts-ignore TS(2532): Object is possibly 'undefined'.
   const cart = useSelector((state) => state.cart);
   const [cartCount, setCartCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -49,7 +48,7 @@ export function NavBar3({
     setTotalItems(items);
     setBody({
       gym: id,
-      // @ts-expect-error TS(2322): Type 'any[]' is not assignable to type 'never[]'.
+      // @ts-ignore TS(2532): Object is possibly 'undefined'.
       services: [...cart],
       user: usuarioId,
     });
@@ -58,7 +57,7 @@ export function NavBar3({
 
   function handleSubmit() {
     if (cartCount < 1) {
-      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
+      // @ts-ignore TS(2532): Object is possibly 'undefined'.
       return SweetAlrt("Su carrito esta vacio");
     }
     dispatch((postCart(body) as any));

@@ -1,40 +1,32 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getMyGyms } from "../../../../redux/actions";
 import { useEffect, useState } from "react";
-// @ts-expect-error TS(2307): Cannot find module './styles/mygym.module.css' or ... Remove this comment to see the full error message
 import styles from "./styles/mygym.module.css";
 
-export function MyServices() {
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const gyms = useSelector((state) => state.myGyms);
+export function MyServices(): JSX.Element {
+  const gyms = useSelector((state: any) => state.myGyms);
   let myGyms = gyms.gyms ? gyms.gyms : [];
 
   const [myServices, setMyServices] = useState([]);
 
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log(myGyms, "mis gyms");
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   let userId = localStorage.getItem("userId");
   const dispatch = useDispatch();
 
   let filterByGym = [];
 
   useEffect(() => {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getMyGyms(userId));
+    dispatch((getMyGyms(userId) as any));
   }, [userId]);
 
   function getGyms(e: any) {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getMyGyms(userId));
+    dispatch((getMyGyms(userId) as any));
   }
   function handleChangeGym(e: any) {
     e.preventDefault();
     let gymId = e.target.value;
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(gymId, "el id del gym");
 
     if (gymId !== "...") {
@@ -42,7 +34,6 @@ export function MyServices() {
 
       setMyServices(filterByGym[0].services);
 
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(filterByGym, "luego del filtro");
     }
   }
@@ -95,11 +86,9 @@ export function MyServices() {
             : null}
         </select>
         {myServices.length > 0
-          ? myServices.map((e) => (
-              // @ts-expect-error TS(2339): Property '_id' does not exist on type 'never'.
+          ? myServices.map((e: any) => (
               <p key={e._id}>
                 {" "}
-                // @ts-expect-error TS(2339): Property 'name' does not exist on type 'never'.
                 {e.name}, {e._id}, {e.description}
               </p>
             ))

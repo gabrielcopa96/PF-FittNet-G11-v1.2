@@ -1,4 +1,3 @@
-// @ts-expect-error TS(2307): Cannot find module '../Slider/styles/Slider.module... Remove this comment to see the full error message
 import style from "../Slider/styles/Slider.module.css";
 
 export default function Slider(): JSX.Element {
