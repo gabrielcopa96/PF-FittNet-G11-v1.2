@@ -13,27 +13,20 @@ import {
 } from "../../redux/actions/index";
 import { NavBar3 } from "../GymDetail/NavBar3.jsx";
 
-export default function DetailProfileUser() {
+export default function DetailProfileUser(): JSX.Element {
   let { userId } = useParams();
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const user = useSelector((state) => state.user);
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const gyms = useSelector((state) => state.gyms);
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const gymDetail = useSelector((state) => state.gymDetail);
+  const user = useSelector((state: any) => state.user);
+  const gyms = useSelector((state: any) => state.gyms);
+  const gymDetail = useSelector((state: any) => state.gymDetail);
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const token = localStorage.getItem("token");
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const type = localStorage.getItem("type");
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const avatar = localStorage.getItem("avatar");
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const name = localStorage.getItem("name");
 
   const [isOpen, setisOpen] = useState({
@@ -48,20 +41,16 @@ export default function DetailProfileUser() {
 
   useEffect(() => {
     if (!token) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-      dispatch(getUser(userId));
+      dispatch((getUser(userId) as any));
     }
     if (token) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-      instantCallback(getUserGoogleForToken(token));
+      instantCallback((getUserGoogleForToken(token) as any));
     }
     if (gyms.length === 0) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-      instantCallback(getAllGyms());
+      instantCallback((getAllGyms() as any));
     }
     if (Object.keys(gymDetail).length === 0) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-      instantCallback(getGymDetail(userId));
+      instantCallback((getGymDetail(userId) as any));
     }
   }, [userId, instantCallback]);
 

@@ -19,8 +19,7 @@ import {
 export default function AllRegister() {
   const dispatch = useDispatch();
   const geolocation = useSelector(
-    // @ts-expect-error TS(2571): Object is of type 'unknown'.
-    (state) => state.currentUserDetails.currentGeo
+    (state: any) => state.currentUserDetails.currentGeo
   );
 
   const navigate = useNavigate();
@@ -37,15 +36,13 @@ export default function AllRegister() {
   // const [disableSubmit, setDisableSubmit] = useState(true)
 
   useEffect(() => {
-    // @ts-expect-error TS(2552): Cannot find name 'navigator'. Did you mean 'naviga... Remove this comment to see the full error message
     navigator.geolocation.getCurrentPosition(
       function (position: any) {
         const payload = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
-        // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-        dispatch(setUserGeo(payload));
+        dispatch((setUserGeo(payload) as any));
         setGeoloc({
           lat: position.coords.latitude
             ? position.coords.latitude
@@ -56,7 +53,6 @@ export default function AllRegister() {
         });
       },
       function (error: any) {
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(error);
       },
       {
@@ -69,7 +65,6 @@ export default function AllRegister() {
     e.preventDefault();
     let userCreate;
 
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("está saliendo el post ", userCreate);
 
     //---------------------------------------------------------------------
@@ -90,13 +85,11 @@ export default function AllRegister() {
 
       // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
       SweetAlrt("Estamos procesando su solicitud!");
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("está saliendo el post ", userCreate);
 
       axios
         .post("/api/service/register", userCreate)
         .then((res) => {
-          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(res.data, "-> respuesta del post de creación de cuenta");
           // El nombre de usuario ya existe o es incorrecto, por favor indique otro username
           //
@@ -121,7 +114,6 @@ export default function AllRegister() {
             SweetAlrt(res.data);
           }
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
     }
     if (!name || !email || !password || !type) {
@@ -233,7 +225,6 @@ export default function AllRegister() {
                 name="select"
                 className={styles.selectTypeClient}
                 onChange={(e) =>
-                  // @ts-expect-error TS(2812): Property 'value' does not exist on type 'EventTarg... Remove this comment to see the full error message
                   e.target.value === "Tipo de cliente" ? null : onChangeType(e)
                 }
               >

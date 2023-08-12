@@ -3,11 +3,9 @@ import style from "./styles/LegendCe.module.css";
 import Slider from "../Slider/Slider";
 import CardPlans from "../CardPlans/CardPlans";
 
-export default function LegendCe() {
+export default function LegendCe(): JSX.Element {
   return (
-    // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
     <div className={style.container}>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <div className={style.contTitle}>
       Nuestro propósito es facilitar el acceso a la práctica de actividad
           física de alta calidad, al mismo tiempo brindar una manera fácil y
@@ -17,22 +15,15 @@ export default function LegendCe() {
           nuestros clientes, multiplicando sus ingresos!
       </div>
 
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <div className={style.contInfo}>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <div className={style.legend}>
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <div className={style.card}>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <CardPlans />
           </div>
         </div>
 
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <div className={style.containerPack}>
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <div className={style.sliderCard}>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <Slider />
           </div>
         </div>

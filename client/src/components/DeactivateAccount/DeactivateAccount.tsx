@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
@@ -11,7 +10,7 @@ import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
 // @ts-expect-error TS(2307): Cannot find module './styles/styleDesactive.module... Remove this comment to see the full error message
 import style from "./styles/styleDesactive.module.css";
 
-export default function DeactivateAccount() {
+export default function DeactivateAccount(): JSX.Element {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -37,22 +36,15 @@ export default function DeactivateAccount() {
     if (userId.length > 3 && password && !error) {
       let object = { userId, password };
 
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
-      console.log(object, "lo que sale el get al back");
-
       axios
         .put(`/api/service/deleteuseraccount/`, object)
         .then((response) => {
-          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(response.data);
           SweetAlrt("Exito!", response.data, "success");
-          // window.alert(response.data)
-          // @ts-expect-error TS(2304): Cannot find name 'window'.
-          return (window.location = "http://localhost:3000/");
+          return ((window.location as Location | string) = "http://localhost:3000/");
         })
-        .catch((error) => {
-          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
-          console.lgo(error);
+        .catch((error: any) => {
+          console.log(error);
         });
       setPassword(""); // limpio el estado
     }

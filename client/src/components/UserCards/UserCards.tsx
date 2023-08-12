@@ -5,8 +5,7 @@ import styles from "./style/UserCards.module.css";
 import { useSelector } from "react-redux";
 
 export default function UserCards() {
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const users = useSelector((state) => state.users);
+  const users = useSelector((state: any) => state.users);
 
   return (
     <div className={styles.mainBoxCards2}>

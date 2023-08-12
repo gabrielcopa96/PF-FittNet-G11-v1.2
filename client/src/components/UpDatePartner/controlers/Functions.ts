@@ -8,7 +8,6 @@ import axios from "axios";
 // Esta función sirve para crear un gym           
 //----------------------------------------------------------------------------
 
-// @ts-expect-error TS(7030): Not all code paths return a value.
 export async function createOneGym(dataForNewGym: any) {
     // new Gym es el objeto que guarda toda la info para crear el nuevo gym
     
@@ -22,10 +21,8 @@ export async function createOneGym(dataForNewGym: any) {
         .then((res) => {
           return res.data;
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(newGym, 'cuando crea el gym');
 
     if (newGym) return true;
@@ -37,7 +34,6 @@ export async function createOneGym(dataForNewGym: any) {
 // Esta función sirve para editar la info de un gym       
 //----------------------------------------------------------------------------
 
-// @ts-expect-error TS(7030): Not all code paths return a value.
 export async function editOneGym(dataForEditGym: any) {
     // new Gym es el objeto que guarda toda la info para editar el nuevo gym
     
@@ -51,10 +47,8 @@ export async function editOneGym(dataForEditGym: any) {
         .then((res) => {
           return res.data;
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(editGym, 'cuando edita el gym');
 
     if (editGym) return true;
@@ -66,7 +60,6 @@ export async function editOneGym(dataForEditGym: any) {
 // Esta función sirve para crear un nuevo servicio
 //----------------------------------------------------------------------------
 
-// @ts-expect-error TS(7030): Not all code paths return a value.
 export async function createOneService(dataForNewService: any) {
     // new Gym es el objeto que guarda toda la info para crear el nuevo servicio
 
@@ -80,10 +73,8 @@ export async function createOneService(dataForNewService: any) {
         .then((res) => {
           return res.data;
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(newService, 'cuando crea el service');
 
     if (newService) return true;
@@ -95,7 +86,6 @@ export async function createOneService(dataForNewService: any) {
 // Esta función sirve para editar un servicio creado
 //----------------------------------------------------------------------------
 
-// @ts-expect-error TS(7030): Not all code paths return a value.
 export async function editOneService(dataForEditService: any) {
     // new Gym es el objeto que guarda toda la info para crear el nuevo servicio
 
@@ -109,10 +99,8 @@ export async function editOneService(dataForEditService: any) {
         .then((res) => {
           return res.data;
         })
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         .catch((error) => console.log(error));
 
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(editService, 'cuando edita el service');
 
     if (editService) return true;

@@ -45,13 +45,11 @@ export default function UpdatePasword() {
           newPassword: newPassword,
         };
         // Enviar formulario luego de esta línea
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(formUpdate, "se envía el formulario");
 
         axios
           .post("/api/service/updatepassword", formUpdate)
           .then((response) => {
-            // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
             console.log(response.data);
             // window.alert(response.data)
             // @ts-expect-error TS(2554): Expected 3 arguments, but got 4.
@@ -60,7 +58,6 @@ export default function UpdatePasword() {
             return (window.location = "http://localhost:3000/login");
           })
           .catch((error) => {
-            // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
             console.log(error);
           });
 

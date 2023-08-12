@@ -14,21 +14,17 @@ import { useEffect } from "react";
 
 export default function Services() {
   const dispatch = useDispatch();
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const dataPartner = useSelector((state) => state.myGyms);
+  const dataPartner = useSelector((state: any) => state.myGyms);
   let myGyms = dataPartner.gyms ? dataPartner.gyms : [];
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const userInfo = useSelector((state) => state.partnerDetails);
+  const userInfo = useSelector((state: any) => state.partnerDetails);
   let userPlan = userInfo.planType ? userInfo.planType : false;
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log(userPlan, "el plan del usuario partner");
 
   let filterServices = [];
   let dataEditService;
 
   const [myServices, setMyServices] = useState([]);
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const userId = localStorage.getItem("userId");
 
   const [typeAction, setTypeAcyion] = useState("create");
@@ -58,16 +54,13 @@ export default function Services() {
   const [error, setError] = useState({});
 
   useEffect(() => {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getMyGyms(userId));
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getUser(userId));
+    dispatch((getMyGyms(userId) as any));
+    dispatch((getUser(userId) as any));
   }, [userId]);
 
   function refreshState(e: any) {
     e.preventDefault();
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getMyGyms(userId));
+    dispatch((getMyGyms(userId) as any));
     setEditService({
       name: "", // string requerido
       description: "", // string requerido
@@ -88,7 +81,6 @@ export default function Services() {
   }
 
   function validatePlanServices(userPlan: any, partnerGym: any) {
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(
       userPlan,
       partnerGym,
@@ -144,8 +136,7 @@ export default function Services() {
       return SweetAlrt(validateS);
     }
 
-    // @ts-expect-error TS(2339): Property 'name' does not exist on type '{}'.
-    if (error.name || error.description || error.price) {
+    if ((error as any).name || (error as any).description || (error as any).price) {
       return SweetAlrtTem("Los valores ingresados son incorrectos", "warning");
     } else if (
       !newService.name ||
@@ -166,14 +157,12 @@ export default function Services() {
       // gymId: el id del gym que crea el servicio
       // dataNewService: en este objeto va todo lo que obtienen del formulario (el input de arriba)
 
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("recibe el click y crea un service");
       let newOnService = await createOneService(dataForNewService);
 
       if (newOnService) {
         SweetAlrt("Exito", "Servicio creado", "success");
-        // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-        dispatch(getMyGyms(userId));
+        dispatch((getMyGyms(userId) as any));
       } else {
         // @ts-expect-error TS(2554): Expected 3 arguments, but got 2.
         SweetAlrt("Ocurrió un error y el servicio no fue creado", "error");
@@ -195,8 +184,7 @@ export default function Services() {
   //----------------------------------------------------------------------------
 
   async function onClickEditService() {
-    // @ts-expect-error TS(2339): Property 'name' does not exist on type '{}'.
-    if (error.name || error.description || error.price) {
+    if ((error as any).name || (error as any).description || (error as any).price) {
       return SweetAlrtTem("Los valores ingresados son incorrectos", "warning");
     } else if (
       !editService.name &&
@@ -215,7 +203,6 @@ export default function Services() {
       // serviceId: el id del service a editar
       // dataNewService: en este objeto va todo lo que obtienen del formulario (el input de arriba)
 
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("recibe el click y edita un gym");
       let editOnService = await editOneService(dataForEditService);
       SweetAlrt("Exito", "Servicio editado", "success");
@@ -241,9 +228,7 @@ export default function Services() {
         };
         const errors = serviceValidate(newInput);
         setError(errors);
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(newInput);
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(errors);
         return newInput;
       });
@@ -257,9 +242,7 @@ export default function Services() {
         };
         const errors = serviceValidateEdit(newInput);
         setError(errors);
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(newInput);
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(errors);
         return newInput;
       });
@@ -272,14 +255,12 @@ export default function Services() {
       let value = e.target.value;
       //
       // let myGyms = dataPartner.gyms ? dataPartner.gyms : [];
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(myGyms);
 
       filterServices = myGyms.length && myGyms.filter((e: any) => e._id === value);
 
       setMyServices(filterServices);
 
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(filterServices, " los servicios del gym");
 
       // Seteamos el id del servicio
@@ -288,7 +269,6 @@ export default function Services() {
     } else {
       setGymId("");
     }
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(e.target.value, " Service select");
   }
 
@@ -299,12 +279,10 @@ export default function Services() {
       setServiceId(e.target.value);
       // console.log(e.target.value, ' Service update select dentro del if ')
       dataEditService = myServices;
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(dataEditService, "luego de seleccionar un sevice");
     } else {
       setServiceId("");
     }
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(e.target.value, " Service update en el select");
   }
 
@@ -312,12 +290,10 @@ export default function Services() {
     e.preventDefault();
 
     if (photo && typeAction === "create") {
-      // @ts-expect-error TS(2345): Argument of type 'string' is not assignable to par... Remove this comment to see the full error message
-      if (!newService.photo.includes(photo)) {
+      if (!(newService as any).photo.includes(photo)) {
         // console.log('entra');
         let newState = [...newService.photo];
-        // @ts-expect-error TS(2345): Argument of type 'string' is not assignable to par... Remove this comment to see the full error message
-        newState.push(photo);
+        (newState as any).push(photo);
 
         setNewService({
           ...newService,
@@ -326,11 +302,9 @@ export default function Services() {
       }
     }
     if (photo && typeAction === "edit") {
-      // @ts-expect-error TS(2345): Argument of type 'string' is not assignable to par... Remove this comment to see the full error message
-      if (!editService.photo.includes(photo)) {
+      if (!(editService as any).photo.includes(photo)) {
         let newState = [...editService.photo];
-        // @ts-expect-error TS(2345): Argument of type 'string' is not assignable to par... Remove this comment to see the full error message
-        newState.push(photo);
+        (newState as any).push(photo);
 
         setEditService({
           ...editService,
@@ -363,19 +337,14 @@ export default function Services() {
   }
 
   return (
-    // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
     <div className={styles.editPartnerMainContainer}>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <h3>
         FORMULARIO DE {typeAction === "create" ? "CREACIÓN" : "EDICIÓN"} DE
         PRODUCTO O SERVICIO
       </h3>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <div>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-        <div style={{display: "flex", alignItems: "center", gap: ".8rem", justifyContent: "center", margin: "1rem auto"}}>
+        <div style={{ display: "flex", alignItems: "center", gap: ".8rem", justifyContent: "center", margin: "1rem auto" }}>
           {typeAction === "edit" ? (
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <button
               className={styles.btnCreateEditGym}
               onClick={() => {
@@ -387,7 +356,6 @@ export default function Services() {
           ) : null}
 
           {typeAction === "edit" ? null : (
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <button
               className={styles.btnCreateEditGym}
               onClick={() => {
@@ -398,9 +366,6 @@ export default function Services() {
             </button>
           )}
 
-          {/* {typeAction ? typeAction : null} */}
-
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <button
             className={styles.btnCreateEditGym}
             onClick={(e) => refreshState(e)}
@@ -409,68 +374,49 @@ export default function Services() {
           </button>
         </div>
 
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <form
           action=""
           style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
         >
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <div>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <label>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <strong>*</strong>Gimnasio:{" "}
             </label>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <select onChange={(e) => handleChangeGyms(e)}>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <option key="id1">...</option>
               {myGyms.length > 0
-                // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
                 ? myGyms.map((g: any) => <option key={g._id} value={g._id}>
-                {g.name}
-              </option>)
+                  {g.name}
+                </option>)
                 : null}
             </select>
             {/* {gymId ? gymId : null} */}
           </div>
 
           {typeAction === "edit" ? (
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <div>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <label>
-                // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
                 <strong>*</strong>Servicio:{" "}
               </label>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <select onChange={(e) => handleChangeService(e)}>
-                // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
                 <option key="id2">...</option>
-                // @ts-expect-error TS(2532): Object is possibly 'undefined'.
-                {myServices.length > 0 && myServices[0].services.length > 0
-                  // @ts-expect-error TS(2532): Object is possibly 'undefined'.
-                  ? myServices[0].services.map((s: any) => <option key={s._id} value={s._id}>
-                  {s.name}
-                </option>)
+                {myServices.length > 0 && (myServices as any)[0].services.length > 0
+                  ? (myServices as any)[0].services.map((s: any) => <option key={s._id} value={s._id}>
+                    {s.name}
+                  </option>)
                   : null}
               </select>
               {/* {serviceId ? serviceId : null} */}
             </div>
           ) : null}
 
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <div>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <label>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <strong>*</strong>Nombre:{" "}
             </label>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <input
               className={
-                // @ts-expect-error TS(2339): Property 'name' does not exist on type '{}'.
-                error.name ? styles.inputdanger : styles.inputImageLogo
+                (error as any).name ? styles.inputdanger : styles.inputImageLogo
               }
               type="text"
               name="name"
@@ -482,22 +428,16 @@ export default function Services() {
               }}
               placeholder="Nombre del servicio..."
             />
-            // @ts-expect-error TS(2339): Property 'name' does not exist on type '{}'.
-            {error.name && <p className={styles.danger}>{error.name}</p>}
+            {(error as any).name && <p className={styles.danger}>{(error as any).name}</p>}
           </div>
 
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <div>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <label>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <strong>*</strong>Descripcion:{" "}
             </label>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <input
               className={
-                // @ts-expect-error TS(2339): Property 'description' does not exist on type '{}'... Remove this comment to see the full error message
-                error.description ? styles.inputdanger : styles.inputImageLogo
+                (error as any).description ? styles.inputdanger : styles.inputImageLogo
               }
               onChange={(e) => handleChange(e)}
               value={
@@ -509,32 +449,23 @@ export default function Services() {
               name="description"
               placeholder="Una breve descripcion..."
             />{" "}
-            // @ts-expect-error TS(2339): Property 'description' does not exist on type '{}'... Remove this comment to see the full error message
-            {error.description && (
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-              <p className={styles.danger}>{error.description}</p>
+            {(error as any).description && (
+              <p className={styles.danger}>{(error as any).description}</p>
             )}
             {typeAction === "create" ? (
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <p>{newService.description}</p>
             ) : (
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <p>{editService.description}</p>
             )}
           </div>
 
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <div>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <label>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <strong>*</strong>Precio:{" "}
             </label>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <input
               className={
-                // @ts-expect-error TS(2339): Property 'name' does not exist on type '{}'.
-                error.name ? styles.inputdanger : styles.inputImageLogo
+                (error as any).name ? styles.inputdanger : styles.inputImageLogo
               }
               type="number"
               name="price"
@@ -546,19 +477,14 @@ export default function Services() {
               }}
               placeholder="$..."
             />
-            // @ts-expect-error TS(2339): Property 'price' does not exist on type '{}'.
-            {error.price && <p className={styles.danger}>{error.price}</p>}
+            {(error as any).price && <p className={styles.danger}>{(error as any).price}</p>}
           </div>
 
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <div>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <label>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <strong>*</strong>Fotos:{" "}
             </label>
 
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <input
               type="text"
               name="photo"
@@ -567,12 +493,10 @@ export default function Services() {
               className={styles.inputImageLogo}
               value={photo}
               onChange={(e) => {
-                // @ts-expect-error TS(2812): Property 'value' does not exist on type 'EventTarg... Remove this comment to see the full error message
                 setPhoto(e.target.value);
               }}
               placeholder="https://foto-del-gym.jpg"
             />
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <button
               className={styles.btnAgregarFotos}
               onClick={(e) => {
@@ -582,56 +506,47 @@ export default function Services() {
               +{" "}
             </button>
 
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <ul>
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
               <li>
                 {newService.photo.length && typeAction === "create"
                   ? newService.photo.map((e) => (
-                      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-                      <div key={e}>
-                        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-                        <img
-                          className={styles.photoform}
-                          src={e}
-                          key={e}
-                          alt="No Found"
-                        />
-                        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-                        <button
-                          className={styles.btnFotosGym}
-                          value={e}
-                          onClick={(e) => handleDeletePhoto(e)}
-                        >
-                          x
-                        </button>
-                      </div>
-                    ))
+                    <div key={e}>
+                      <img
+                        className={styles.photoform}
+                        src={e}
+                        key={e}
+                        alt="No Found"
+                      />
+                      <button
+                        className={styles.btnFotosGym}
+                        value={e}
+                        onClick={(e) => handleDeletePhoto(e)}
+                      >
+                        x
+                      </button>
+                    </div>
+                  ))
                   : null}
 
                 {editService.photo.length && typeAction === "edit"
                   ? editService.photo.map((e) => (
-                      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-                      <div key={e}>
-                        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-                        <img
-                          className={styles.photoform}
-                          src={e}
-                          key={e}
-                          alt="No Found"
-                        />
-                        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-                        <button value={e} onClick={(e) => handleDeletePhoto(e)}>
-                          x
-                        </button>{" "}
-                      </div>
-                    ))
+                    <div key={e}>
+                      <img
+                        className={styles.photoform}
+                        src={e}
+                        key={e}
+                        alt="No Found"
+                      />
+                      <button value={e} onClick={(e) => handleDeletePhoto(e)}>
+                        x
+                      </button>{" "}
+                    </div>
+                  ))
                   : null}
               </li>
             </ul>
           </div>
 
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <div
             style={{
               display: "flex",
@@ -640,9 +555,7 @@ export default function Services() {
               gap: "1rem",
             }}
           >
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <label>Duracion:</label>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <input
               className={styles.inputImageLogo}
               type="range"
@@ -665,20 +578,15 @@ export default function Services() {
               ? `${editService.duration} minutos`
               : null}
 
-            // @ts-expect-error TS(2339): Property 'duration' does not exist on type '{}'.
-            {error.duration && (
-              // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-              <p className={styles.danger}>{error.duration}</p>
+            {(error as any).duration && (
+              <p className={styles.danger}>{(error as any).duration}</p>
             )}
           </div>
         </form>
       </div>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <p></p>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <div style={{ marginTop: "1rem" }}>
         {typeAction === "create" && (
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <button
             className={styles.btnCreateEditGym}
             onClick={(e) => {
@@ -690,12 +598,10 @@ export default function Services() {
           </button>
         )}
         {typeAction === "edit" && (
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <button
             className={styles.btnCreateEditGym}
-            onClick={(e) => {
-              // @ts-expect-error TS(2554): Expected 0 arguments, but got 1.
-              onClickEditService(e);
+            onClick={() => {
+              onClickEditService();
             }}
           >
             {" "}

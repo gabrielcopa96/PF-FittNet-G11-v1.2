@@ -36,7 +36,6 @@ import style from "./styles/stylePasword.module.css";
 // let obj2 = {userId: userId, newPassword: newPassword, secretToken: secretToken}
 // Me responde con un mensaje de confirmación
 
-// @ts-expect-error TS(7030): Not all code paths return a value.
 export default function ResetPassword() {
   // Esta función sirve para cuando alguien quiere recuperar una contraseña que olvidó.
   // Pienso envíar una solicitud directamente al back (ver bien a qué ruta), y luego
@@ -60,13 +59,11 @@ export default function ResetPassword() {
 
     if (!error && userName && !newPassword && !copyNewPassword) {
       let object = { userName: userName };
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log(
         "envío el objeto al back la solicitud al back para enviar el correo electrónico"
       );
       axios
         .get("/api/service/updatepassword", { params: object })
-        // @ts-expect-error TS(7030): Not all code paths return a value.
         .then((response) => {
           if (response.data.message) {
             return SweetAlrt("Atencion", response.data.message, "warning");
@@ -77,12 +74,10 @@ export default function ResetPassword() {
           setValidation(true);
         })
         .catch((error) => {
-          // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
           console.log(error);
         });
     } else {
       setError("Campos incompletos");
-       // @ts-expect-error TS(2304): Cannot find name 'setTimeout'.
        setTimeout(() => {
          setError("");
        }, 3000);
@@ -98,7 +93,6 @@ export default function ResetPassword() {
           newPassword: newPassword,
           secretToken: secretToken,
         };
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(
           form,
           "Tengo que enviar el formulario al back para el cambio de clave"
@@ -106,15 +100,12 @@ export default function ResetPassword() {
         axios
           .post("/api/service/updatepassword", form)
           .then((response) => {
-            // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
             console.log(response.data);
             // window.alert(response.data)
             SweetAlrt("Exito", response.data, "info");
-            // @ts-expect-error TS(2304): Cannot find name 'window'.
-            return (window.location = "http://localhost:3000/login");
+            return ((window as any).location = "http://localhost:3000/login");
           })
           .catch((error) => {
-            // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
             console.log(error);
           });
 

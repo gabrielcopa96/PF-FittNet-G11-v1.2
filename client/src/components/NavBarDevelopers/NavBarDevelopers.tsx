@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function NavBarDevelopers() {
+export default function NavBarDevelopers(): JSX.Element {
     // Si necesitan pasar un id, lo pueden busacar en la db y dejarlo hardcodeado   
     
     return (

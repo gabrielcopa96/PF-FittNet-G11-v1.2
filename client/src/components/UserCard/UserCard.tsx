@@ -4,7 +4,6 @@ import styles from './style/UserCard.module.css';
 
 
 export default function UserCards(props: any) {
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(props, 'las props')
     return (
         <div className={styles.boxSingleCard2}>

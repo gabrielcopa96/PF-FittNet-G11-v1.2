@@ -18,24 +18,17 @@ export default function FormUser() {
 
   const { userId } = useParams();
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const avatar = localStorage.getItem("avatar");
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const name = localStorage.getItem("name");
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const type = localStorage.getItem("type");
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const deseaseAttribute = useSelector((state) => state.deseaseAttribute);
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const user = useSelector((state) => state.user);
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
+  const deseaseAttribute = useSelector((state: any) => state.deseaseAttribute);
+  const user = useSelector((state: any) => state.user);
   console.log("user", user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<any>'... Remove this comment to see the full error message
-    dispatch(getAttributeDesease());
+    dispatch((getAttributeDesease() as any));
   }, []);
 
   const [dese, setDese] = useState({
@@ -43,6 +36,7 @@ export default function FormUser() {
     trainlimits: "",
     considerations: "",
   });
+
   const [input, setInput] = useState({
     avatar: avatar,
     lastname: user.info?.lastName ? user.info.lastName : "",
@@ -66,14 +60,12 @@ export default function FormUser() {
       /* user.info?.diseases.trainlimits ? user.info.diseases.trainlimits :  */ "",
   });
 
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log(deseaseAttribute);
   const [error, setError] = useState({});
 
   function handleOnChange(e: any) {
     const filtro = input.desease.filter(
-      // @ts-expect-error TS(2339): Property 'toLowerCase' does not exist on type 'nev... Remove this comment to see the full error message
-      (d) => d.toLowerCase() === e.target.value.toLowerCase()
+      (d: string) => d.toLowerCase() === e.target.value.toLowerCase()
     );
     if (e.target.name == "selDesease") {
       if (filtro.length) {
@@ -103,29 +95,23 @@ export default function FormUser() {
         })
       );
     }
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("input", input);
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("error", error);
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("e", e);
   }
 
   async function handleOnChange2(e: any) {
-    // @ts-expect-error TS(2584): Cannot find name 'document'. Do you need to change... Remove this comment to see the full error message
     const preview = document.querySelector("img");
-    // @ts-expect-error TS(2584): Cannot find name 'document'. Do you need to change... Remove this comment to see the full error message
     const fileInput = document.getElementById("image");
-    const file = fileInput.files[0];
-    // @ts-expect-error TS(2304): Cannot find name 'FileReader'.
+    const file = (fileInput as any)?.files[0];
     const reader = await new FileReader();
     reader.addEventListener(
       "load",
       async function () {
-        preview.src = await reader.result;
+        (preview as any).src = await reader.result;
         setInput({
           ...input,
-          photo: preview.src,
+          photo: (preview as any).src,
         });
       },
       false
@@ -139,13 +125,9 @@ export default function FormUser() {
         [e.target.name]: e.target.value,
       })
     );
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("input", input);
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("error", error);
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("e", e);
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log("deseaseAttr", deseaseAttribute);
   }
 
@@ -192,11 +174,8 @@ export default function FormUser() {
         ...input,
         desease: input.desease.filter((c) => c !== e),
       });
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("e", e);
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("error", error);
-      // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
       console.log("input", input);
     }
     setInput({
@@ -207,8 +186,7 @@ export default function FormUser() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(updateUserInfo(userId, input));
+    dispatch((updateUserInfo(userId, input) as any));
     navigate(`/home/${type}/${name}/${userId}/${avatar}`);
   }
 
@@ -251,7 +229,7 @@ export default function FormUser() {
               <option>Energetico</option>
             </select>
             // @ts-expect-error TS(2339): Property 'avatar' does not exist on type '{}'.
-            {error.avatar && <p className={styles.parrafo}>{error.avatar}</p>}
+            {(error as any).avatar && <p className={styles.parrafo}>{(error as any).avatar}</p>}
           </div>
           <div
             style={{
@@ -272,10 +250,8 @@ export default function FormUser() {
                 onChange={(e: any) => handleOnChange(e)}
               />
             </div>
-            // @ts-expect-error TS(2339): Property 'lastname' does not exist on type '{}'.
-            {error.lastname && (
-              // @ts-expect-error TS(2339): Property 'lastname' does not exist on type '{}'.
-              <p className={styles.parrafo}>{error.lastname}</p>
+            {(error as any).lastname && (
+              <p className={styles.parrafo}>{(error as any).lastname}</p>
             )}
           </div>
           <div
@@ -297,8 +273,7 @@ export default function FormUser() {
                 onChange={(e: any) => handleOnChange(e)}
               />
             </div>
-            // @ts-expect-error TS(2339): Property 'phone' does not exist on type '{}'.
-            {error.phone && <p className={styles.parrafo}>{error.phone}</p>}
+            {(error as any).phone && <p className={styles.parrafo}>{(error as any).phone}</p>}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: ".8rem" }}>
             <label style={{ fontWeight: "700" }}>Fecha Nacimiento: </label>
@@ -308,17 +283,14 @@ export default function FormUser() {
               name="birthday"
               onChange={(e: any) => handleOnChange(e)}
             />
-            // @ts-expect-error TS(2339): Property 'birthday' does not exist on type '{}'.
-            {error.birthday && (
-              // @ts-expect-error TS(2339): Property 'birthday' does not exist on type '{}'.
-              <p className={styles.parrafo}>{error.birthday}</p>
+            {(error as any).birthday && (
+              <p className={styles.parrafo}>{(error as any).birthday}</p>
             )}
           </div>
           <div>
             <label style={{ fontWeight: "700" }}>Genero: </label>
             <select
-              // @ts-expect-error TS(2339): Property 'gender' does not exist on type '{}'.
-              className={error.gender ? styles.inputError : styles.input}
+              className={(error as any).gender ? styles.inputError : styles.input}
               name="gender"
               onChange={(e) => handleSelect(e)}
             >
@@ -354,8 +326,7 @@ export default function FormUser() {
                 </label>
               </div>
             </div>
-            // @ts-expect-error TS(2339): Property 'photo' does not exist on type '{}'.
-            {error.photo && <p className={styles.parrafo}>{error.photo}</p>}
+            {(error as any).photo && <p className={styles.parrafo}>{(error as any).photo}</p>}
           </div>
           <div
             style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}
@@ -377,8 +348,7 @@ export default function FormUser() {
               <button
                 className={styles.btnQuitarFoto}
                 type="button"
-                // @ts-expect-error TS(2554): Expected 1 arguments, but got 0.
-                onClick={() => handleDelete()}
+                onClick={(e) => handleDelete(e)}
               >
                 Quitar foto
               </button>
@@ -408,34 +378,24 @@ export default function FormUser() {
                 })}
               </select>
               <textarea
-                // @ts-expect-error TS(2339): Property 'trainlimits' does not exist on type '{}'... Remove this comment to see the full error message
-                className={error.trainlimits ? styles.inputError : styles.input}
-                // @ts-expect-error TS(2322): Type '{ className: any; type: string; placeholder:... Remove this comment to see the full error message
-                type="text"
+                className={(error as any).trainlimits ? styles.inputError : styles.input}
                 placeholder="limtitaciones"
                 name="trainlimits"
                 onChange={(e) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'trainlimits' does not exist on type '{}'... Remove this comment to see the full error message
-              {error.trainlimits && (
-                // @ts-expect-error TS(2339): Property 'trainlimits' does not exist on type '{}'... Remove this comment to see the full error message
-                <p className={styles.parrafo}>{error.trainlimits}</p>
+              {(error as any).trainlimits && (
+                <p className={styles.parrafo}>{(error as any).trainlimits}</p>
               )}
               <textarea
                 className={
-                  // @ts-expect-error TS(2339): Property 'considerations' does not exist on type '... Remove this comment to see the full error message
-                  error.considerations ? styles.inputError : styles.input
+                  (error as any).considerations ? styles.inputError : styles.input
                 }
-                // @ts-expect-error TS(2322): Type '{ className: any; type: string; placeholder:... Remove this comment to see the full error message
-                type="text"
                 placeholder="consideraciones"
                 name="considerations"
                 onChange={(e) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'considerations' does not exist on type '... Remove this comment to see the full error message
-              {error.considerations && (
-                // @ts-expect-error TS(2339): Property 'considerations' does not exist on type '... Remove this comment to see the full error message
-                <p className={styles.parrafo}>{error.considerations}</p>
+              {(error as any).considerations && (
+                <p className={styles.parrafo}>{(error as any).considerations}</p>
               )}
             </div>
             {/* <div className={styles.listDesease}> */}
@@ -446,9 +406,7 @@ export default function FormUser() {
                     <p>{e}</p>
                     <div
                       className={styles.btn}
-                      // @ts-expect-error TS(2322): Type '{ children: string; className: any; type: st... Remove this comment to see the full error message
-                      type="button"
-                      onClick={() => handleDeleteDse(e)}
+                      onClick={(e) => handleDeleteDse(e)}
                     >
                       x
                     </div>
@@ -458,7 +416,7 @@ export default function FormUser() {
               {input.desease.length > 0 &&
                 deseaseAttribute.map((e: any) => {
                   return (
-                    // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
+                    // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame
                     input.desease.includes(e.deseaseName) && (
                       <div key={e._id} className={styles.deseaseBeneficts}>
                         <p
@@ -475,10 +433,8 @@ export default function FormUser() {
                     )
                   );
                 })}
-              // @ts-expect-error TS(2339): Property 'desease' does not exist on type '{}'.
-              {error.desease && (
-                // @ts-expect-error TS(2339): Property 'desease' does not exist on type '{}'.
-                <p className={styles.parrafo}>{error.desease}</p>
+              {(error as any).desease && (
+                <p className={styles.parrafo}>{(error as any).desease}</p>
               )}
             </div>
           </div>
@@ -503,8 +459,7 @@ export default function FormUser() {
                 name="street"
                 onChange={(e: any) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'street' does not exist on type '{}'.
-              {error.street && <p className={styles.parrafo}>{error.street}</p>}
+              {(error as any).street && <p className={styles.parrafo}>{(error as any).street}</p>}
 
               <InputPrimaryFormUsers
                 type="number"
@@ -512,18 +467,15 @@ export default function FormUser() {
                 name="floor"
                 onChange={(e: any) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'floor' does not exist on type '{}'.
-              {error.floor && <p className={styles.parrafo}>{error.floor}</p>}
+              {(error as any).floor && <p className={styles.parrafo}>{(error as any).floor}</p>}
               <InputPrimaryFormUsers
                 type="text"
                 placeholder="address"
                 name="address"
                 onChange={(e: any) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'address' does not exist on type '{}'.
-              {error.address && (
-                // @ts-expect-error TS(2339): Property 'address' does not exist on type '{}'.
-                <p className={styles.parrafo}>{error.address}</p>
+              {(error as any).address && (
+                <p className={styles.parrafo}>{(error as any).address}</p>
               )}
               <InputPrimaryFormUsers
                 type="number"
@@ -531,10 +483,8 @@ export default function FormUser() {
                 name="apartment"
                 onChange={(e: any) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'apartment' does not exist on type '{}'.
-              {error.apartment && (
-                // @ts-expect-error TS(2339): Property 'apartment' does not exist on type '{}'.
-                <p className={styles.parrafo}>{error.apartment}</p>
+              {(error as any).apartment && (
+                <p className={styles.parrafo}>{(error as any).apartment}</p>
               )}
             </div>
             <div>
@@ -544,10 +494,8 @@ export default function FormUser() {
                 name="neighborhood"
                 onChange={(e: any) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'neighborhood' does not exist on type '{}... Remove this comment to see the full error message
-              {error.neighborhood && (
-                // @ts-expect-error TS(2339): Property 'neighborhood' does not exist on type '{}... Remove this comment to see the full error message
-                <p className={styles.parrafo}>{error.neighborhood}</p>
+              {(error as any).neighborhood && (
+                <p className={styles.parrafo}>{(error as any).neighborhood}</p>
               )}
               <InputPrimaryFormUsers
                 type="text"
@@ -555,18 +503,15 @@ export default function FormUser() {
                 name="city"
                 onChange={(e: any) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'city' does not exist on type '{}'.
-              {error.city && <p className={styles.parrafo}>{error.city}</p>}
+              {(error as any).city && <p className={styles.parrafo}>{(error as any).city}</p>}
               <InputPrimaryFormUsers
                 type="text"
                 placeholder="country"
                 name="country"
                 onChange={(e: any) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'country' does not exist on type '{}'.
-              {error.country && (
-                // @ts-expect-error TS(2339): Property 'country' does not exist on type '{}'.
-                <p className={styles.parrafo}>{error.country}</p>
+              {(error as any).country && (
+                <p className={styles.parrafo}>{(error as any).country}</p>
               )}
               <InputPrimaryFormUsers
                 type="number"
@@ -574,48 +519,30 @@ export default function FormUser() {
                 name="zipCode"
                 onChange={(e: any) => handleOnChange(e)}
               />
-              // @ts-expect-error TS(2339): Property 'zipCode' does not exist on type '{}'.
-              {error.zipCode && (
-                // @ts-expect-error TS(2339): Property 'zipCode' does not exist on type '{}'.
-                <p className={styles.parrafo}>{error.zipCode}</p>
+              {(error as any).zipCode && (
+                <p className={styles.parrafo}>{(error as any).zipCode}</p>
               )}
             </div>
           </div>
         </div>
 
         <div>
-          // @ts-expect-error TS(2339): Property 'lastname' does not exist on type '{}'.
-          {error.lastname ||
-          // @ts-expect-error TS(2339): Property 'phone' does not exist on type '{}'.
-          error.phone ||
-          // @ts-expect-error TS(2339): Property 'birthday' does not exist on type '{}'.
-          error.birthday ||
-          // @ts-expect-error TS(2339): Property 'gender' does not exist on type '{}'.
-          error.gender ||
-          // @ts-expect-error TS(2339): Property 'photo' does not exist on type '{}'.
-          error.photo ||
-          // @ts-expect-error TS(2339): Property 'street' does not exist on type '{}'.
-          error.street ||
-          // @ts-expect-error TS(2339): Property 'floor' does not exist on type '{}'.
-          error.floor ||
-          // @ts-expect-error TS(2339): Property 'address' does not exist on type '{}'.
-          error.address ||
-          // @ts-expect-error TS(2339): Property 'apartment' does not exist on type '{}'.
-          error.apartment ||
-          // @ts-expect-error TS(2339): Property 'neighborhood' does not exist on type '{}... Remove this comment to see the full error message
-          error.neighborhood ||
-          // @ts-expect-error TS(2339): Property 'city' does not exist on type '{}'.
-          error.city ||
-          // @ts-expect-error TS(2339): Property 'country' does not exist on type '{}'.
-          error.country ||
-          // @ts-expect-error TS(2339): Property 'desease' does not exist on type '{}'.
-          error.desease ||
-          // @ts-expect-error TS(2339): Property 'trainlimits' does not exist on type '{}'... Remove this comment to see the full error message
-          error.trainlimits ||
-          // @ts-expect-error TS(2339): Property 'considerations' does not exist on type '... Remove this comment to see the full error message
-          error.considerations ||
-          // @ts-expect-error TS(2339): Property 'zipCode' does not exist on type '{}'.
-          error.zipCode ? (
+          {(error as any).lastname ||
+          (error as any).phone ||
+          (error as any).birthday ||
+          (error as any).gender ||
+          (error as any).photo ||
+          (error as any).street ||
+          (error as any).floor ||
+          (error as any).address ||
+          (error as any).apartment ||
+          (error as any).neighborhood ||
+          (error as any).city ||
+          (error as any).country ||
+          (error as any).desease ||
+          (error as any).trainlimits ||
+          (error as any).considerations ||
+          (error as any).zipCode ? (
             <div style={{ width: "100%", margin: "0 auto" }}>
               <ButtonSecondaryDeslice
                 type="submit"

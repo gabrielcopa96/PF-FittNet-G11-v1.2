@@ -35,17 +35,13 @@ export default function IncomesGraph(){
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getUser(userId))
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getMySales(userId))// eslint-disable-next-line
+    dispatch((getUser(userId) as any))
+    dispatch((getMySales(userId) as any))// eslint-disable-next-line
   },[userId])
 
   
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const mySales = useSelector((state) => state.partnerSales)
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const partnerData = useSelector((state) => state.partnerDetails)
+  const mySales = useSelector((state: any) => state.partnerSales)
+  const partnerData = useSelector((state: any) => state.partnerDetails)
 
   let counter = 0;
   let colorArray = [ "#ff004c", "#fe5889", "#fb6d10", "#ff9550", "#572e13"];
@@ -57,9 +53,7 @@ export default function IncomesGraph(){
       backgroundColor: colorArray[counter],
       bordercolor: colorArray[counter],
       borderWhidth: 1,
-      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
       hoverBackgroundColor: colorArray[counter]+45,
-      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
       hoverBordercolor: colorArray[counter]+45,
       data: [g.totalSales/1000, g.salesNumber ],
     };
@@ -93,8 +87,7 @@ export default function IncomesGraph(){
           {/* {/* <h2>Grafica por Ingresos</h2> */}
           <div className={styles.doubleContainer}>
             <div className={styles.doubleContainer}>
-              // @ts-expect-error TS(2322): Type '{ responsive: boolean; plugins: { legend: { ... Remove this comment to see the full error message
-              <Bar  data={data} options={options}/>
+              {/* <Bar  data={data} options={options}/> */}
             </div>
           </div>
           <br />

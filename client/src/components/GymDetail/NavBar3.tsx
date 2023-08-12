@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { SweetAlrt } from "../../asets/helpers/sweetalert";
@@ -15,7 +15,7 @@ export function NavBar3({
   background,
   color,
   align
-}: any) {
+}: any): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // @ts-expect-error TS(2571): Object is of type 'unknown'.
@@ -56,16 +56,13 @@ export function NavBar3({
     // }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems])
   }, [cart, totalPrice, totalItems, id, usuarioId]);
 
-  // @ts-expect-error TS(7030): Not all code paths return a value.
   function handleSubmit() {
     if (cartCount < 1) {
       // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
       return SweetAlrt("Su carrito esta vacio");
     }
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<Axios... Remove this comment to see the full error message
-    dispatch(postCart(body));
-    // @ts-expect-error TS(2345): Argument of type '((dispatch: any) => Promise<any>... Remove this comment to see the full error message
-    dispatch(getCart());
+    dispatch((postCart(body) as any));
+    dispatch((getCart() as any));
     navigate("/stripe");
   }
 
@@ -73,15 +70,11 @@ export function NavBar3({
     <div className={style.contCarr} style={{backgroundColor: background, color: color}}>
       <p className={style.titleCarrito} style={{textAlign: align}}>CARRITO DE COMPRAS</p>
       <div className={style.tablePadre}>        
-        // @ts-expect-error TS(2786): 'CardServices' cannot be used as a JSX component.
         <CardServices title="true" />
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         {console.log("cards")}
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         {console.log(cart)}
         {cart.map((e: any) => {
           return (
-            // @ts-expect-error TS(2786): 'CardServices' cannot be used as a JSX component.
             <CardServices
               title="false"
               key={e._id}

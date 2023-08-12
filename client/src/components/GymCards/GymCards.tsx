@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // @ts-expect-error TS(2307): Cannot find module './styles/GymCards.module.css' ... Remove this comment to see the full error message
 import style from "./styles/GymCards.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { CardShop } from "../../helpers/Cards/Cards.jsx";
 import { sortByDistance } from "../../redux/actions";
 
-export default function GymsCards() {
+export default function GymsCards(): JSX.Element {
   const dispatch = useDispatch();
 
   useEffect(() => {

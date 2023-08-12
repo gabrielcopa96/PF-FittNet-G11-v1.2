@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/actions";
 // @ts-expect-error TS(2307): Cannot find module './styles/style.module.css' or ... Remove this comment to see the full error message
@@ -10,22 +9,17 @@ export default function CartItem({
   price,
   description,
   duration
-}: any) {
+}: any): JSX.Element {
   const dispatch = useDispatch();
 
   function handleClick(id: any) {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => void' is not ... Remove this comment to see the full error message
-    dispatch(addToCart(id));
+    dispatch((addToCart(id) as any));
   }
 
   function handleDelete(id: any) {    
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => void' is not ... Remove this comment to see the full error message
-    dispatch(removeFromCart(id));
+    dispatch((removeFromCart(id) as any));
   }
-  const styleTemp = {
-    fontSize: '15px',
-    
-  }
+  
   return (
     <div className={style.container}>
       <div className={style.card}>

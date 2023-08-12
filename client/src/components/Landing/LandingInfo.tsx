@@ -10,49 +10,38 @@ import { ScrollContainer, Animator, ScrollPage, Fade } from "react-scroll-motion
 // @ts-expect-error TS(2307): Cannot find module '../Landing/styles/Landing.modu... Remove this comment to see the full error message
 import style from "../Landing/styles/Landing.module.css";
 
-export default function LandingInfo() {
+export default function LandingInfo(): JSX.Element {
   const navigate = useNavigate();
 
   const divRef = useRef();
 
   const dispatch = useDispatch();
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const token = localStorage.getItem("token");
 
   const Scr = Fade();
 
   useEffect(() => {
     if (token) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-      dispatch(getUserGoogleForToken(token));
+      dispatch((getUserGoogleForToken(token) as any));
     } // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getMarketing()); // eslint-disable-next-line
+    dispatch((getMarketing() as any)); // eslint-disable-next-line
   }, []);
 
   return (
-    // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
     <div className={style.container}>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <ScrollContainer>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <ScrollPage page={0}>
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <Animator animation={Scr}>
-            // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
             <PortadaFittnet />
           </Animator>
         </ScrollPage>
       </ScrollContainer>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <div>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
-        <div ref={divRef} className={style.contPlanPartner}>
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
+        <div ref={divRef as any} className={style.contPlanPartner}>
           <CardsPlansPartner
             title="STANDARD"
             busqueda="10%"
@@ -60,7 +49,6 @@ export default function LandingInfo() {
             servicios="5 servicios por GYM"
             Size="2em"
           />
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <CardsPlansPartner
             title="PREMIUM"
             busqueda="30%"
@@ -68,7 +56,6 @@ export default function LandingInfo() {
             servicios="10 servicios por GYM"
             Size="2em"
           />
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <CardsPlansPartner
             title="GOLDEN"
             busqueda="50%"
@@ -77,9 +64,7 @@ export default function LandingInfo() {
             Size="2em"
           />
         </div>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <div className={style.containerBtnPromos}>
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
           <ButtonPrimary
             title="MAS INFO"
             padding="0 1rem"
@@ -87,9 +72,7 @@ export default function LandingInfo() {
           />
         </div>
       </div>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <br />
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <Hero />
     </div>
   );

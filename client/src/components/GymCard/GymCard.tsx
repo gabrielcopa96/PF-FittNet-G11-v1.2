@@ -1,4 +1,3 @@
-import React from "react";
 // @ts-expect-error TS(2307): Cannot find module './styles/GymCard.module.css' o... Remove this comment to see the full error message
 import style from "./styles/GymCard.module.css";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,7 @@ import { IoIosHeart } from "react-icons/io";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
 
-export default function GymCard(props: any) {
+export default function GymCard(props: any): JSX.Element {
   const navigate = useNavigate();
 
   const user = useSelector((state: any) => state.user);

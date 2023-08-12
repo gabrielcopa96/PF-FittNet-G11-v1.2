@@ -5,7 +5,7 @@ import styles from "./styles/Search.module.css";
 import {  getSearch } from "../../redux/actions";
 
 
-export default function Sarch() {
+export default function Sarch(): JSX.Element {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
 
@@ -17,11 +17,8 @@ export default function Sarch() {
 
 
   return (
-    // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
     <div className={styles.searchContainer}>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <div className={styles.searchBox}>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <input
           className={styles.searchImp}
           type="text"

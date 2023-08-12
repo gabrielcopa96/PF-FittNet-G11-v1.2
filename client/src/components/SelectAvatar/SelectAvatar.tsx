@@ -7,18 +7,16 @@ import { CardAvatarAdicional } from "../../helpers/Cards/Cards.jsx";
 // @ts-expect-error TS(2307): Cannot find module './styles/avatar.module.css' or... Remove this comment to see the full error message
 import styles from "./styles/avatar.module.css";
 
-export default function SelectAvatar() {
+export default function SelectAvatar(): JSX.Element {
   const { userId, type, name } = useParams();
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const avatars = useSelector((state) => state.avatars);
+  const avatars = useSelector((state: any) => state.avatars);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (avatars.length === 0) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-      dispatch(getAvatars());
+      dispatch((getAvatars() as any));
     } // eslint-disable-next-line
   }, []);
 

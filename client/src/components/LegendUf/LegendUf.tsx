@@ -11,19 +11,15 @@ import { ButtonSecondaryDeslice } from "../../helpers/Buttons/Buttons.jsx";
 import { useNavigate } from "react-router-dom";
 import { ScrollContainer, Animator, ScrollPage, Fade, Zoom, Move } from 'react-scroll-motion';
 
-export default function LegendUf() {
+export default function LegendUf(): JSX.Element {
   const navigate = useNavigate();
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const name = localStorage.getItem("name");
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const type = localStorage.getItem("type");
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const idUser = localStorage.getItem("userId");
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const avatar = localStorage.getItem("avatar");
 
   const Scrll0 =  Fade()

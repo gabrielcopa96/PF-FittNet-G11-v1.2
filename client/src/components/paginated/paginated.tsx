@@ -12,13 +12,10 @@ export default function Paginated() {
 
   const dispatch = useDispatch();
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const defaultRecipesXPage = useSelector((state) => state.currentLimit);
+  const defaultRecipesXPage = useSelector((state: any) => state.currentLimit);
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const gymsToShow = useSelector((state) => state.gymsToShow);
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const currentPage = useSelector((state) => state.currentPage);
+  const gymsToShow = useSelector((state: any) => state.gymsToShow);
+  const currentPage = useSelector((state: any) => state.currentPage);
 
   const [recipesXPage, setRecipesXPage] = useState(defaultRecipesXPage);
 
@@ -33,8 +30,7 @@ export default function Paginated() {
       offset: offset,
       limit: limit,
     };
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => void' is not ... Remove this comment to see the full error message
-    dispatch(setCurrentPage(payload));
+    dispatch((setCurrentPage(payload) as any));
   }, [dispatch, offset, limit, currentPage]);
 
   const defaultButtonsPerPage = 6;
@@ -80,31 +76,26 @@ export default function Paginated() {
       offset: 0,
       limit: recipesXPage,
     };
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => void' is not ... Remove this comment to see the full error message
-    dispatch(setCurrentPage(payload));
+    dispatch((setCurrentPage(payload) as any));
   };
 
   const nextPage = () => {
     if (currentPage === totalPages) return;
     if (currentPage < gymsToShow.length) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => void' is not ... Remove this comment to see the full error message
-      dispatch(setPageNumber(currentPage + 1));
+      dispatch((setPageNumber(currentPage + 1) as any));
     }
   };
   const prevPage = () => {
     if (currentPage === 1) return;
     if (currentPage !== 1) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => void' is not ... Remove this comment to see the full error message
-      dispatch(setPageNumber(currentPage - 1));
+      dispatch((setPageNumber(currentPage - 1) as any));
     }
   };
 
   function handlePageSelect(e: any) {
     e.preventDefault();
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => void' is not ... Remove this comment to see the full error message
-    dispatch(setPageNumber(1));
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => void' is not ... Remove this comment to see the full error message
-    dispatch(setCurrentLimit(e.target.value));
+    dispatch((setPageNumber(1) as any));
+    dispatch((setCurrentLimit(e.target.value) as any));
     setRecipesXPage(e.target.value);
   }
 

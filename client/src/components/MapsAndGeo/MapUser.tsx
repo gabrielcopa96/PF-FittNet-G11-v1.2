@@ -14,14 +14,12 @@ export default function MapUser() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    // @ts-expect-error TS(2304): Cannot find name 'navigator'.
     navigator.geolocation.getCurrentPosition(
       function (position: any) {
         setLat(position.coords.latitude);
         setLng(position.coords.longitude);
       },
       function (error: any) {
-        // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
         console.log(error);
       },
       {
@@ -36,10 +34,8 @@ export default function MapUser() {
       dragend() {
         const marker = markerRef.current;
         if (marker != null) {
-          // @ts-expect-error TS(2339): Property 'getLatLng' does not exist on type 'never... Remove this comment to see the full error message
-          setLat(marker.getLatLng().lat);
-          // @ts-expect-error TS(2339): Property 'getLatLng' does not exist on type 'never... Remove this comment to see the full error message
-          setLng(marker.getLatLng().lng);
+          setLat((marker as any).getLatLng().lat);
+          setLng((marker as any).getLatLng().lng);
         }
       },
     }),
@@ -49,11 +45,10 @@ export default function MapUser() {
   function handleOnClick(e: any) {
     e.preventDefault();
     dispatch(
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-      setUserGeo({
+      (setUserGeo({
         latitude: lat,
         longitude: lng,
-      })
+      }) as any)
     );
     setMessage("Tu ubicacion ha sido registrada con exito");
   }

@@ -3,7 +3,7 @@ import React from 'react'
 import styles from "./styles/GeneralActions.module.css";
 import { useParams, useNavigate } from "react-router-dom";
 
-export default function GeneralActions() {
+export default function GeneralActions(): JSX.Element {
   let { userId, name, type } = useParams();
   const navigate = useNavigate();
 

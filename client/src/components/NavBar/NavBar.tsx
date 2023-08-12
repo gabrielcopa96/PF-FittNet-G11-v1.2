@@ -7,13 +7,11 @@ import {
 } from "../../helpers/Buttons/Buttons.jsx";
 import { useNavigate } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar(): JSX.Element {
   const navigate = useNavigate();
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const name = localStorage.getItem("name");
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const idUser = localStorage.getItem("userId");
 
   return (

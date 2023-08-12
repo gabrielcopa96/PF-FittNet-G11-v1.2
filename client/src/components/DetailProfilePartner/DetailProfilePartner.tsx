@@ -7,25 +7,19 @@ import { getUser } from "../../redux/actions";
 // @ts-expect-error TS(2307): Cannot find module './styles/DetailProfilePartner.... Remove this comment to see the full error message
 import styles from "./styles/DetailProfilePartner.module.css";
 
-export default function DetailProfilePartner() {
+export default function DetailProfilePartner(): JSX.Element {
   let { userId, name, type } = useParams();
   // console.log(userId, name, type, 'id y name')
   const dispatch = useDispatch();
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log(userId, " user Id de params");
 
   useEffect(() => {
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getUser(userId));
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getPartnerDetails(userId)); // eslint-disable-next-line
+    dispatch((getUser(userId) as any));
+    dispatch((getPartnerDetails(userId) as any)); // eslint-disable-next-line
   }, []);
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const partner = useSelector((state) => state.partnerDetails);
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
+  const partner = useSelector((state: any) => state.partnerDetails);
   console.log(partner);
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
   console.log(userId, name, type, "los params");
   // con el id ya podemos solicitar info a nuestro back, el cual solo responderá
   // si le llega este id (de la fomra que lo espera) y si el usuario tiene una

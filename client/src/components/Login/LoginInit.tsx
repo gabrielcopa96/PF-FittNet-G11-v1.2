@@ -14,7 +14,7 @@ import {
 } from "../../helpers/Backround/Background";
 import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
 
-export default function LoginInit() {
+export default function LoginInit(): JSX.Element {
   const dispatch = useDispatch();
 
   const [ geo, setGeo ] = useState({

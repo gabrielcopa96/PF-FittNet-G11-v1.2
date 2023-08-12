@@ -20,14 +20,11 @@ export default function OrderBy() {
   },[])
 
   const [orden, setOrden] = useState("");
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const gyms = useSelector((state) => state.gyms);
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
+  const gyms = useSelector((state: any) => state.gyms);
   console.log(orden)
 
   function handleChangeKm(e: any) {
     e.preventDefault();
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(e.target.value);
     dispatch(sortByDistance(e.target.value));
     setOrden(`Ordenado ${e.target.value}`);
@@ -40,7 +37,6 @@ export default function OrderBy() {
   }
   function handleChangePrecio(e: any) {
     e.preventDefault();
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(e.target.value);
     dispatch(sortByPrice(e.target.value));
     setOrden(`Ordenado ${e.target.value}`);
@@ -48,7 +44,6 @@ export default function OrderBy() {
 
   function handleChangeCateg(e: any) {
     e.preventDefault();
-    // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
     console.log(e.target.value);
     dispatch(filterByCategory(e.target.value));
     setOrden(`Ordenado ${e.target.value}`);
@@ -56,50 +51,33 @@ export default function OrderBy() {
   const categorys = gyms.map((e: any) => e.services.map((e: any) => e.name)).flat();
   const categ = new Set(categorys);
   let result = [...categ];
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  let ordenados = result.sort((a, b) => a.localeCompare(b));
+  let ordenados = result.sort((a: any, b) => a.localeCompare(b));
   // console.log("Esto es en orderBy: ", ordenados);
 
   return (
-    // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
     <div className={styles.sel}>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <select className={styles.select} onChange={(e) => handleChangeKm(e)}>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option>Distancia</option>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option value="menor">-1 Kilometro</option>
         {/* <option value="mayor">+1 Kilometro</option> */}
       </select>
 
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <select className={styles.select} onChange={(e) => handleChangePunt(e)}>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option>Puntuacion</option>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option value="ascendente">1 - 5</option>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option value="descendente">5 - 1</option>
       </select>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <select className={styles.select} onChange={(e) => handleChangeCateg(e)}>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option value="all">Categoria</option>
-        {ordenados.map((e) => (
-          // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
+        {ordenados.map((e: any) => (
           <option key={e} value={e}>
-            // @ts-expect-error TS(2322): Type 'unknown' is not assignable to type 'ReactNod... Remove this comment to see the full error message
             {e}
           </option>
         ))}
       </select>
-      // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
       <select className={styles.select} onChange={(e) => handleChangePrecio(e)}>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option>Precio</option>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option value="ascendente">Menor</option>
-        // @ts-expect-error TS(2686): 'React' refers to a UMD global, but the current fi... Remove this comment to see the full error message
         <option value="descendente">Mayor</option>
       </select>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 // @ts-expect-error TS(2307): Cannot find module './styles/Incomes.module.css' o... Remove this comment to see the full error message
 import styles from './styles/Incomes.module.css'
 import { getAllSales, getUser } from "../../redux/actions";
@@ -35,18 +35,13 @@ export default function IncomesAdmin(){
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getUser(userId))
-    // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-    dispatch(getAllSales(userId))// eslint-disable-next-line
+    dispatch((getUser(userId) as any))
+    dispatch((getAllSales(userId) as any))// eslint-disable-next-line
   },[])
 
   
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const mySales = useSelector((state) => state.adminSales)
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const userData = useSelector((state) => state.user)
-  // @ts-expect-error TS(2584): Cannot find name 'console'. Do you need to change ... Remove this comment to see the full error message
+  const mySales = useSelector((state: any) => state.adminSales)
+  const userData = useSelector((state: any) => state.user)
   console.log(mySales)
   let counter = 0;
   let colorArray = [ "#ff004c", "#fe5889", "#fb6d10", "#ff9550", "#572e13"];
@@ -58,9 +53,7 @@ export default function IncomesAdmin(){
       backgroundColor: colorArray[counter],
       bordercolor: colorArray[counter],
       borderWhidth: 1,
-      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
       hoverBackgroundColor: colorArray[counter]+45,
-      // @ts-expect-error TS(2532): Object is possibly 'undefined'.
       hoverBordercolor: colorArray[counter]+45,
       data: [g.totalSales/1000, g.salesNumber ],
     };
@@ -101,8 +94,8 @@ export default function IncomesAdmin(){
           <h2>Grafica por Ingresos</h2>
           <div className={styles.doubleContainer}>
             <div className={styles.doubleContainer}>
-              // @ts-expect-error TS(2322): Type '{ responsive: boolean; plugins: { legend: { ... Remove this comment to see the full error message
-              <Bar  data={data} options={options}/>
+              {/* // @ts-expect-error TS(2322): Type '{ responsive: boolean; plugins: { legend: { ... Remove this comment to see the full error message */}
+              {/* <Bar  data={data} options={options}/> */}
             </div>
           </div>
           <br />
