@@ -1,8 +1,9 @@
-import React from "react";
+import type { JSXElementConstructor, ReactElement } from "react";
 // @ts-expect-error TS(2307): Cannot find module './styles/stylesInputs.module.c... Remove this comment to see the full error message
 import styles from "./styles/stylesInputs.module.css";
 
-export const InputPrymary = (props: any) => {
+export const InputPrymary = (props: any): ReactElement<JSXElementConstructor<HTMLElement>> => {
+
   const { onChange, type, password, name, placeholder } = props;
 
   return (
@@ -20,7 +21,7 @@ export const InputPrymary = (props: any) => {
   );
 };
 
-export const InputSecond = (props: any) => {
+export const InputSecond = (props: any): ReactElement<JSXElementConstructor<HTMLElement>> => {
   const { onClick, value, type } = props;
 
   return (
@@ -35,7 +36,7 @@ export const InputSecond = (props: any) => {
   );
 };
 
-export const InputPrimaryFormUsers = (props: any) => {
+export const InputPrimaryFormUsers = (props: any): ReactElement<JSXElementConstructor<HTMLElement>> => {
   const { value, type, name, placeholder, onChange, padding } = props;
 
   const inputStylesLinea = {

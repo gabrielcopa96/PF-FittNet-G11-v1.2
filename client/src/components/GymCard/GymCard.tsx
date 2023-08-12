@@ -11,10 +11,8 @@ import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
 export default function GymCard(props: any) {
   const navigate = useNavigate();
 
-  // @ts-expect-error TS(2571): Object is of type 'unknown'.
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state: any) => state.user);
 
-  // @ts-expect-error TS(2304): Cannot find name 'localStorage'.
   const userId = localStorage.getItem("userId");
 
   const dispatch = useDispatch();
@@ -22,8 +20,7 @@ export default function GymCard(props: any) {
   const handleFavourite = (e: any, gymId: any) => {
     e.preventDefault();
     if (userId) {
-      // @ts-expect-error TS(2345): Argument of type '(dispatch: any) => Promise<void>... Remove this comment to see the full error message
-      dispatch(updateFavouriteGym(gymId, userId));
+      dispatch((updateFavouriteGym(gymId, userId) as any));
     } else {
       SweetAlrtTem("No puedes agregar a favorito si no estas logueado","info");
     }
