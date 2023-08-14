@@ -1,10 +1,5 @@
 import LandingInfo from "../components/Landing/LandingInfo";
 
-export default function Landing() {
+const Landing = () => <LandingInfo/>
 
-    return (
-        <>
-            <LandingInfo/>
-        </>
-    )
-}
+export default Landing;

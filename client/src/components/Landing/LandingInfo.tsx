@@ -32,7 +32,7 @@ export default function LandingInfo(): JSX.Element {
   return (
     <div className={style.container}>
       <ScrollContainer>
-        <ScrollPage page={0}>
+        <ScrollPage>
           <Animator animation={Scr}>
             <PortadaFittnet />
           </Animator>
@@ -70,8 +70,7 @@ export default function LandingInfo(): JSX.Element {
           />
         </div>
       </div>
-      <br />
-      <Hero />
+      {/* <Hero /> */}
     </div>
   );
 }
