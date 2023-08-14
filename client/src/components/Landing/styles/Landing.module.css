@@ -16,16 +16,17 @@
   align-content: center;
   align-items: center;
 }
+
 .contElem {
   height: 70%;
   width: 100%;
-  position: absolute;
   position: absolute;
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
 }
+
 .contText {
   position: absolute;
   z-index: 1;
@@ -38,6 +39,7 @@
   padding: 15px;
   animation: upercase 1.5s forwards 0.1s;
 }
+
 .contText h1 {
   font-size: 20px;
   font-weight: 700;
@@ -51,6 +53,7 @@
   background: var(--color-primD1);
   backdrop-filter: blur(5px);
 }
+
 .contlin {
   height: 100%;
   width: 100%;
@@ -76,6 +79,7 @@
   transition: 0.8s;
   box-shadow: 0 0 5px rgb(255, 255, 255);
 }
+
 .screenBackground {
   position: absolute;
   top: 0;
@@ -112,6 +116,7 @@
   box-shadow: 0 0 5px rgb(255, 255, 255);
   animation: slideInTop 1s forwards 0.1s;
 }
+
 .shapeButtom2 {
   transform: rotate(12deg);
   position: absolute;
@@ -168,15 +173,14 @@
   display: flex;
   justify-content: flex-end;
   background: #f5978c;
-  background: linear-gradient(
-    160deg,
-    #f5978c 47%,
-    rgb(72, 48, 66) 30%,
-    rgba(72, 48, 66, 1) 14%
-  );
+  background: linear-gradient(160deg,
+      #f5978c 47%,
+      rgb(72, 48, 66) 30%,
+      rgba(72, 48, 66, 1) 14%);
   height: 300px;
   margin-top: 5%;
 }
+
 .ingresar {
   position: absolute;
   text-decoration: none;
@@ -191,6 +195,7 @@
   background-color: #f5978c;
   cursor: pointer;
 }
+
 .registrarse {
   position: absolute;
   text-decoration: none;
@@ -205,10 +210,12 @@
   background-color: #f5978c;
   cursor: pointer;
 }
+
 .imageStrong {
   margin: 20px 47% 20px 0px;
   border-radius: 20px;
 }
+
 .parrafo1Landing {
   position: absolute;
   color: #fff7f5;
@@ -217,6 +224,7 @@
   font-size: x-large;
   margin: 11% 2% 0px 50%;
 }
+
 .promos {
   align-items: center;
   justify-content: center;
@@ -230,6 +238,7 @@
   font-size: x-large;
   cursor: pointer;
 }
+
 .promoDiv {
   margin: 7% 0% 7% 0;
 }
@@ -272,6 +281,7 @@
   padding: 0px 0px 100px 0px;
   justify-content: space-around;
 }
+
 /* Bloque de Cards de planes partner */
 .contPlanPartner {
   display: grid;
@@ -284,6 +294,7 @@
 .mujerHombre {
   max-width: 100%;
 }
+
 .tituloEmpeza {
   position: absolute;
   font-size: 50px;
@@ -292,6 +303,7 @@
   color: #fff5fc;
   margin: 1% 30% 0 25%;
 }
+
 .footerEmpeza {
   position: absolute;
   padding: 40% 25% 0 25%;
@@ -299,6 +311,7 @@
   font-size: x-large;
   font-style: italic;
 }
+
 .empezaAqui {
   position: absolute;
   text-decoration: none;
@@ -312,9 +325,11 @@
   background-color: white;
   color: black;
 }
+
 .uniteGyms {
   max-width: 100%;
 }
+
 .tituloUnite {
   position: absolute;
   font-size: 50px;
@@ -323,6 +338,7 @@
   color: #fff7f5;
   margin: 1% 30% 0 25%;
 }
+
 .footerUnite {
   position: absolute;
   padding: 40% 25% 0 25%;
@@ -330,6 +346,7 @@
   font-size: x-large;
   font-style: italic;
 }
+
 .uniteAqui {
   position: absolute;
   text-decoration: none;
@@ -408,6 +425,7 @@
   0% {
     transform: translateX(-500px);
   }
+
   100% {
     transform: translateX(0px);
     transform: rotate(-12deg);
@@ -418,15 +436,18 @@
   0% {
     transform: translateX(-500px);
   }
+
   100% {
     transform: translateX(0px);
     transform: rotate(12deg);
   }
 }
+
 @keyframes upercase {
   0% {
     transform: scale(0.0001);
   }
+
   100% {
     transform: scale(1);
   }
