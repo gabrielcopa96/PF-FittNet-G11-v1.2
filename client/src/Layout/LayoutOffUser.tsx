@@ -13,17 +13,15 @@ import type { JSXElementConstructor, ReactElement } from "react";
 
 export const LayoutOffUser = (): ReactElement<JSXElementConstructor<HTMLElement>> => {
   return (
-    <>
-        <Routes>
-            <Route path="/user_register" element={<UserRegister />} />
-            <Route path="/client_register" element={<ClientRegister />} />
-            
-            <Route path="/updatepassword/:userId" element={<UpdatePasword />} />
-            <Route path="/resetpassword" element={<ResetPassword />} />
-            <Route path="/activation/:userId/:secretToken" element={<Activation />} />
-            <Route path="/deactivate/:userId" element={<DeactivateAccount />} />
-        </Routes>
-    </>
+    <Routes>
+      <Route path="/user_register" element={<UserRegister />} />
+      <Route path="/client_register" element={<ClientRegister />} />
+
+      <Route path="/updatepassword/:userId" element={<UpdatePasword />} />
+      <Route path="/resetpassword" element={<ResetPassword />} />
+      <Route path="/activation/:userId/:secretToken" element={<Activation />} />
+      <Route path="/deactivate/:userId" element={<DeactivateAccount />} />
+    </Routes>
   )
 }
 

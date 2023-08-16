@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar/NavBar'
 import Landing from '../views/Landing'
 import { JSXElementConstructor, ReactElement } from 'react'
 
-const MainLayoutLanding = (): ReactElement<JSXElementConstructor<HTMLElement>> => {
+export const MainLayoutLanding = (): ReactElement<JSXElementConstructor<HTMLElement>> => {
   return (
     <>
       <NavBar />
@@ -16,15 +16,13 @@ const MainLayoutLanding = (): ReactElement<JSXElementConstructor<HTMLElement>> =
 
 export const LayoutLanding = (): ReactElement<JSXElementConstructor<HTMLElement>> => {
   return (
-    <>
-      <Routes>
-        <Route element={<MainLayoutLanding />}>
-          <Route path="/" element={<Landing />} />
-          <Route path="/legendCe" element={<LegendCe />} />
-          <Route path="/legendUf" element={<LegendUf />} />
-        </Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route element={<MainLayoutLanding />}>
+        <Route path="/" element={<Landing />} />
+        <Route path="/legendCe" element={<LegendCe />} />
+        <Route path="/legendUf" element={<LegendUf />} />
+      </Route>
+    </Routes>
   )
 }
 

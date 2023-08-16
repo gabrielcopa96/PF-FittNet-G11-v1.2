@@ -14,6 +14,7 @@ import GymsForUsersMap from "../MapsAndGeo/GymsForUsers";
 import { getUser, sortByDistance } from "../../redux/actions";
 
 export default function HomeMain() {
+
   let { userId } = useParams();
 
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ export default function HomeMain() {
           enableHighAccuracy: true,
         }
       ); // eslint-disable-next-line
-  }, [])
+  }, []);
   
   useEffect(() => {
     dispatch((getAllGyms() as any));   
