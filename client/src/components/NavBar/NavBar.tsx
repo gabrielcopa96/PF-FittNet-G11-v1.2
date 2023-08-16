@@ -30,10 +30,14 @@ export default function NavBar(): JSX.Element {
         <ButtonSecondarySimple
           title="Sos propietario? Unite!"
           padding="0 2rem"
-          onClick={() => navigate("/legendCe")}
+          onClick={() => navigate("/legendCe", {
+            replace: true
+          })}
         />
         <ButtonSecondarySimple
-          onClick={() => navigate("/legendUf")}
+          onClick={() => navigate("/legendUf", {
+            replace: true
+          })}
           title="Beneficios para miembros"
           padding="0 2rem"
         />
@@ -42,7 +46,9 @@ export default function NavBar(): JSX.Element {
         ) : (
           <ButtonSimple
             title="Prueba gratis"
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/register", {
+              replace: true
+            })}
             padding="0 2rem"
           />
         )}
