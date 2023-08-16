@@ -86,7 +86,7 @@
   position: relative;
   display: inline-block;
   padding: 8px 20px;
-  background:var(--color-backgotund);
+  background:var(--color-background);
   border-radius: 5px;
   text-decoration: none;
   color: white;

@@ -68,7 +68,7 @@
 }
 
 .errors {
-  background: var(--color-backgotund);
+  background: var(--color-background);
   font-size: 13px;
   margin-top: 42px;
   padding: 16px 20px;

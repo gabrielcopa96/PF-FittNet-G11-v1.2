@@ -13,8 +13,8 @@ export const setUserGeo = (payload: any) => {
                 longitude: payload.longitude,
             }
         }
-        return response.data; 
+        return response.data;
     } catch (error) {
         console.log('error', error);
     }
-  }
+}

@@ -151,7 +151,7 @@
   color: #fff;
 }
 .errors {
-  background: var(--color-backgotund);
+  background: var(--color-background);
   font-size: 11px;
   /*  margin-top: 30px; */
   padding: 16px 20px;

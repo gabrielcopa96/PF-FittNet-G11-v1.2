@@ -1,16 +1,28 @@
-import { Routes, Route, Outlet, RouteObject } from 'react-router-dom'
-import LegendCe from '../components/LegendCe/LegendCe'
-import LegendUf from '../components/LegendUf/LegendUf'
-import NavBar from '../components/NavBar/NavBar'
-import Landing from '../views/Landing'
-import { JSXElementConstructor, ReactElement } from 'react'
+import { Suspense } from 'react';
+import { Outlet, Await } from 'react-router-dom';
+import NavBar from '../components/NavBar/NavBar';
+import Loading from '../helpers/Loading/Loading';
 
-export const LayoutLanding = (): ReactElement<JSXElementConstructor<HTMLElement>> => {
+export const LayoutLanding = (): JSX.Element => {
   return (
-    <>
-      <NavBar />
-      <Outlet />
-    </>
+    <Suspense
+      fallback={<Loading />}
+    >
+      <Await
+        resolve={async () => {
+          await import('../components/LegendCe/LegendCe');
+          await import('../components/LegendUf/LegendUf');
+          await import('../components/NavBar/NavBar');
+          await import('../views/Landing');
+        }}
+        children={() => (
+          <>
+            <NavBar />
+            <Outlet />
+          </>
+        )}
+      />
+    </Suspense>
   );
 };
 

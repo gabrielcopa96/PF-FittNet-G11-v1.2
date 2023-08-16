@@ -6,7 +6,7 @@
   --dark-color: #191919;
   --light-color: #fff;
 
-  --color-backgotund:#212121;
+  --color-background:#212121;
 
   --color-prim: #ff004c;
   --color-primD1: #ff2767;
@@ -48,7 +48,7 @@ body {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   background: rgb(37, 38, 39);
-  background: var(--color-backgotund);
+  background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

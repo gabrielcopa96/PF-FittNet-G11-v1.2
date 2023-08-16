@@ -31,13 +31,7 @@ export default function LandingInfo(): JSX.Element {
 
   return (
     <div className={style.container}>
-      <ScrollContainer>
-        <ScrollPage>
-          <Animator animation={Scr}>
-            <PortadaFittnet />
-          </Animator>
-        </ScrollPage>
-      </ScrollContainer>
+      <PortadaFittnet />
       <div>
         <div ref={divRef as any} className={style.contPlanPartner}>
           <CardsPlansPartner
