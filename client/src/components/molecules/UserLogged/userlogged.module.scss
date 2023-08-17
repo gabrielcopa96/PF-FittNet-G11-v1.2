@@ -1,0 +1,16 @@
+.userLogged {
+    display: flex;
+    width: max-content;
+    padding: .3rem .7rem;
+    align-items: center;
+    gap: 1rem;
+
+    &:hover {
+        cursor: pointer;
+
+        p {
+            color: var(--color-prim);
+            transition: all .3s ease-in-out;
+        }
+    }
+}

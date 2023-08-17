@@ -1,5 +1,6 @@
 import { Button, Text, Title } from "../components/atoms";
 import Link from "../components/atoms/Link/Link";
+import { UserLogged } from "../components/molecules";
 
 const TestingAtoms = (): JSX.Element => {
   return (
@@ -8,6 +9,7 @@ const TestingAtoms = (): JSX.Element => {
         <Title color="rgb(242, 137, 5)">This my title</Title>
         <Button>Accept</Button>
         <Link>Hola soy un link</Link>
+        <UserLogged />
     </div>
   )
 }

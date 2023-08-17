@@ -1,13 +1,12 @@
 import { Button, Logo } from "../atoms";
 import Link from "../atoms/Link/Link";
+import { UserLogged } from "../molecules";
 import stylesScss from "./navbar.module.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function NavBar(): JSX.Element {
 
   const navigate = useNavigate();
-
-  const name = localStorage.getItem("name");
 
   const idUser = localStorage.getItem("userId");
 
@@ -18,7 +17,7 @@ export default function NavBar(): JSX.Element {
         <Link onNavigate="/legendCe">Sos propietario? Unite!</Link>
         <Link onNavigate="/legendUf">Beneficios para miembros</Link>
         {idUser ? (
-          <p style={{ color: "#fff", fontSize: "1.3rem" }}>{name} ya estas registrado!</p>
+          <UserLogged />
         ) : (
           <Button
             onClick={() => navigate("/register", { replace: true })}

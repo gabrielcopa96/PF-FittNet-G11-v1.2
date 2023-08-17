@@ -1,5 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import { ButtonSecondaryDeslice } from "../../../helpers/Buttons/Buttons";
+import { useNavigate } from "react-router-dom";
 import stylesScss from "../styles/Landing.module.scss";
 import { Button, Title } from "../../atoms";
 
@@ -36,7 +35,7 @@ const Hero = (): JSX.Element => {
                             <Button
                                 effect="slide"
                                 size="lg"
-                                variant="ghost"
+                                variant="solid"
                                 onClick={() =>
                                     navigate(`/home/${type}/${name}/${idUser}/${avatar}}`)
                                 }
@@ -47,7 +46,7 @@ const Hero = (): JSX.Element => {
                             <Button
                                 effect="slide"
                                 size="lg"
-                                variant="ghost"
+                                variant="solid"
                                 onClick={() => navigate(`/home/${type}/${name}/${idUser}`)}
                             >
                                 Ir a home

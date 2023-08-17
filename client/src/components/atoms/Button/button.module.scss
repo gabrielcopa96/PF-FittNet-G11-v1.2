@@ -334,4 +334,20 @@
         border-radius: 0;
     }
 
+    // WEIGHTS
+    &.light {
+        font-weight: 300;
+        box-shadow: 0 0 0 1px rgb(250, 2, 2, 0.404);
+    }
+
+    &.regular {
+        font-weight: 400;
+        box-shadow: 0 0 0 3px rgb(250, 2, 2, 0.404);
+    }
+
+    &.bold {
+        font-weight: 600;
+        box-shadow: 0 0 0 5px rgba(250, 2, 2, 0.404);
+    }
+
 }

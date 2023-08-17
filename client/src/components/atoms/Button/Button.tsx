@@ -7,10 +7,11 @@ const Button = (props: ButtonProps): JSX.Element => {
     children,
     onClick,
     size = "md",
-    variant = "solid", //completed
+    variant = "solid",
     effect = "none", 
-    shape = "rounded", //completed
-    type = "primary" //in process
+    shape = "rounded", 
+    type = "primary",
+    weight = "bold"
   } = props;
 
   return (
@@ -23,6 +24,7 @@ const Button = (props: ButtonProps): JSX.Element => {
         ${effect && stylesScss[effect]}
         ${shape && stylesScss[shape]}
         ${type && stylesScss[type]}
+        ${weight && stylesScss[weight]}
       `}
     >
       {children}
