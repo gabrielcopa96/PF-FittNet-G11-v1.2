@@ -11,7 +11,7 @@ import axios from "axios";
 import { NavBar3 } from "../GymDetail/NavBar3";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { SweetAlrt, SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrt, SweetAlrtTem } from "../../utils/sweetalert";
 import {
   clearCart,
   updateClientGym,

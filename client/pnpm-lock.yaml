@@ -68,9 +68,6 @@ dependencies:
   react-router-dom:
     specifier: ^6.15.0
     version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
-  react-scroll-motion:
-    specifier: ^0.3.0
-    version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
   redux:
     specifier: ^4.2.0
     version: 4.2.1
@@ -1953,16 +1950,6 @@ packages:
     dependencies:
       '@remix-run/router': 1.8.0
       react: 18.2.0
-    dev: false
-
-  /react-scroll-motion@0.3.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-/7VUbyu0nONmlyQsnivcAOPCdc6GnS6LFL7R3QygtBjVAmA7dD29B/jje3jNa0fLlrwycriXq/Nm9sWgX7A1Bw==}
-    peerDependencies:
-      react: ^18.0.11
-      react-dom: ^18.0.11
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-transition-group@4.4.5(react-dom@18.2.0)(react@18.2.0):

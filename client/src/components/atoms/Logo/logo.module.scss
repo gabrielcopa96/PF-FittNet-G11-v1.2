@@ -1,0 +1,24 @@
+.logo {
+    margin-left: 4rem;
+    cursor: pointer;
+
+    &.sm {
+        width: 100px;
+        height: 50px;
+    }
+
+    &.md {
+        width: 150px;
+        height: 75px;
+    }
+
+    &.lg {
+        width: 200px;
+        height: 100px;
+    }
+
+    &.xl {
+        width: 250px;
+        height: 125px;
+    }
+}

@@ -44,7 +44,6 @@ export const ButtonPrimarySmall = (props: any): ReactElement<JSXElementConstruct
 };
 
 //? Boton secundario
-
 export const ButtonSecondarySimple = (props: any): ReactElement<JSXElementConstructor<HTMLElement>> => {
   const { onClick, title, padding } = props;
   return (

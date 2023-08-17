@@ -1,22 +1,23 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 /* ------------------ LAYOUTS ------------------ */
-import { LayoutLanding, LayoutOffUser, LayoutUser } from "../Layout";
+import { MiddlewareLanding, MiddlewareOffUser, MiddlewareUserLogged } from "../middlewares";
 /* ------------------ COMPONENTS AUTH / OFFUSER ------------------ */
 import UpdatePasword from "../components/UpdatePassword/UpdatePassword";
 import ResetPassword from "../components/UpdatePassword/ResetPassword";
 import Activation from "../components/Activation/Activation";
 import DeactivateAccount from "../components/DeactivateAccount/DeactivateAccount";
-import Login from "../views/Login";
-import InitRegister from "../views/InitRegister";
+import Login from "../pages/Login";
+import InitRegister from "../pages/InitRegister";
+import TestingAtoms from "./TestingAtoms";
 /* ------------------ COMPONENTS LANDING ------------------ */
-const Landing = lazy(() => import("../views/Landing"));
+const Landing = lazy(() => import("../pages/Landing"));
 const LegendCe = lazy(() => import("../components/LegendCe/LegendCe"));
 const LegendUf = lazy(() => import("../components/LegendUf/LegendUf"));
 /* ------------------ COMPONENTS USER LOGGED ------------------ */
-const Home = lazy(() => import("../views/Home"));
+const Home = lazy(() => import("../pages/Home"));
 const GymDetail = lazy(() => import("../components/GymDetail/GymDetail"));
-const Profile = lazy(() => import("../views/Profile"));
+const Profile = lazy(() => import("../pages/Profile"));
 const FormUser = lazy(() => import("../components/Forms/FormUser"));
 const UpdatePartner = lazy(() => import("../components/UpDatePartner/partner"));
 const UpdateGym = lazy(() => import("../components/UpDatePartner/gym"));
@@ -30,22 +31,24 @@ const AppRouter = (): JSX.Element => {
   return (
     <Routes>
       {/* ROUTES LANDING */}
-      <Route element={<LayoutLanding />}>
+      <Route element={<MiddlewareLanding />}>
         <Route path="/" element={<Landing />} />
         <Route path="/legendCe" element={<LegendCe />} />
         <Route path="/legendUf" element={<LegendUf />} />
       </Route>
       {/* ROUTES AUTH OR OFFUSER */}
-      <Route element={<LayoutOffUser />}>
+      <Route element={<MiddlewareOffUser />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<InitRegister />} />
         <Route path="/updatepassword/:userId" element={<UpdatePasword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/activation/:userId/:secretToken" element={<Activation />} />
         <Route path="/deactivate/:userId" element={<DeactivateAccount />} />
+        {/* AFTER DELETE, ONLY TESTING OF ATOMS COMPONENTS */}
+        <Route path="/test/atoms" element={<TestingAtoms />}/>
       </Route>
       {/* ROUTES USER LOGGED */}
-      <Route element={<LayoutUser />}>
+      <Route element={<MiddlewareUserLogged />}>
         <Route path="/home/:type/:name/:userId/:avatar" element={<Home />} />
         <Route path="/detail/gym/:userId" element={<GymDetail />} />
         <Route path="/profile/:type/:name/:userId" element={<Profile />} />

@@ -6,6 +6,7 @@ interface ImportMetaEnv {
     readonly VITE_POWENS_WEBVIEW_CONNECT: string;
     readonly VITE_POWENS_WEBVIEW_MANAGER: string;
     readonly VITE_POWENS_WEBVIEW_RECONNECT_URL: string;
+    readonly VITE_LOGO_URL: string;
     // more env variables...
 }
 

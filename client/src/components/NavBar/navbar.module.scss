@@ -1,0 +1,17 @@
+.nav {
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(49, 49, 49, 0.692);
+    backdrop-filter: blur(2px);
+
+    & .ul {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1.5rem;
+        margin-right: 4rem;
+    }
+}

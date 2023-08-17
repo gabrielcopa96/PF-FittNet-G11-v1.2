@@ -4,7 +4,7 @@ import { gymValidate, gymValidateEdit } from "./controlers/validaciones";
 
 import { getMyGyms } from "../../redux/actions"; // --------------LA ACTION
 import { useDispatch } from "react-redux";
-import { SweetAlrt, SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrt, SweetAlrtTem } from "../../utils/sweetalert";
 import { createOneGym, editOneGym } from "./controlers/Functions";
 import MapGyms from "../MapsAndGeo/MapGyms";
 import { useSelector } from "react-redux";

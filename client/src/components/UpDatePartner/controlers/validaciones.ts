@@ -2,7 +2,7 @@
 import {
   regexEmail,
   regexName,
-} from "../../../asets/helpers/regexValidators";
+} from "../../../utils/regexValidators";
 const regCBU = /^[0-9]{16}\b/;
 //!--------------------------------VALIDACIONES GYM----------------------
 export function gymValidate(newGym: any) {

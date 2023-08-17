@@ -118,24 +118,17 @@
 .btnSimple {
   font-size: 1rem;
   font-weight: 700;
-  /* color: #f5c400; */
   color: #ff004c;
-  /* color: #fe914c; */
-  /* border: 3px solid #f5c400; */
   border: 3px solid #ff004c;
-  /* border: 3px solid #fe914c; */
   height: 2.2rem;
   line-height: 1.8rem;
   border-radius: 26px;
   cursor: pointer;
-  position: relative;
   transition: all 0.9s;
 }
 
 .btnSimple:hover {
-  /* background-color: #f5c400; */
   background-color: #ff004c;
-  /* background-color: #fe914c; */
   color: rgb(238, 238, 238);
   transition: all 0.5s;
 }

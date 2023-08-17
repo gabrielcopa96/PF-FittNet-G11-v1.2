@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import { SweetAlrt } from "../../asets/helpers/sweetalert";
+import { SweetAlrt } from "../../utils/sweetalert";
 import {
   BackgroundOne,
   BackgroundTwo,

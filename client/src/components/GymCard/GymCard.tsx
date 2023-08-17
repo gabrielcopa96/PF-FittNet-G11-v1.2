@@ -4,7 +4,7 @@ import { updateFavouriteGym } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosHeart } from "react-icons/io";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
-import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrtTem } from "../../utils/sweetalert";
 
 export default function GymCard(props: any): JSX.Element {
   const navigate = useNavigate();

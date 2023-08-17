@@ -4,7 +4,7 @@ import { serviceValidate } from "./controlers/validaciones";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { createService } from "../../redux/actions";
-import { SweetAlrt, SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrt, SweetAlrtTem } from "../../utils/sweetalert";
 import { createOneService, editOneService } from "./controlers/Functions";
 
 export default function Services2() {

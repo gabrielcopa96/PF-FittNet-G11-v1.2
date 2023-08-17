@@ -1,0 +1,11 @@
+export { default as Avatar } from './Avatar/Avatar';
+export { default as Box } from './Box/Box';
+export { default as Button } from './Button/Button';
+export { default as Icons } from './Icons/Icons';
+export { default as Input } from './Input/Input';
+export { default as Logo } from './Logo/Logo';
+export { default as Text } from './Text/Text';
+export * from './Text/interface/text.interface';
+export * from './Text/utils/text.utils';
+export { default as Title } from './Title/Title';
+export * from './index';

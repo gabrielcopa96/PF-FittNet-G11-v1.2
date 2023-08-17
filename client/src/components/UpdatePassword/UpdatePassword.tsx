@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { SweetAlrt } from "../../asets/helpers/sweetalert";
+import { SweetAlrt } from "../../utils/sweetalert";
 import style from "./styles/stylePasword.module.css";
 import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
 import {

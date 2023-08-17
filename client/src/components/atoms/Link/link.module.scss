@@ -1,0 +1,55 @@
+.link {
+    display: block;
+    color: var(--light-color);
+    position: relative;
+    padding: .35rem .7rem;
+    width: fit-content;
+    text-align: center;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.2, 0, 0, 1);
+    z-index: 1;
+
+    &.sm {
+        font-size: 0.8rem;
+    }
+
+    &.md {
+        font-size: 1rem;
+    }
+
+    &.lg {
+        font-size: 1.4rem;
+    }
+
+    &.xl {
+        font-size: 1.7rem;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        right: 1.25rem;
+        left: 1.25rem;
+        background-color: var(--color-prim);
+        transition: all .3s cubic-bezier(.2, 0, 0, 1);
+        transform-origin: bottom center;
+        border-radius: 7px;
+        z-index: -1;
+        align-items: center;
+    }
+
+    &:hover {
+        color: var(--light-color);
+        display: flex;
+        align-items: center;
+
+        &::after {
+            right: 0;
+            left: 0;
+            height: 100%;
+        }
+    }
+}

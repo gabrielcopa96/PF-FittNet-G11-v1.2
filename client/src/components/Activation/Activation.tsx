@@ -6,15 +6,14 @@ import {
   BackgroundOne,
   BackgroundTwo,
 } from "../../helpers/Backround/Background";
-import check from "../../asets/icons/check-circle.svg";
+import check from "../../assets/icons/check-circle.svg";
 
 export default function Activation(): JSX.Element {
   const { userId, secretToken } = useParams();
 
   useEffect(() => {
     // verifico el largo del id y el token andes de ejecutar el get al back
-    console.log("se ejecuta el useEffect");
-    if ((userId as any).length > 9 && (secretToken as any).length > 5) {
+    if ((userId as string).length > 9 && (secretToken as string).length > 5) {
       axios
         .get(`/api/service/activation/${userId}/${secretToken}`)
         .then((response) => {

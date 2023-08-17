@@ -7,7 +7,7 @@ import {
 import { useSelector } from "react-redux";
 import { getMyGyms, getUser } from "../../redux/actions"; // --------------LA ACTION
 import { useDispatch } from "react-redux";
-import { SweetAlrt, SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrt, SweetAlrtTem } from "../../utils/sweetalert";
 import { createOneService, editOneService } from "./controlers/Functions";
 import { useEffect } from "react";
 

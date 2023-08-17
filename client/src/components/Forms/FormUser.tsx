@@ -8,7 +8,7 @@ import MapUser from "../MapsAndGeo/MapUser";
 import { getAttributeDesease } from "../../redux/actions/index";
 import { InputPrimaryFormUsers } from "../../helpers/Inputs/Inputs";
 import { ButtonSecondaryDeslice } from "../../helpers/Buttons/Buttons";
-import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrtTem } from "../../utils/sweetalert";
 
 export default function FormUser() {
   const navigate = useNavigate();

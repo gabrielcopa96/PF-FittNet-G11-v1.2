@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrtTem } from "../../utils/sweetalert";
 import { updateFavouriteGym } from "../../redux/actions/index";
 import axios from "axios";
 import styles from "./styles/stylesCards.module.css";
@@ -8,6 +8,7 @@ import { IoIosHeart } from "react-icons/io";
 import { AiFillStepForward, AiOutlineShoppingCart } from "react-icons/ai";
 import { JSXElementConstructor, ReactElement, useState } from "react";
 import { EditMyGyms } from "../../components/Home/HomePartner/ViewsPartner/EditMyGyms";
+import { CardsPlansPartnerI } from "./interfaces/cards.interface";
 
 export const CardAvatares = (props: any): ReactElement<JSXElementConstructor<HTMLElement>> => {
   const { image } = props;
@@ -154,7 +155,6 @@ export const CardShop = (props: any): ReactElement<JSXElementConstructor<HTMLEle
 
   return (
     <div className={styles.cardShop}>
-      {/* {console.log(props)} */}
       {/* <div className={styles.imgBoxLogo}>
         <img
           src={
@@ -221,9 +221,6 @@ export const CardShop = (props: any): ReactElement<JSXElementConstructor<HTMLEle
             />
           </span>
         </div>
-        {/* <h2 className={styles.priceCard}>
-          <small>{price.$numberDecimal}</small> €
-        </h2> */}
         <div
           className={styles.buyCard}
           onClick={() => navigate(`/detail/gym/${id}`)}
@@ -235,8 +232,8 @@ export const CardShop = (props: any): ReactElement<JSXElementConstructor<HTMLEle
   );
 };
 
-export const CardsPlansPartner = (props: any): ReactElement<JSXElementConstructor<HTMLElement>> => {
-  const { title, Size, busqueda, servicios, gym } = props;
+export const CardsPlansPartner = ({ content }: { content: CardsPlansPartnerI }): JSX.Element => {
+
   return (
     <div className={styles.contPlanPartner}>
       <div className={styles.card}>
@@ -245,20 +242,20 @@ export const CardsPlansPartner = (props: any): ReactElement<JSXElementConstructo
             <span className={styles.stars}></span>
             <div className={styles.plan}>
               <ul>
-                <li>{busqueda} de visibilidad</li>
+                <li>{content.search} de visibilidad</li>
                 <li>Panel de control</li>
                 <li>Historial de ventas</li>
-                <li>Gestios de GYM</li>
-                <li>Gestios de servicios</li>
-                <li>{gym}</li>
-                <li>{servicios}</li>
+                <li>Gestión de GYM</li>
+                <li>Gestión de servicios</li>
+                <li>{content.gym}</li>
+                <li>{content.services}</li>
                 <li></li>
               </ul>
             </div>
           </div>
         </div>
         <div className={styles.face2}>
-          <h2 style={{ fontSize: Size }}>{title}</h2>
+          <h2 style={{ fontSize: content.size }}>{content.title}</h2>
         </div>
       </div>
     </div>

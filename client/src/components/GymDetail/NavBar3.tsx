@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { SweetAlrt } from "../../asets/helpers/sweetalert";
+import { SweetAlrt } from "../../utils/sweetalert";
 import { ButtonSimple } from "../../helpers/Buttons/Buttons";
 import { getCart, postCart } from "../../redux/actions/index";
 import CardServices from "../CardCarritoService/CardServices";

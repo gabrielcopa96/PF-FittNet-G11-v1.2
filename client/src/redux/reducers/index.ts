@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 // import { Action } from "history";
-import { latBA, lngBA } from "../../asets/helpers/goeDefaults";
+import { latBA, lngBA } from "../../utils/goeDefaults";
 import CalcDist from "../../components/MapsAndGeo/controlers/calcDist"
 
 import { 

@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { getUserGoogleForToken, getMarketing } from "../../redux/actions/index";
 import { CardsPlansPartner } from "../../helpers/Cards/Cards";
 import { ButtonPrimary } from "../../helpers/Buttons/Buttons";
-import { PortadaFittnet, Hero } from "../Landing/componentsLanding/componentsLanding";
-import { ScrollContainer, Animator, ScrollPage, Fade } from "react-scroll-motion";
-import style from "../Landing/styles/Landing.module.css";
+import styleScss from "../Landing/styles/Landing.module.scss";
+import { InfoCards } from "./utils/landing-info.util";
+import { CardsPlansPartnerI } from "../../helpers/Cards/interfaces/cards.interface";
+import { Hero } from "./components";
 
-export default function LandingInfo(): JSX.Element {
+const LandingInfo = (): JSX.Element => {
   const navigate = useNavigate();
 
   const divRef = useRef();
@@ -16,8 +17,6 @@ export default function LandingInfo(): JSX.Element {
   const dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
-
-  const Scr = Fade();
 
   useEffect(() => {
     if (token) {
@@ -30,41 +29,26 @@ export default function LandingInfo(): JSX.Element {
   }, []);
 
   return (
-    <div className={style.container}>
-      <PortadaFittnet />
-      <div>
-        <div ref={divRef as any} className={style.contPlanPartner}>
-          <CardsPlansPartner
-            title="STANDARD"
-            busqueda="10%"
-            gym="Hasta 1 GYM"
-            servicios="5 servicios por GYM"
-            Size="2em"
-          />
-          <CardsPlansPartner
-            title="PREMIUM"
-            busqueda="30%"
-            gym="Hasta 5 GYM"
-            servicios="10 servicios por GYM"
-            Size="2em"
-          />
-          <CardsPlansPartner
-            title="GOLDEN"
-            busqueda="50%"
-            gym="Hasta 50 GYM"
-            servicios="50 servicios en GYM"
-            Size="2em"
-          />
-        </div>
-        <div className={style.containerBtnPromos}>
-          <ButtonPrimary
-            title="MAS INFO"
-            padding="0 1rem"
-            onClick={() => navigate("/legendCe")}
-          />
-        </div>
+    <section className={styleScss.container}>
+      {/* PORTADA FITTNET OR HERO */}
+      <Hero />
+      {/* SECTION CARDS INFO PLANS */}
+      <div ref={divRef as any} className={styleScss.contPlanPartner}>
+        {
+          InfoCards.map((cardInfo: CardsPlansPartnerI, index: number) => (
+            <CardsPlansPartner key={index} content={cardInfo} />
+          ))
+        }
       </div>
-      {/* <Hero /> */}
-    </div>
+      <div className={styleScss.containerBtnPromos}>
+        <ButtonPrimary
+          title="MAS INFO"
+          padding="0 1rem"
+          onClick={() => navigate("/legendCe")}
+        />
+      </div>
+    </section>
   );
 }
+
+export default LandingInfo;

@@ -1,0 +1,34 @@
+.title {
+    color: var(--light-color);
+    font-family: var(--font-family);
+    
+    // Font Sizes
+    &.sm {
+        font-size: 1.5rem;
+    }
+
+    &.md {
+        font-size: 2rem;
+    }
+
+    &.lg {
+        font-size: 3rem;
+    }
+
+    &.xl {
+        font-size: 4rem;
+    }
+
+    // Font Weights
+    &.light {
+        font-weight: 300;
+    }
+
+    &.normal {
+        font-weight: 500;
+    }
+
+    &.bold {
+        font-weight: 700;
+    }
+}

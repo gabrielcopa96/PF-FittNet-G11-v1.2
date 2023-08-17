@@ -2,7 +2,7 @@ import React, { useMemo, useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { setGymsGeo } from "../../redux/actions";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrtTem } from "../../utils/sweetalert";
 import { ButtonSimple } from "../../helpers/Buttons/Buttons";
 import styles from './styles/mapGyms.module.css';
 

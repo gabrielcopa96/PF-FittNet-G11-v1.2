@@ -4,7 +4,7 @@ import { partnerValidacion } from "./controlers/validaciones";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePartnerData, getPartnerDetails } from "../../redux/actions";
 import { useNavigate, useParams } from "react-router-dom";
-import { SweetAlrt } from "../../asets/helpers/sweetalert";
+import { SweetAlrt } from "../../utils/sweetalert";
 
 export default function UpdatePartner() {
   let { userId } = useParams();

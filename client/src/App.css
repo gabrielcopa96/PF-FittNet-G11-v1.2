@@ -29,6 +29,10 @@
   --color-quiD2: #ff9550;
   --color-quiD3: #ffaa72;
   --color-quiD4: #ffbb8f;
+
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --color-warning: #ff9550;
 }
 
 * {

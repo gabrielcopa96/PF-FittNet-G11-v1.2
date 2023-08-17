@@ -20,7 +20,7 @@
 .firstPromo{
     width: 100%;
     height: 100%;
-    background: url('../../../asets/images/equipo-entrena1.jpg') no-repeat center center;
+    background: url('../../../assets/images/equipo-entrena1.jpg') no-repeat center center;
     background-size: cover;
     margin-left: .5em;
     border: 5px inset #747373;
@@ -29,7 +29,7 @@
 .secondPromo{
     width: 100%;
     height: 100%;
-    background: url('../../../asets/images/equipo-entrena2.jpg') no-repeat center center;
+    background: url('../../../assets/images/equipo-entrena2.jpg') no-repeat center center;
     background-size: cover;
     border: 5px inset #747373;
 }

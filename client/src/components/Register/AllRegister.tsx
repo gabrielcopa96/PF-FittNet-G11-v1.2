@@ -4,7 +4,7 @@ import { setUserGeo } from "../../redux/actions/index";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./styles/AllRegister.module.css";
-import { regexEmail, regexName } from "../../asets/helpers/regexValidators";
+import { regexEmail, regexName } from "../../utils/regexValidators";
 
 import {
   BackgroundTwo,
@@ -13,7 +13,7 @@ import {
 import {
   SweetAlrt,
   SweetAlrtTem,
-} from "../../asets/helpers/sweetalert";
+} from "../../utils/sweetalert";
 
 export default function AllRegister() {
   const dispatch = useDispatch();

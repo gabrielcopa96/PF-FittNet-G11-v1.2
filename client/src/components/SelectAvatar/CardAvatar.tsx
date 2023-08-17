@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { SweetAlrtTem } from "../../asets/helpers/sweetalert";
+import { SweetAlrtTem } from "../../utils/sweetalert";
 
 import axios from "axios";
 
