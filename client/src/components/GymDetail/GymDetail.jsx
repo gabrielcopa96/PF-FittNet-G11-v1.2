@@ -19,11 +19,11 @@ export default function GymDetail() {
     dispatch(getUser(idUser));
   }, [userId, idUser]);
 
-  // This is equivalent to ComponentWillUnmount.
-  // Que se ejecute cuando se desmonte gymDetail y limpie su estado en el reducer
+  // // This is equivalent to ComponentWillUnmount.
+  // // Que se ejecute cuando se desmonte gymDetail y limpie su estado en el reducer
   useEffect(() => {
     return () => dispatch(clearGymDetail());
-  }, [gymDetail]);
+  }, []);
 
   const gymDetail = useSelector((state) => state.gymDetail);
 
