@@ -47,8 +47,6 @@ export default function LoginInit() {
   const { data: geoLocalizacion, isLoading: loadingGeo, isError: errorGeo } = useQuery( "geolocalizacion", setUserGeo(geo) )
 
 
-  console.log(geoLocalizacion);
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -63,7 +61,6 @@ export default function LoginInit() {
   const handleCallbackGoogle = async (response) => {
     const userObject = jwt_decode(response.credential);
     if (!token || !userId) {
-      console.log("ENTRO A GENERAR TOKEN", response.credential);
       const googleData = await axios.post(`/api/service/google/auth`, {
         tokenId: response.credential,
         data: userObject,
@@ -84,10 +81,7 @@ export default function LoginInit() {
         dispatch(getPartnerDetails(userId));
       }
 
-
-      console.log(avatar);
       if (!avatar) {
-        console.log("entro aqui");
         navigate(
           `/home/${finalizacionData.usuario.type}/${finalizacionData.usuario.name}/${finalizacionData.usuario._id}`
         );
@@ -122,12 +116,9 @@ export default function LoginInit() {
     e.preventDefault();
     let userLogin = {};
 
-    console.log("se está intentando hacer el post");
 
     if (username && password) {
       userLogin = { username: username, password: password };
-
-      console.log("está saliendo el post ", userLogin);
 
       const login = await axios({
         method: "post",
@@ -140,10 +131,8 @@ export default function LoginInit() {
         })
         .catch((error) => console.log(error));
 
-        console.log(login, "ESTE ES EL QUE ANDO BUSCANDO")
 
       if (login.login) {
-        console.log(login, " lo que responde el back si se autentica el user");
 
         let { userId, name, type, avatar, active, latitude, longitude } = login;
 
@@ -162,9 +151,7 @@ export default function LoginInit() {
             navigate(`/home/${type}/${name}/${userId}`);
           }
 
-          console.log(login.avatar);
           if (login.avatar) {
-            console.log(login, " el user");
 
             localStorage.setItem("userId", userId);
             localStorage.setItem("name", name);
@@ -182,7 +169,6 @@ export default function LoginInit() {
         }
       }
       if (typeof login === "string") {
-        console.log(login); // qué  me responde el back?
         setPassword("");
         setUsername("");
       }

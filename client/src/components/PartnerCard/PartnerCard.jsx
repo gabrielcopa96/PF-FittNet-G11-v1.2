@@ -3,7 +3,6 @@ import styles from './style/PartnerCard.module.css';
 
 
 export default function PartnerCard(props) {
-    console.log(props, 'las props partnerCard')
     return (
         <div className={styles.boxSingleCard2}>
             <h3>{props.partner}</h3>

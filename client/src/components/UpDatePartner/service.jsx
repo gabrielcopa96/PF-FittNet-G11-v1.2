@@ -18,7 +18,6 @@ export default function Services() {
 
   const userInfo = useSelector((state) => state.partnerDetails);
   let userPlan = userInfo.planType ? userInfo.planType : false;
-  console.log(userPlan, "el plan del usuario partner");
 
   let filterServices = [];
   let dataEditService;
@@ -80,11 +79,6 @@ export default function Services() {
   }
 
   function validatePlanServices(userPlan, partnerGym) {
-    console.log(
-      userPlan,
-      partnerGym,
-      "el plan del partner contra los servicios"
-    );
     // // userPlan es un string o un booleano-> false || "Premium" ||
     // // "Estandar" || "Golden"
     // // parnerGmy -> Es un arreglo con un objeto, con una propiedad services
@@ -100,8 +94,6 @@ export default function Services() {
     planType = userPlan.planName; // tipo de plan
     maxService = userPlan.servicePerGym; // cantidad de servicios máximos por gym
     services = partnerGym[0].services; // cantidad de servicios que tiene el gym (es un array)
-
-    // console.log(planType, 'tipo de plan', maxService, 'cantidad de servicios máximos', services, 'servicios',)
 
     // if (planType === "Estandar" && partnerGym.length === 1 ) { // Máximo un gym, nada más
     if (planType === "Standar" && services.length === Number(maxService)) {
@@ -154,7 +146,6 @@ export default function Services() {
       // gymId: el id del gym que crea el servicio
       // dataNewService: en este objeto va todo lo que obtienen del formulario (el input de arriba)
 
-      console.log("recibe el click y crea un service");
       let newOnService = await createOneService(dataForNewService);
 
       if (newOnService) {
@@ -198,7 +189,6 @@ export default function Services() {
       // serviceId: el id del service a editar
       // dataNewService: en este objeto va todo lo que obtienen del formulario (el input de arriba)
 
-      console.log("recibe el click y edita un gym");
       let editOnService = await editOneService(dataForEditService);
       SweetAlrt("Exito", "Servicio editado", "success");
       setEditService({
@@ -223,8 +213,6 @@ export default function Services() {
         };
         const errors = serviceValidate(newInput);
         setError(errors);
-        console.log(newInput);
-        console.log(errors);
         return newInput;
       });
     }
@@ -237,8 +225,6 @@ export default function Services() {
         };
         const errors = serviceValidateEdit(newInput);
         setError(errors);
-        console.log(newInput);
-        console.log(errors);
         return newInput;
       });
     }
@@ -250,21 +236,17 @@ export default function Services() {
       let value = e.target.value;
       //
       // let myGyms = dataPartner.gyms ? dataPartner.gyms : [];
-      console.log(myGyms);
 
       filterServices = myGyms.length && myGyms.filter((e) => e._id === value);
 
       setMyServices(filterServices);
 
-      console.log(filterServices, " los servicios del gym");
 
       // Seteamos el id del servicio
       setGymId(e.target.value);
-      // console.log(e.target.value, ' Service select dentro del if')
     } else {
       setGymId("");
     }
-    console.log(e.target.value, " Service select");
   }
 
   function handleChangeService(e) {
@@ -272,13 +254,10 @@ export default function Services() {
       e.preventDefault();
       // Seteamos el id del servicio
       setServiceId(e.target.value);
-      // console.log(e.target.value, ' Service update select dentro del if ')
       dataEditService = myServices;
-      console.log(dataEditService, "luego de seleccionar un sevice");
     } else {
       setServiceId("");
     }
-    console.log(e.target.value, " Service update en el select");
   }
 
   function addPhoto(e) {
@@ -286,7 +265,6 @@ export default function Services() {
 
     if (photo && typeAction === "create") {
       if (!newService.photo.includes(photo)) {
-        // console.log('entra');
         let newState = [...newService.photo];
         newState.push(photo);
 
@@ -307,8 +285,6 @@ export default function Services() {
         });
       }
     }
-    // console.log(editGym.image)
-    // console.log(newGym.image)
     setPhoto("");
   }
 

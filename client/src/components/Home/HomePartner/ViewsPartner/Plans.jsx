@@ -37,16 +37,13 @@ export function Plans() {
     })
       .then((data) => {
         setDatos(data.data);
-        console.info("contenido de data", data);
       })
       .catch((err) => console.error(err));
-    console.log("todopiola");
   }
 
   return (
     <div>
       <div className={style.cont}>
-        {console.log(plan)}
         {plan.length
           ? plan.map((p) => {
               return (

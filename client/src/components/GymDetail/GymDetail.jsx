@@ -29,7 +29,6 @@ export default function GymDetail() {
 
   let usuarioId = localStorage.getItem("userId");
   // id de usuario que está en la app
-  // console.log(gymDetail, 'id de usuario que está en la app')
 
   if (!gymDetail.name) {
     return (
@@ -136,7 +135,6 @@ export default function GymDetail() {
 
         {/* Detalle servicio */}
         <div className={style.contServices}>
-          {console.log(gymDetail)}
           {gymDetail.services.map((e) => {
             return (
               <div key={e._id}>

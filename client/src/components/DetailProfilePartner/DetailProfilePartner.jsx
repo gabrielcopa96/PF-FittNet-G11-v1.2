@@ -8,9 +8,7 @@ import styles from "./styles/DetailProfilePartner.module.css";
 
 export default function DetailProfilePartner() {
   let { userId, name, type } = useParams();
-  // console.log(userId, name, type, 'id y name')
   const dispatch = useDispatch();
-  console.log(userId, " user Id de params");
 
   useEffect(() => {
     dispatch(getUser(userId));
@@ -18,8 +16,6 @@ export default function DetailProfilePartner() {
   }, []);
 
   const partner = useSelector((state) => state.partnerDetails);
-  console.log(partner);
-  console.log(userId, name, type, "los params");
   // con el id ya podemos solicitar info a nuestro back, el cual solo responderá
   // si le llega este id (de la fomra que lo espera) y si el usuario tiene una
   // sesión iniciada.

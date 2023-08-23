@@ -21,14 +21,12 @@ export default function UpdateGym(props) {
   const userInfo = useSelector((state) => state.partnerDetails);
   let userPlan = userInfo.planType ? userInfo.planType : false;
 
-  console.log(userPlan, " el plan del partner"); // false si no tiene plan
 
   const userId = localStorage.getItem("userId");
 
   const dataPartner = useSelector((state) => state.myGyms);
   let myGyms = dataPartner.gyms ? dataPartner.gyms : [];
 
-  console.log(myGyms, " los gyms del partner"); // false si no tiene plan
 
   const [typeAction, setTypeAcyion] = useState("create");
   const [name, setName] = useState("");
@@ -168,7 +166,6 @@ export default function UpdateGym(props) {
     // userPlan es un string o un objeto -> false || { } ||
     // Si es objeto trae info del plan y la cantidad de gyms
     // parnerGys -> Es un arreglo de objetos (un objeto por cada gym)
-    console.log(userPlan, partnerGyms, 'plan del user y cantidad de gyms')
 
     let planType;
     let maxGyms;
@@ -178,7 +175,6 @@ export default function UpdateGym(props) {
     }
     planType = userPlan.planName;
     maxGyms = userPlan.gymsPermited;
-    // console.log(planType, maxGyms, 'plan del user y cantidad de gyms')
 
     // if (planType === "Estandar" && partnerGyms.length === 1 ) { // Máximo un gym, nada más
     if (planType === "Standar" && partnerGyms.length === Number(maxGyms)) {
@@ -222,7 +218,6 @@ export default function UpdateGym(props) {
       };
       // userId: el id del usuario partner que crea el gym
       // dataNewGym: en este objeto va todo lo que obtienen del formulario (el input de arriba)
-      console.log("recibe el click y crea un gym");
       let newOnGym = await createOneGym(dataForNewGym);
 
       if (newOnGym) {
@@ -269,7 +264,6 @@ export default function UpdateGym(props) {
       };
       // gymId: el id del gym a editar
       // dataNewGym: en este objeto va todo lo que obtienen del formulario (el input de arriba)
-      console.log("recibe el click y edita un gym");
       let editOnGym = await editOneGym(dataForEditGym);
       SweetAlrt("Exito", "Gym editado!", "success");
       setEditGym({
@@ -303,9 +297,7 @@ export default function UpdateGym(props) {
         console.log(errors);
         return newInput;
       });
-      console.log(newGym);
     }
-    // console.log(error);
 
     if (typeAction === "edit") {
       setEditGym(() => {
@@ -320,7 +312,6 @@ export default function UpdateGym(props) {
         setError(errors);
         return newInput;
       });
-      console.log(editGym);
     }
   }
 
@@ -346,7 +337,6 @@ export default function UpdateGym(props) {
 
     if (name && typeAction === "create") {
       if (!newGym.trainers.includes(name)) {
-        // console.log('entra');
         let newState = [...newGym.trainers];
         newState.push(name);
 
@@ -357,7 +347,6 @@ export default function UpdateGym(props) {
       }
     }
     if (name && typeAction === "edit") {
-      // console.log('entra');
       if (!editGym.trainers.includes(name)) {
         let newState = [...editGym.trainers];
         newState.push(name);
@@ -369,8 +358,6 @@ export default function UpdateGym(props) {
       }
     }
     setName("");
-    // console.log(editGym.trainers)
-    // console.log(newGym.trainers)
   }
 
   //----------------------- delete photo --------------------------------------
@@ -399,7 +386,6 @@ export default function UpdateGym(props) {
 
     if (photo && typeAction === "create") {
       if (!newGym.image.includes(photo)) {
-        // console.log('entra');
         let newState = [...newGym.image];
         newState.push(photo);
 
@@ -420,8 +406,6 @@ export default function UpdateGym(props) {
         });
       }
     }
-    // console.log(editGym.image)
-    // console.log(newGym.image)
     setPhoto("");
   }
   //------------------ Select Gimnasio ------------------------------------------
@@ -435,15 +419,12 @@ export default function UpdateGym(props) {
 
       //setMyServices(filterServices);
 
-      // console.log(filterServices, ' los servicios del gym');
 
       // Seteamos el id del servicio
       setGymId(e.target.value);
-      // console.log(e.target.value, ' Service select dentro del if')
     } else {
       setGymId("");
     }
-    console.log(e.target.value, " Service select");
   }
 
   //-----------------------------------------------------------------------------

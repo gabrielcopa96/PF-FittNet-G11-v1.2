@@ -137,7 +137,6 @@ const CheckoutForm = () => {
         .catch((error) => {
           console.log(error);
         });
-        console.log(compra.data)
       if (compra.data === 'todomal') {
         SweetAlrt(`Su pago fue rechazado ${name}`, "Intente con otra tarjeta")
         return navigate(`/home/${type}/${name}/${usuarioId}/${avatar}`);

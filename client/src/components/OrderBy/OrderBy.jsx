@@ -20,11 +20,9 @@ export default function OrderBy() {
 
   const [orden, setOrden] = useState("");
   const gyms = useSelector((state) => state.gyms);
-  console.log(orden)
 
   function handleChangeKm(e) {
     e.preventDefault();
-    console.log(e.target.value);
     dispatch(sortByDistance(e.target.value));
     setOrden(`Ordenado ${e.target.value}`);
   }
@@ -36,14 +34,12 @@ export default function OrderBy() {
   }
   function handleChangePrecio(e) {
     e.preventDefault();
-    console.log(e.target.value);
     dispatch(sortByPrice(e.target.value));
     setOrden(`Ordenado ${e.target.value}`);
   }
 
   function handleChangeCateg(e) {
     e.preventDefault();
-    console.log(e.target.value);
     dispatch(filterByCategory(e.target.value));
     setOrden(`Ordenado ${e.target.value}`);
   }
@@ -51,7 +47,6 @@ export default function OrderBy() {
   const categ = new Set(categorys);
   let result = [...categ];
   let ordenados = result.sort((a, b) => a.localeCompare(b));
-  // console.log("Esto es en orderBy: ", ordenados);
 
   return (
     <div className={styles.sel}>

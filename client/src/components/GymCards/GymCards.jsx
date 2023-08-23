@@ -50,7 +50,6 @@ export default function GymsCards() {
   return (
     <div className={style.mainBoxCards}>
       <div className={style.boxCards}>
-        {console.log()}
         {gyms.length
           ? currentGyms.map((x, y) => (
               <CardShop

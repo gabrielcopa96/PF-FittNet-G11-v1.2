@@ -11,8 +11,6 @@ export function MyServices() {
 
   const [myServices, setMyServices] = useState([]);
 
-  console.log(myGyms, "mis gyms");
-
   let userId = localStorage.getItem("userId");
   const dispatch = useDispatch();
 
@@ -28,14 +26,12 @@ export function MyServices() {
   function handleChangeGym(e) {
     e.preventDefault();
     let gymId = e.target.value;
-    console.log(gymId, "el id del gym");
 
     if (gymId !== "...") {
       filterByGym = myGyms && myGyms.filter((e) => e._id === gymId);
 
       setMyServices(filterByGym[0].services);
 
-      console.log(filterByGym, "luego del filtro");
     }
   }
 

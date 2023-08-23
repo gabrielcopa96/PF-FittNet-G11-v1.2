@@ -313,7 +313,6 @@ export default function rootReducer(state = initialState, { type, payload }) {
           : category.filter((e) =>
             e.services.map((e) => e.name).includes(payload)
           );
-      console.log("Esto es en redux", filtCateg);
       const newPage3 = filtCateg.slice(payload.offset, payload.limit);
       return {
         ...state,
@@ -334,7 +333,6 @@ export default function rootReducer(state = initialState, { type, payload }) {
         pageToShow: newPage5,
       };
     case POST_USER_GOOGLE:
-      console.log(payload);
       return {
         ...state,
         user: payload,

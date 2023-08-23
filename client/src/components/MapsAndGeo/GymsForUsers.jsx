@@ -55,8 +55,6 @@ export default function GymsForUsersMap() {
         if (marker != null) {
           setLat(marker.getLatLng().lat);
           setLng(marker.getLatLng().lng);
-          // console.log(marker.getLatLng().lat, marker.getLatLng().lng)
-          // setDist((CalcDist(gymsToShow[0].lat, gymsToShow[0].lng, marker.getLatLng().lat, marker.getLatLng().lng))*1000)
         }
       },
     }), // eslint-disable-next-line

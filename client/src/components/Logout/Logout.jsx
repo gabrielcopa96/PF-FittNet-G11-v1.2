@@ -15,9 +15,7 @@ export default function Logout() {
       // withCredentials: true
     })
     .then((res) => {
-      console.log(res.data)
       if (res) {
-        console.log(res.data, "-> respuesta del post de logout");
         // localStorage.removeItem("token");
         // localStorage.removeItem('userId');
         // localStorage.removeItem('name');

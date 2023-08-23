@@ -35,14 +35,10 @@ export default function DeactivateAccount() {
     if (userId.length > 3 && password && !error) {
       let object = { userId, password };
 
-      console.log(object, "lo que sale el get al back");
-
       axios
         .put(`/api/service/deleteuseraccount/`, object)
         .then((response) => {
-          console.log(response.data);
           SweetAlrt("Exito!", response.data, "success");
-          // window.alert(response.data)
           return (window.location = "http://localhost:3000/");
         })
         .catch((error) => {

@@ -39,8 +39,6 @@ export default function Services2() {
     // gymId: el id del gym que crea el servicio
     // dataNewService: en este objeto va todo lo que obtienen del formulario (el input de arriba)
     
-    console.log('recibe el click y crea un service')
-
     let newService = await createOneService (dataForNewService);
 
     return newService;
@@ -60,8 +58,6 @@ export default function Services2() {
     // serviceId: el id del service a editar
     // dataNewService: en este objeto va todo lo que obtienen del formulario (el input de arriba)
     
-    console.log('recibe el click y edita un gym')
-
     let editOnService = await editOneService (dataForEditService);
 
     return editOnService;
@@ -125,7 +121,6 @@ export default function Services2() {
 
       return newphoto;
     });
-    console.log(input.photo);
   }
   //!deleted photo
   function handleDeleteI(e) {
@@ -133,7 +128,6 @@ export default function Services2() {
       ...input,
       photo: input.photo.filter((el) => el !== e.target.value),
     });
-    console.log("Trainers borrado:", e);
   }
   //!-----------------------GYMS----------------------
   function handleChangeGyms(e) {
@@ -154,7 +148,6 @@ export default function Services2() {
       ...input,
       gyms: input.gyms.filter((el) => el !== e.target.value),
     });
-    console.log("ESTO ES DELET", e);
   }
   //!------------------SUBMIT------------------------
   function handleSubmit(e) {

@@ -60,9 +60,7 @@ export function NavBar3({ id, usuarioId, button, background, color, align }) {
       <p className={style.titleCarrito} style={{textAlign: align}}>CARRITO DE COMPRAS</p>
       <div className={style.tablePadre}>        
         <CardServices title="true" />
-        {console.log("cards")}
-        {console.log(cart)}
-        {cart.map((e) => {
+        {cart?.map((e) => {
           return (
             <CardServices
               title="false"

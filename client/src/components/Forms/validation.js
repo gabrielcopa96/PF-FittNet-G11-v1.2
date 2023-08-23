@@ -1,5 +1,4 @@
 export default function validate(input) {
-    console.log(input, 'esto es input')
     let error = {};
     /* if (!input.name){
        error.name = 'un nombre es requerido'

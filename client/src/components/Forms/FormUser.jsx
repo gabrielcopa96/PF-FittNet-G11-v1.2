@@ -23,7 +23,6 @@ export default function FormUser() {
 
   const deseaseAttribute = useSelector((state) => state.deseaseAttribute);
   const user = useSelector((state) => state.user);
-  console.log("user", user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,7 +57,6 @@ export default function FormUser() {
       /* user.info?.diseases.trainlimits ? user.info.diseases.trainlimits :  */ "",
   });
 
-  console.log(deseaseAttribute);
   const [error, setError] = useState({});
 
   function handleOnChange(e) {
@@ -92,9 +90,6 @@ export default function FormUser() {
         })
       );
     }
-    console.log("input", input);
-    console.log("error", error);
-    console.log("e", e);
   }
 
   async function handleOnChange2(e) {
@@ -122,10 +117,6 @@ export default function FormUser() {
         [e.target.name]: e.target.value,
       })
     );
-    console.log("input", input);
-    console.log("error", error);
-    console.log("e", e);
-    console.log("deseaseAttr", deseaseAttribute);
   }
 
   function handleSelect(e) {
@@ -171,9 +162,6 @@ export default function FormUser() {
         ...input,
         desease: input.desease.filter((c) => c !== e),
       });
-      console.log("e", e);
-      console.log("error", error);
-      console.log("input", input);
     }
     setInput({
       ...input,

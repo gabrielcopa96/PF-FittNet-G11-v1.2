@@ -33,7 +33,6 @@ export function setUserGeo(payload) {
 }
 
 export function getUser(userId) { //----------------------------- nano ////----
-  console.log('sale la acción con id', userId)
   return async (dispatch) => {
     try {
       //-------------------------> `/api/user/profile/${userId}`
@@ -95,11 +94,9 @@ export function postUser(payload) {
 
 export const getUserGoogleForToken = (payload) => async dispatch => {
   try {
-    // console.log(payload);
     const userGoogle = await axios.post('/api/service/google/auth/profile', {
       token: payload
     })
-    // console.log(userGoogle)
     dispatch({
       type: GET_USER_TOKEN_GOOGLE,
       payload: userGoogle.data.user
@@ -264,7 +261,6 @@ export function getMyGyms(partnerId) {
         headers: { "X-Requested-With": "XMLHttpRequest" },
         //  withCredentials: true
       });
-      console.log(parternGyms.data, "actions");
 
       dispatch({
         type: GET_MY_GYMS,
@@ -288,7 +284,6 @@ export function getMyGyms(partnerId) {
 //         method: "get", url: `/api/partner/gyms/mygyms/${partnerId}`,
 //         headers: { "X-Requested-With": "XMLHttpRequest" }, withCredentials: true
 //       });
-//       console.log(parternGyms.data, "actions");
 
 //       dispatch({
 //         type: GET_MY_GYMS,
@@ -352,7 +347,6 @@ export function updatePartnerData({
 }) {
   return async (dispatch) => {
     try {
-      console.log("ESTA SALIENDO EL FORM DE PARTNER")
       const result = await axios.put(`/api/partner/profile/edit/${id}`, {
         id: id,
         name: name,
@@ -364,7 +358,6 @@ export function updatePartnerData({
         socialNetworks: socialNetworks,
 
       });
-      console.log("esto es la action", result)
       return dispatch({
         type: POST_PARTNER,
         payload: result.data,
@@ -380,7 +373,6 @@ export function updatePartnerData({
 
 export function getPartnerDetails(id) {
   return async (dispatch) => {
-    console.log('sale la accion de los detalles del partner')
     try {
       const response = await axios.get(`/api/partner/profile/${id}`);
       dispatch({
@@ -561,7 +553,6 @@ export const updateUserInfo = (id, body) => async (dispatch) => {
         headers: { "X-Requested-With": "XMLHttpRequest" },
       }
     );
-    console.log(dataNewUser.data);
     dispatch({
       type: PUT_USER_INFO,
       payload: dataNewUser.data.updUser,
@@ -591,7 +582,6 @@ export const getCart = () => {
 }
 
 export function addToCart(itemID) {
-  //console.log('llega id?', itemID)
   return (dispatch) => {
     try {
       dispatch({
@@ -628,7 +618,6 @@ export const postCart = (body) => {
 }
 
 export function editStatus(statusCart) {
-  console.log(statusCart, 'statuscart')
   return async (dispatch) => {
     const put = await axios({
       method: "put",

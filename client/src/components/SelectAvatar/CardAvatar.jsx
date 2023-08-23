@@ -22,7 +22,6 @@ export const CardAvatar = (props) => {
       `elegiste el avatar ${name}, ahora vas a ser redirigido a los gimnasios que cumplan con las caracteristicas de este avatar`,
       "success"
     );
-    console.log("se agrego el avatar al usuario");
     navigate(`/home/${typeuser}/${nameUser}/${userId}/${idAvatar}`);
 
     let avatarSelect = await postAvatar(userId, avatar);
@@ -31,7 +30,6 @@ export const CardAvatar = (props) => {
       ? avatarSelect.data.UserUpdateAvatar.avatar
       : null;
 
-    console.log(avatarSelect, "avatar selected id");
 
     localStorage.setItem("avatar", avatarId);
 
@@ -45,7 +43,6 @@ export const CardAvatar = (props) => {
         avatar
       );
 
-      console.log(dataUdpateAvatar);
 
       return dataUdpateAvatar;
     } catch (error) {

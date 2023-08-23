@@ -64,7 +64,6 @@
 //     // userId: el id del usuario partner que crea el gym
 //     // dataNewGym: en este objeto va todo lo que obtienen del formulario (el input de arriba)
     
-//     console.log('recibe el click y crea un gym')
 
 //     let newGym = await createGym (dataForNewGym);
 
@@ -86,7 +85,6 @@
 //     // gymId: el id del gym a editar
 //     // dataNewGym: en este objeto va todo lo que obtienen del formulario (el input de arriba)
     
-//     console.log('recibe el click y edita un gym')
 
 //     let editOneGym = await editGym (dataForEditGym);
 
@@ -133,7 +131,6 @@
 
 //       return newImage;
 //     });
-//     console.log(input.image);
 //   }
 //   //!deleted image
 //   function handleDeleteI(e) {
@@ -141,7 +138,6 @@
 //       ...input,
 //       image: input.image.filter((el) => el !== e.target.value),
 //     });
-//     console.log("Trainers borrado:", e);
 //   }
 
 //   //!------------------SERVICES---------------
@@ -164,7 +160,6 @@
 //   //     ...input,
 //   //     services: input.services.filter((el) => el !== e.target.value),
 //   //   });
-//   //   console.log("ESTO ES DELET", e);
 //   // }
 
 //   //!-------------------Trainers-----------------------------
@@ -186,7 +181,6 @@
 //       ...input,
 //       trainers: input.trainers.filter((el) => el !== e.target.value),
 //     });
-//     console.log("Trainers borrado:", e);
 //   }
 //   //!------------------uEnd---------------
 //   function handleChangeUend(e) {
@@ -206,7 +200,6 @@
 //       ...input,
 //       uEnd: input.uEnd.filter((el) => el !== e.target.value),
 //     });
-//     console.log("Usuario borrado:", e);
 //   }
 //   //!------------------SUBMIT------------------------
 //   function handleSubmit(e) {

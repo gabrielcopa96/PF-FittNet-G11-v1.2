@@ -28,7 +28,6 @@ export default function BlockAccount() {
   async function addLockAccount(e) {
     e.preventDefault();
     if (userName && !error) {
-      console.log("trato de agregar la cuenta", userName);
       // le paso la solicitud al back para agrerar la cuenta
       const addAccount = await axios({
         method: "put",
@@ -38,7 +37,6 @@ export default function BlockAccount() {
         // withCredentials: true,
       })
         .then((res) => {
-          console.log(res.data);
           if (res.data === null) {
             return SweetAlrtTem(
               `No puede agregar dos veces la misma cuenta.`,
@@ -59,7 +57,6 @@ export default function BlockAccount() {
   async function removeLockAccount(e) {
     e.preventDefault();
     if (userName && !error) {
-      console.log("trato de quitar la cuenta", userName);
       // le paso la solicitud al back para remover a cuenta
       const removeAccount = await axios({
         method: "delete",
@@ -69,7 +66,6 @@ export default function BlockAccount() {
         // withCredentials: true,
       })
         .then((res) => {
-          console.log(res.data);
           if (res.data === null) {
             return SweetAlrtTem(`Cuenta inexistente.`, "info");
           }
@@ -93,7 +89,6 @@ export default function BlockAccount() {
     }
   }
 
-  // console.log(lockAccounts, 'correos bloqueados en la app')
   return (
     <div className={styles.containerMainBlockAccount}>
       <h3

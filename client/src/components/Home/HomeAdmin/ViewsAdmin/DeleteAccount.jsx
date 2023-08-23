@@ -11,7 +11,6 @@ export default function DeteleteAccount() {
   async function getUserById(e) {
     e.preventDefault();
     if (userId.length > 5) {
-      console.log(userId, "voy a buscar el user por id a la db");
       // Voy a tener que mandar headers
       const getUser = await axios({
         method: "get",
@@ -24,20 +23,16 @@ export default function DeteleteAccount() {
         })
         .catch((error) => console.log(error));
 
-      console.log(getUser, "la respuesta del back");
       if (getUser === null) return SweetAlrtTem("Id no encontrado", "error");
-      // if (getUser.user === null) return window.alert('Id no encontrado')
       setUser(getUser);
     }
   }
 
   async function deteleUserById(e) {
     e.preventDefault();
-    console.log(user._id, "voy a borrar el user por id a la db");
     window.confirm(`Confirma que quiere eliminar el usuario ${user.name}`);
 
     // Voy a tener que mandar headers
-    // console.log("está saliendo el post ", userLogin);
     if (userId.length && user._id) {
       const userDelete = await axios({
         method: "delete",
@@ -51,7 +46,6 @@ export default function DeteleteAccount() {
         })
         .catch((error) => console.log(error));
 
-      console.log(userDelete, "si lo borra responde");
       if (userDelete === undefined)
         return SweetAlrtTem("No se pudo eliminar el usuario", "error");
 

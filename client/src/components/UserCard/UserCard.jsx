@@ -3,7 +3,6 @@ import styles from './style/UserCard.module.css';
 
 
 export default function UserCards(props) {
-    console.log(props, 'las props')
     return (
         <div className={styles.boxSingleCard2}>
             <h3>{props.user}</h3>

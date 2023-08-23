@@ -23,8 +23,6 @@ export async function createOneGym(dataForNewGym) {
         })
         .catch((error) => console.log(error));
 
-    console.log(newGym, 'cuando crea el gym');
-
     if (newGym) return true;
     if (!newGym) return false;
 
@@ -48,8 +46,6 @@ export async function editOneGym(dataForEditGym) {
           return res.data;
         })
         .catch((error) => console.log(error));
-
-    console.log(editGym, 'cuando edita el gym');
 
     if (editGym) return true;
     if (!editGym) return false;
@@ -75,8 +71,6 @@ export async function createOneService(dataForNewService) {
         })
         .catch((error) => console.log(error));
 
-    console.log(newService, 'cuando crea el service');
-
     if (newService) return true;
     if (!newService) return false;
 
@@ -100,8 +94,6 @@ export async function editOneService(dataForEditService) {
           return res.data;
         })
         .catch((error) => console.log(error));
-
-    console.log(editService, 'cuando edita el service');
 
     if (editService) return true;
     if (!editService) return false;

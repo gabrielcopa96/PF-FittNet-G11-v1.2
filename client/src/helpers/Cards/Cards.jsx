@@ -42,13 +42,11 @@ export const CardAvatarAdicional = (props) => {
       `elegiste el avatar ${name}, ahora vas a ser redirigido a los gimnasios que cumplan con las caracteristicas de este avatar`,
       "success"
     );
-    console.log("se agrego el avatar al usuario");
     navigate(`/home/${typeuser}/${nameUser}/${userId}/${idAvatar}`);
 
     let avatarSelect = await postAvatar(userId, avatar);
 
     // Hay que avaluar la respuesta y retornar un swit altert
-    // console.log(avatarSelect, 'Respuesta a avatarSelect')
 
     if (avatarSelect.data.ok === false) {
       // Si el userId es invalido
@@ -59,7 +57,6 @@ export const CardAvatarAdicional = (props) => {
       ? avatarSelect.data.UserUpdateAvatar.avatar
       : null;
 
-    console.log(avatarSelect, "avatar selected id");
 
     localStorage.setItem("avatar", avatarId);
 
@@ -72,9 +69,6 @@ export const CardAvatarAdicional = (props) => {
         `/api/user/avatar/${userId}`,
         avatar
       );
-
-      console.log(dataUdpateAvatar);
-
       return dataUdpateAvatar;
     } catch (error) {
       console.log(error);
@@ -149,26 +143,14 @@ export const CardShop = (props) => {
     if (avatar) {
       dispatch(updateFavouriteGym(gymId, userId));
     } else {
-      console.log(
-        "no se pudo agregar a favorito por que aun no estas registrado"
-      );
+      // console.log(
+      //   "no se pudo agregar a favorito por que aun no estas registrado"
+      // );
     }
   };
 
   return (
     <div className={styles.cardShop}>
-      {console.log(props)}
-      {/* <div className={styles.imgBoxLogo}>
-        <img
-          src={
-            logo.length > 0
-              ? logo
-              : "https://i0.wp.com/votoenblanco.com.mx/wp-content/uploads/2021/12/IMG_7680.jpg?fit=972%2C648&ssl=1"
-          }
-          alt="imagen gym"
-          className={styles.mouseCardLogo}
-        />
-      </div> */}
       <div className={styles.imgBox}>
         <img
           src={

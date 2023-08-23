@@ -64,8 +64,6 @@ export default function AllRegister() {
     e.preventDefault();
     let userCreate;
 
-    console.log("está saliendo el post ", userCreate);
-
     //---------------------------------------------------------------------
     // La validación de los campos la hace la función validadora
     // llamada desde cada input. Luego si tengo todos los campos completos
@@ -83,12 +81,10 @@ export default function AllRegister() {
       };
 
       SweetAlrt("Estamos procesando su solicitud!");
-      console.log("está saliendo el post ", userCreate);
 
       axios
         .post("/api/service/register", userCreate)
         .then((res) => {
-          console.log(res.data, "-> respuesta del post de creación de cuenta");
           // El nombre de usuario ya existe o es incorrecto, por favor indique otro username
           //
           if (res.data.created === true) {

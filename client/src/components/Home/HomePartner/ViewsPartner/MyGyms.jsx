@@ -18,15 +18,8 @@ export function MyGyms() {
 
   useEffect(()=>{
     dispatch(getUser(userId))
-    console.log('refrezco el estado user', userId)
-
   }, [userId])
   
-
-
-//   const [view, setView] = useState("myGyms")  
-  
-  console.log("userPartner", userPartner);
 
   return (
     <div className={styles.containMainMyGyms}>

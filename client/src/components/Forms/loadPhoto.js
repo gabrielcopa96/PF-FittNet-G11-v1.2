@@ -20,7 +20,6 @@ export const uploadImage = (file) => {
 
     fileReader.addEventListener('load', (e) => {
         img.setAttribute('src', e.target.result)
-        console.log(e.target)
     })
 }
 
@@ -29,6 +28,5 @@ dragZone.addEventListener('drop', () => {
 
     fileInput.files = e.dataTransfer.files
     const file = fileInput.files[0]
-    console.log(file)
     uploadImage(file)
 })

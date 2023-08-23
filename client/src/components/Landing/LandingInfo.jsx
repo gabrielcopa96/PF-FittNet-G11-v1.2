@@ -5,7 +5,6 @@ import { getUserGoogleForToken, getMarketing } from "../../redux/actions/index";
 import { CardsPlansPartner } from "../../helpers/Cards/Cards";
 import { ButtonPrimary } from "../../helpers/Buttons/Buttons.jsx";
 import { PortadaFittnet, Hero } from "../Landing/componentsLanding/componentsLanding";
-import { ScrollContainer, Animator, ScrollPage, Fade } from "react-scroll-motion";
 
 import style from "../Landing/styles/Landing.module.css";
 
@@ -17,8 +16,6 @@ export default function LandingInfo() {
   const dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
-
-  const Scr = Fade();
 
   useEffect(() => {
     if (token) {
@@ -32,13 +29,7 @@ export default function LandingInfo() {
 
   return (
     <div className={style.container}>
-      <ScrollContainer>
-        <ScrollPage page={0}>
-          <Animator animation={Scr}>
-            <PortadaFittnet />
-          </Animator>
-        </ScrollPage>
-      </ScrollContainer>
+      <PortadaFittnet />
       <div>
         <div ref={divRef} className={style.contPlanPartner}>
           <CardsPlansPartner

@@ -44,12 +44,9 @@ export default function UpdatePasword() {
           newPassword: newPassword,
         };
         // Enviar formulario luego de esta línea
-        console.log(formUpdate, "se envía el formulario");
-
         axios
           .post("/api/service/updatepassword", formUpdate)
           .then((response) => {
-            console.log(response.data);
             // window.alert(response.data)
             SweetAlrt("Exito!", response.data, "success", true);
             return (window.location = "http://localhost:3000/login");

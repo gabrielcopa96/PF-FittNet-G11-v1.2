@@ -42,11 +42,6 @@ export default function UpdatePartner() {
 
   const nameU = params.name;
 
-  console.log("esto seria el ID", ID);
-  console.log("esto serian los gmy", gym);
-  console.log("Datos usuario", usuario);
-  console.log("Datos partner", partner);
-
   //!----------------HANDLECHANGE-----------------------
   function handleChange(e) {
     setInput(() => {
@@ -60,7 +55,6 @@ export default function UpdatePartner() {
       setError(errors);
       return newInput;
     });
-    console.table(input);
   }
 
   //!-------------------GYMS-----------------------------
@@ -98,7 +92,6 @@ export default function UpdatePartner() {
         (el) => el !== e.target.value
       ),
     });
-    console.log("ESTO ES DELET", e);
   }
 
   //!------------------SUBMIT------------------------
@@ -117,7 +110,6 @@ export default function UpdatePartner() {
           ciul: input.cuil === "" ? partner.cuil : input.cuil,
           // socialNetworks: [],
         };
-        console.log(payload, "lo que se envia");
         dispatch(updatePartnerData(payload));
         dispatch(getPartnerDetails(userId));
         SweetAlrt("Exito!", "Perfil Editado", "success");
@@ -158,7 +150,6 @@ export default function UpdatePartner() {
       [e.target.name]: e.target.value,
     });
   }
-  // console.log(input.name);
 
   //!--------------------------------------------------
 

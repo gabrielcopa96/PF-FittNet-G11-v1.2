@@ -1,25 +1,6 @@
-import { LayoutUser, LayoutLanding, LayoutOffUser } from "./Layout";
-import { Route, Routes } from "react-router-dom";
-import InitRegister from "./views/InitRegister";
-import Login from "./views/Login";
 import "./App.css";
+import AppRouter from "./routers/AppRouter";
 
-
-function App() {
-  return (
-    <>
-      <LayoutLanding />
-      
-      <LayoutUser />
-      
-      <LayoutOffUser />
-      
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<InitRegister />} />
-      </Routes>
-    </>
-  );
-}
+const App = () => <AppRouter />
 
 export default App;

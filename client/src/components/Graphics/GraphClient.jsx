@@ -38,13 +38,9 @@ export default function ClientsGraph() {
   const cart = useSelector((state) => state.allCart)
   const partnerGyms = useSelector((state) => state.user);
 
-  console.log('partnergyms', partnerGyms.gyms)
-
-
   const saless = cart.filter(st => st.status === 'Payed')
     .filter(g => g.gyms ? g : null)
   // .filter(clien => (clien.gyms._id==partnerGyms.gyms.map(a=>a._id))?clien:null)
-  console.log('clients', saless)
 
   const partnerClients = []
 
@@ -56,7 +52,6 @@ export default function ClientsGraph() {
       }
     }
   }
-  console.log('partnerClients', partnerClients)
   const clientsUnique = [...new Set(partnerClients)]
 
 
@@ -66,12 +61,10 @@ export default function ClientsGraph() {
       userId: c.user._id
     }
   })
-  console.log(newObject, 'el nuevo array de clientes únicos')
   let resul = []
 
   for (var i = 0; i < newObject.length; i++) {
     if (!resul[newObject[i].gymId]) {
-      console.log(newObject[i].gymId)
       resul[newObject[i].gymId] = [newObject[i].userId]
 
     } else {
@@ -82,7 +75,6 @@ export default function ClientsGraph() {
     }
 
   }
-  console.log(resul, 'luego de un ardo trabajo')
 
   const options = {
     responsive: true,
@@ -104,7 +96,6 @@ export default function ClientsGraph() {
 //     return index === array.indexOf(k)
 // });  
 //   const ddata = partnerClients.filter((p,i) =>p.user.name==='Fernando'?+1:0)
-//   console.log('data', ddata)
 
   const data = {
     labels,
