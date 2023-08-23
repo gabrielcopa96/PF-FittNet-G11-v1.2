@@ -42,7 +42,6 @@ export default function GymDetail() {
   } else {
     return (
       <div>
-        {console.log(gymDetail)}
         <div style={{ background: "#f74177" }}>
           {gymDetail.image.length > 0 ? (
             <div className={style.container}>
