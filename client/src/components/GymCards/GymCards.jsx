@@ -3,6 +3,7 @@ import style from "./styles/GymCards.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { CardShop } from "../../helpers/Cards/Cards.jsx";
 import { sortByDistance } from "../../redux/actions";
+import Loading from "../atoms/Loading/Loading";
 
 export default function GymsCards() {
   const dispatch = useDispatch();
@@ -64,11 +65,7 @@ export default function GymsCards() {
               />
             ))
           : gyms.length === 0 && (
-              <img
-                id="loading"
-                src="https://www.sanfranciscohm.com/static/img/loading.gif"
-                alt="loading..."
-              />
+              <Loading />
             )}
       </div>
       <div className={style.containerPagination}>

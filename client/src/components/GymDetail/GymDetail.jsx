@@ -8,6 +8,7 @@ import CartItem from "../CartItem/CartItem";
 import { clearGymDetail } from "../../redux/actions";
 import style from "./styles/style.module.css";
 import { getUser } from "../../redux/actions";
+import Loading from "../atoms/Loading/Loading";
 
 export default function GymDetail() {
   let { userId } = useParams();
@@ -32,11 +33,7 @@ export default function GymDetail() {
 
   if (!gymDetail.name) {
     return (
-      <img
-        id="loading"
-        src="https://www.sanfranciscohm.com/static/img/loading.gif"
-        alt="loading..."
-      />
+      <Loading />
     );
   } else {
     return (
