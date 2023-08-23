@@ -2,7 +2,7 @@
   height: 100vh;
   width: 100%;
   display: flex;
-  background-image: url("../../../asets/images/Langing/wallpaperbetter\ \(1\).jpg");
+  background-image: url("../../../asets/images/Langing/hero.jpg");
   background-size: cover;
   padding: 0px;
 }
@@ -433,28 +433,14 @@
 }
 
 .hero {
-  background-color: #fff;
-  width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("https://res.cloudinary.com/salta/image/upload/v1654129995/Gym-fondo-bn_f57ywe.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: grayscale(10%);
 }
 
 .texto {
-  width: 100%;
-  color: #ac5c5c2d;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 300px;
-  font-weight: 900;
-  background-image: url("https://res.cloudinary.com/salta/image/upload/v1654014806/man-1920_vcrlef.jpg");
-  background-size: cover;
-  background-position-y: center;
-  background-clip: text;
+  color: var(--color-primD1);
+  font-size: 220px;
+  font-weight: 800;
 }

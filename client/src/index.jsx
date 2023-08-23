@@ -13,9 +13,7 @@ import axios from 'axios';
 
 const queryClient = new QueryClient();
 
-
-axios.defaults.baseURL = 'https://backend-fittnet.onrender.com/';
-
+axios.defaults.baseURL = import.meta.env.VITE_API_ENDPOINT;
 
 ReactDOM.render(
   <React.StrictMode>

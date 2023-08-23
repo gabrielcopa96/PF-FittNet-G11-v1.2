@@ -45,6 +45,8 @@ El contenido de `client` fue creado usando: Create React App.
 • Sebastián Garcia
 • Esteban Villalba
 • Fernando Segovia
+• Gabriel Copa
+
 
 ## Problema u oportunidad que resuelve:
 
@@ -87,15 +89,3 @@ __Ruta de detalle__: debe contener
 - [ ] Logo del Gimnasio
 - [ ] Principales promociones
 - [ ] Direccion
-
-#### Base de datos
-
-
-
-#### Backend
-
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
-
-
-
-#### Testing

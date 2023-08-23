@@ -7,8 +7,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { SweetAlrt, SweetAlrtTem } from "../../../../asets/helpers/sweetalert";
 import styles from "../styles/style.module.css";
-
-const { regexEmail } = require("../../../../asets/helpers/regexValidators");
+import { regexEmail } from "../../../../asets/helpers/regexValidators";
 
 // Necesito un form con un input, un botón de agregar y otro de quitar
 // Necesito una lista los correos baneados
