@@ -32,7 +32,6 @@ const AppRouter = () => {
                 <Route path="/" element={<Landing />} />
                 <Route path="/legendCe" element={<LegendCe />} />
                 <Route path="/legendUf" element={<LegendUf />} />
-                <Route path="/loading" element={<Loading />}/>
             </Route>
             {/* ROUTES AUTH OR OFFUSER */}
             <Route element={<MiddlewareOffUser />}>
