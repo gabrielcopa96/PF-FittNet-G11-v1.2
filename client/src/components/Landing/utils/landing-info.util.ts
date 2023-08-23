@@ -21,3 +21,45 @@ export const InfoCards = [
         size: "2em",
     }
 ]
+
+export const InfoCardsOfficial = [
+    {
+        title: "STANDARD",
+        pricing: "9.000",
+        items: [
+            "10 % de visibilidad",
+            "Panel de control",
+            "Historial de ventas",
+            "Gestión de gimnasio",
+            "Gestión de servicios",
+            "Hasta 1 gimnasio",
+            "5 servicios por gimnasios"
+        ]
+    },
+    {
+        title: "PREMIUM",
+        pricing: "12.500",
+        items: [
+            "30 % de visibilidad",
+            "Panel de control",
+            "Historial de ventas",
+            "Gestión de gimnasio",
+            "Gestión de servicios",
+            "Hasta 5 gimnasio",
+            "10 servicios por gimnasios"
+        ]
+    },
+    {
+        title: "GOLDEN",
+        pricing: "18.000",
+        items: [
+            "50 % de visibilidad",
+            "Panel de control",
+            "Historial de ventas",
+            "Gestión de gimnasio",
+            "Gestión de servicios",
+            "Hasta 50 gimnasios",
+            "50 servicios por gimnasios"
+        ]
+    }
+]

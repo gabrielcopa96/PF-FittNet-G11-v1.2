@@ -3,6 +3,7 @@
     font-family: var(--font-family);
     font-weight: 500;
 
+    // SIZES
     &.sm {
         font-size: 1rem;
     }
@@ -17,5 +18,18 @@
 
     &.xl {
         font-size: 2rem;
+    }
+
+    // WEIGHT
+    &.light {
+        font-weight: 300;
+    }
+
+    &.normal {
+        font-weight: 500;
+    }
+
+    &.bold {
+        font-weight: 600;
     }
 }

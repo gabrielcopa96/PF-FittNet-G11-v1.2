@@ -7,4 +7,5 @@ export type TextSize = 'sm' | 'md' | 'lg' | 'xl';
 export interface TextProps extends PropsWithChildren {
     size?: TextSize;
     color?: string;
+    weight?: string;
 }

@@ -5,9 +5,11 @@ import { getUserGoogleForToken, getMarketing } from "../../redux/actions/index";
 import { CardsPlansPartner } from "../../helpers/Cards/Cards";
 import { ButtonPrimary } from "../../helpers/Buttons/Buttons";
 import styleScss from "../Landing/styles/Landing.module.scss";
-import { InfoCards } from "./utils/landing-info.util";
+import { InfoCards, InfoCardsOfficial } from "./utils/landing-info.util";
 import { CardsPlansPartnerI } from "../../helpers/Cards/interfaces/cards.interface";
 import { Hero } from "./components";
+import Cards from "../organisms/Cards/Cards";
+import { Card } from "../molecules";
 
 const LandingInfo = (): JSX.Element => {
   const navigate = useNavigate();
@@ -34,18 +36,16 @@ const LandingInfo = (): JSX.Element => {
       <Hero />
       {/* SECTION CARDS INFO PLANS */}
       <div ref={divRef as any} className={styleScss.contPlanPartner}>
-        {
+        {/* {
           InfoCards.map((cardInfo: CardsPlansPartnerI, index: number) => (
             <CardsPlansPartner key={index} content={cardInfo} />
           ))
+        } */}
+        {
+          InfoCardsOfficial.map((cardInfo: any, index: number) => (
+              <Card key={index} title={cardInfo.title} pricing={cardInfo.pricing} items={cardInfo.items} />
+          ))
         }
-      </div>
-      <div className={styleScss.containerBtnPromos}>
-        <ButtonPrimary
-          title="MAS INFO"
-          padding="0 1rem"
-          onClick={() => navigate("/legendCe")}
-        />
       </div>
     </section>
   );

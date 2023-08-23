@@ -1,12 +1,11 @@
 import stylesScss from './text.module.scss';
 import type { TextProps } from './interface/text.interface';
-import { fontSizes } from './utils/text.utils';
 
-const Text = ({ children, color, size = "md" }: TextProps): JSX.Element => {
+const Text = ({ children, color, size = "md", weight = "normal" }: TextProps): JSX.Element => {
 
   return (
     <p
-      className={`${stylesScss.text} ${size && fontSizes(size)}`}
+      className={`${stylesScss.text} ${size && stylesScss[size]} ${weight && stylesScss[weight]}`}
       style={{ color: color }}
     >
       {children}
