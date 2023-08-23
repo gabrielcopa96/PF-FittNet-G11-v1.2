@@ -64,18 +64,15 @@ export default function MapGyms(): JSX.Element {
       <div className={styles.mapGymContainer} id="map">
         {lat === null || lng === null ? <div>Loading...</div>
           : <MapContainer
-            // @ts-ignore
-            center={[lat, lng]}
-            zoom={15}
+            // center={[lat, lng]}
+            // zoom={15}
           >
             <TileLayer
-              // @ts-ignore
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-              // @ts-ignore
-              draggable={true}
+              // draggable={true}
               eventHandlers={eventHandlers}
               position={[lat, lng]}
               ref={markerRef}

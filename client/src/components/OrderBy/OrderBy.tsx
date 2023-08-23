@@ -20,7 +20,7 @@ export default function OrderBy() {
 
   const [orden, setOrden] = useState("");
   const gyms = useSelector((state: any) => state.gyms);
-  console.log(orden)
+  console.log(gyms, "mirame los gyms");
 
   function handleChangeKm(e: any) {
     e.preventDefault();
@@ -49,16 +49,15 @@ export default function OrderBy() {
   }
   const categorys = gyms.map((e: any) => e.services.map((e: any) => e.name)).flat();
   const categ = new Set(categorys);
-  // let result = [...categ];
-  // let ordenados = result.sort((a: any, b) => a.localeCompare(b));
-  // console.log("Esto es en orderBy: ", ordenados);
+  let result = [...categ];
+  let ordenados = result.sort((a: any, b) => a.localeCompare(b));
 
   return (
     <div className={styles.sel}>
       <select className={styles.select} onChange={(e) => handleChangeKm(e)}>
         <option>Distancia</option>
         <option value="menor">-1 Kilometro</option>
-        {/* <option value="mayor">+1 Kilometro</option> */}
+        <option value="mayor">+1 Kilometro</option>
       </select>
 
       <select className={styles.select} onChange={(e) => handleChangePunt(e)}>
@@ -68,11 +67,11 @@ export default function OrderBy() {
       </select>
       <select className={styles.select} onChange={(e) => handleChangeCateg(e)}>
         <option value="all">Categoria</option>
-        {/* {ordenados.map((e: any) => (
+        {ordenados.map((e: any) => (
           <option key={e} value={e}>
             {e}
           </option>
-        ))} */}
+        ))}
       </select>
       <select className={styles.select} onChange={(e) => handleChangePrecio(e)}>
         <option>Precio</option>

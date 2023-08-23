@@ -17,8 +17,7 @@ export function NavBar3({
 }: any): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // @ts-ignore TS(2532): Object is possibly 'undefined'.
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state: any) => state.cart);
   const [cartCount, setCartCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
@@ -46,19 +45,17 @@ export function NavBar3({
     });
     setTotalPrice(price);
     setTotalItems(items);
-    setBody({
+    setBody(({
       gym: id,
-      // @ts-ignore TS(2532): Object is possibly 'undefined'.
       services: [...cart],
       user: usuarioId,
-    });
+    } as any));
     // }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems])
   }, [cart, totalPrice, totalItems, id, usuarioId]);
 
   function handleSubmit() {
     if (cartCount < 1) {
-      // @ts-ignore TS(2532): Object is possibly 'undefined'.
-      return SweetAlrt("Su carrito esta vacio");
+      return SweetAlrt("Su carrito esta vacio", "error");
     }
     dispatch((postCart(body) as any));
     dispatch((getCart() as any));

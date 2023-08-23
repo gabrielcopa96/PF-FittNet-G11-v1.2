@@ -69,7 +69,7 @@ export default function UpdateGym(props: any): JSX.Element {
   function refreshState(e: any) {
     e.preventDefault();
     dispatch((getMyGyms(userId) as any));
-    setNewGym({
+    setNewGym(({
       name: "",
       price: "",
       image: [],
@@ -81,8 +81,8 @@ export default function UpdateGym(props: any): JSX.Element {
       email: "",
       gymActive: true,
       favourite: 0,
-    });
-    setEditGym({
+    } as any));
+    setEditGym(({
       name: "",
       price: "",
       image: [],
@@ -92,10 +92,9 @@ export default function UpdateGym(props: any): JSX.Element {
       logo: "",
       phone: "",
       email: "",
-      // @ts-expect-error TS(2345): Argument of type '{ name: string; price: string; i... Remove this comment to see the full error message
       gymActive: true,
       favourite: 0,
-    });
+    } as any));
     setError({});
   }
 
@@ -207,8 +206,7 @@ export default function UpdateGym(props: any): JSX.Element {
     let validate = await validatePlanGyms(userPlan, myGyms); // Lla a la función validadora de plan y gyms
 
     if (typeof validate === "string") {
-      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
-      return SweetAlrt(validate);
+      return SweetAlrt(validate, "warning", "warining");
     }
 
     if ((error as any).name || (error as any).logo || (error as any).price || (error as any).phone || (error as any).email) {
@@ -216,8 +214,7 @@ export default function UpdateGym(props: any): JSX.Element {
     } else if (!newGym.name || !newGym.logo || !newGym.phone) {
       return SweetAlrtTem("Completa los campos requeridos", "warning");
     } else {
-      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
-      SweetAlrt("Estamos procesando su solicitud!")
+      SweetAlrt("Estamos procesando su solicitud!", "success", "success")
       let dataForNewGym = {
         userId: { userId: userId },
         dataNewGym: newGym,
@@ -232,7 +229,6 @@ export default function UpdateGym(props: any): JSX.Element {
         SweetAlrt("Exito", "Gimnasio creado", "success");
         dispatch((getMyGyms(userId) as any));
       } else {
-        // @ts-expect-error TS(2554): Expected 3 arguments, but got 2.
         SweetAlrt("Ocurrió un error y el gimnasio no fue creado", "error");
       }
 
@@ -264,10 +260,9 @@ export default function UpdateGym(props: any): JSX.Element {
     } else if ((!editGym.name && !editGym.phone && !editGym.price) || !gymId) {
       return SweetAlrtTem("Completa los datos  requeridos", "warning");
     } else {
-      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
-      SweetAlrt("Estamos procesando su solicitud!")
+      SweetAlrt("Estamos procesando su solicitud!", "success")
       let dataForEditGym = {
-        //userId: { userId: "userId" },
+        // userId: { userId: "userId" },
         gymId: { gymId: gymId || idGym },
         newDataGym: editGym,
         // newDataGym: { prop1: "data2", prop2: 3, prop3: ["algo"], prop4: {} }
@@ -277,7 +272,7 @@ export default function UpdateGym(props: any): JSX.Element {
       console.log("recibe el click y edita un gym");
       let editOnGym = await editOneGym(dataForEditGym);
       SweetAlrt("Exito", "Gym editado!", "success");
-      setEditGym({
+      setEditGym(({
         name: "",
         price: "",
         image: [],
@@ -287,10 +282,9 @@ export default function UpdateGym(props: any): JSX.Element {
         logo: "",
         phone: "",
         email: "",
-        // @ts-expect-error TS(2345): Argument of type '{ name: string; price: string; i... Remove this comment to see the full error message
         gymActive: true,
         favourite: 0,
-      });
+      } as any));
       return editOnGym;
     }
   }

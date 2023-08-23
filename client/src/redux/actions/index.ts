@@ -287,10 +287,13 @@ export function getMyGyms(partnerId: any) {
   };
 }
 
-export function getAllGyms() {
+export function getAllGyms(): (dispatch: any) => Promise<void> {
   return async (dispatch: any) => {
     try {
       const response = await axios.get("/api/partner/gyms/allgyms");
+
+      console.log("response desde mi action", response);
+
       dispatch({
         type: GET_ALL_GYMS,
         payload: response.data,

@@ -68,11 +68,10 @@ export default function FormUser() {
       if (filtro.length) {
         SweetAlrtTem("deberias agregar una enfermedad diferente", "info");
       } else {
-        setInput({
+        setInput(({
           ...input,
-          // @ts-expect-error TS(2322): Type 'any' is not assignable to type 'never'.
           desease: [...input.desease, e.target.value],
-        });
+        } as any));
         setError(
           validate({
             ...input,
@@ -411,8 +410,7 @@ export default function FormUser() {
               {input.desease.length > 0 &&
                 deseaseAttribute.map((e: any) => {
                   return (
-                    // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame
-                    input.desease.includes(e.deseaseName) && (
+                    (input as any).desease.includes(e.deseaseName) && (
                       <div key={e._id} className={styles.deseaseBeneficts}>
                         <p
                           style={{

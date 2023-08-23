@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 //3er "icon": Referencia al icono de la alerta, puede ser del tipo:
 //"warning", "error" , "success" o "info"
 
-export function SweetAlrt(title: any, text: any, icon: any) {
+export function SweetAlrt(title: any, text?: any, icon?: any) {
   return Swal.fire({
     title: title,
     text: text,
@@ -17,7 +17,7 @@ export function SweetAlrt(title: any, text: any, icon: any) {
     confirmButtonColor: "#ff2767",
   });
 }
-export function SweetAlrtTem(text: any, icon: any) {
+export function SweetAlrtTem(text: any, icon?: any) {
   Swal.fire({
     text: text,
     timer: 5000,

@@ -192,8 +192,7 @@ export default function Services(): JSX.Element {
     ) {
       return SweetAlrtTem("Completa los datos minimos requeridos", "warning");
     } else {
-      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
-      SweetAlrt("Estamos procesando su solicitud!");
+      SweetAlrt("Estamos procesando su solicitud!", "success");
       let dataForEditService = {
         serviceId: { serviceId: serviceId },
         newDataService: editService,
@@ -253,7 +252,7 @@ export default function Services(): JSX.Element {
       e.preventDefault();
       let value = e.target.value;
       //
-      // let myGyms = dataPartner.gyms ? dataPartner.gyms : [];
+      let myGyms = dataPartner.gyms ? dataPartner.gyms : [];
       console.log(myGyms);
 
       filterServices = myGyms.length && myGyms.filter((e: any) => e._id === value);

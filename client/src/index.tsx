@@ -13,7 +13,8 @@ import axios from 'axios';
 
 const queryClient: QueryClient = new QueryClient();
 
-axios.defaults.baseURL = import.meta.env.VITE_API_ENDPOINT as string;
+// axios.defaults.baseURL = import.meta.env.VITE_API_ENDPOINT as string;
+axios.defaults.baseURL = "http://localhost:3004/"
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

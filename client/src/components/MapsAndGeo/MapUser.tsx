@@ -70,16 +70,16 @@ export default function MapUser(): JSX.Element {
         {lat === null || lng === null ? (
           <div>Loading...</div>
         ) : (
-          // @ts-ignore
-          <MapContainer center={[lat, lng]} zoom={15}>
+          <MapContainer
+            // center={[lat, lng]}
+            // zoom={15}
+          >
             <TileLayer
-              // @ts-ignore
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-              // @ts-ignore
-              draggable={true}
+              // draggable={true}
               eventHandlers={eventHandlers}
               position={[lat, lng]}
               ref={markerRef}
@@ -94,11 +94,11 @@ export default function MapUser(): JSX.Element {
       <div>
         <ButtonSimple onClick={handleOnClick} padding=".1rem 1rem" title="Agregar Ubicacion" />
       </div>
-      {/* <div>
+      <div>
         <button className={styles.btnMapSend} onClick={handleOnClick}>
           Agregar Ubicación
         </button>
-      </div> */}
+      </div>
       <div className={styles.ubicationDiv}>
         La ubicacion actual es: Latitud:{" "}
         <span style={{ color: "var(--color-primD1)" }}>{lat} </span>, Longitud:{" "}

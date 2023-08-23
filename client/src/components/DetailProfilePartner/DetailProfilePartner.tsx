@@ -72,8 +72,11 @@ export default function DetailProfilePartner(): JSX.Element {
         </Link>
         <Link
           style={{ paddingRight: "20px" }}
-          //   href={`/profile/edit/${type}/${name}/${userId}/gym`}>Editar mis gimnasios </Link>
-          // <Link style={{ paddingRight: "20px" }}
+          to={`/profile/edit/${type}/${name}/${userId}/gym`}
+        >
+          Editar mis gimnasios
+        </Link>
+        <Link style={{ paddingRight: "20px" }}
           to={`/updatepassword/${userId}`}
         >
           Cambiar mi contraseña

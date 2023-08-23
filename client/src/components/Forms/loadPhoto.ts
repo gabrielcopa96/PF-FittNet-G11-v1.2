@@ -5,7 +5,7 @@ const img= (document as any).getElementById("img-result")
 (dragZone as any).addEventListener('click', () => (fileInput as any).click)
 (dragZone as any).addEventListener('dragover', (e: any) => {
     e.preventDefault()
-    //dragZone.classList.add("classname styles")
+    (dragZone as any).classList.add("classname styles")
     
 })
 (dragZone as any).addEventListener('dragleave', (e: any) => {

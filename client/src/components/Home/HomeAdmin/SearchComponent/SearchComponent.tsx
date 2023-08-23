@@ -45,7 +45,7 @@ export default function SearchComponent (): JSX.Element {
             // busco por userName (email)
             filterByName = filterByName.concat(filterByUserName);
             // uno los resultados de las búsquedas
-            // filterByName = [...new Set (filterByName)];
+            filterByName = [...new Set (filterByName)];
             // hago que el array tenga solo elementos únicos y no repetidos 
 
             if (filterByName.length > 10) {

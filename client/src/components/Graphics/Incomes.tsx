@@ -14,6 +14,7 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
+import { Bar } from "react-chartjs-2";
 
   ChartJS.register(
     CategoryScale,
@@ -85,7 +86,7 @@ export default function IncomesGraph(){
           {/* {/* <h2>Grafica por Ingresos</h2> */}
           <div className={styles.doubleContainer}>
             <div className={styles.doubleContainer}>
-              {/* <Bar  data={data} options={options}/> */}
+              <Bar  data={data}/>
             </div>
           </div>
           <br />

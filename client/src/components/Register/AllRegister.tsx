@@ -82,9 +82,7 @@ export default function AllRegister() {
         type: type,
       };
 
-      // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
-      SweetAlrt("Estamos procesando su solicitud!");
-      console.log("está saliendo el post ", userCreate);
+      SweetAlrt("Estamos procesando su solicitud!", "success");
 
       axios
         .post("/api/service/register", userCreate)
@@ -109,15 +107,13 @@ export default function AllRegister() {
             setEmail("");
           }
           if (typeof res.data === "string") {
-            // @ts-expect-error TS(2554): Expected 3 arguments, but got 1.
-            SweetAlrt(res.data);
+            SweetAlrt(res.data, "warning");
           }
         })
         .catch((error) => console.log(error));
     }
     if (!name || !email || !password || !type) {
       SweetAlrtTem("Por favor complete todos los campos", "warning");
-      // window.alert('Por favor complete todos los campos')
     }
   }
 

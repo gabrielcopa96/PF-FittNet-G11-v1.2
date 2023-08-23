@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getPartnerDetails } from "../../redux/actions/index";
+import { getPartnerDetails, getUser } from "../../redux/actions/index";
 import { setUserGeo } from '../../services/servicesQuery';
 import styles from "./styles/LoginInit.module.css";
 import jwt_decode from "jwt-decode";
@@ -28,7 +28,7 @@ export default function LoginInit(): JSX.Element {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
-        // dispatch(setUserGeo(geoPayload));
+        dispatch((setUserGeo(geoPayload) as any));
         setGeo({
           latitude: geoPayload.latitude,
           longitude: geoPayload.longitude,
@@ -69,7 +69,7 @@ export default function LoginInit(): JSX.Element {
         data: userObject,
       });
       const finalizacionData = await googleData.data;
-      // dispatch(getUser(finalizacionData.usuario._id));
+      dispatch((getUser(finalizacionData.usuario._id) as any));
       localStorage.setItem("token", response.credential);
       (document as any).getElementById("signInDiv").hidden = true;
       localStorage.setItem("userId", finalizacionData.user.userId);
@@ -146,7 +146,7 @@ export default function LoginInit(): JSX.Element {
         if (active === true) {
           // Si la cuenta está activa
           if (type === "partner") {
-            // dispatch(getPartnerDetails(userId));
+            dispatch((getPartnerDetails(userId)) as any);
           }
           if (!login.avatar) {
             localStorage.setItem("userId", userId);

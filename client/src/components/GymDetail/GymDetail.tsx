@@ -27,11 +27,7 @@ export default function GymDetail() {
     return () => dispatch(clearGymDetail());
   }, [gymDetail]);
 
-  
-
   let usuarioId = localStorage.getItem("userId");
-  // id de usuario que está en la app
-  // console.log(gymDetail, 'id de usuario que está en la app')
 
   if (!gymDetail.name) {
     return (

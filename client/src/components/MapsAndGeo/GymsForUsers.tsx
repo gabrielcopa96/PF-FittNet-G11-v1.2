@@ -75,16 +75,13 @@ export default function GymsForUsersMap(): JSX.Element {
         {centerCoords.lat === null || centerCoords.lng === null ? (
           <div>Loading...</div>
         ) : (
-          // @ts-ignore
-          <MapContainer center={[centerCoords.lat, centerCoords.lng]} zoom={15}>
+          <MapContainer>
             <TileLayer
-              //@ts-ignore
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-              //@ts-ignore
-              draggable={true}
+              // draggable={true}
               eventHandlers={eventHandlers}
               position={[lat, lng]}
               ref={markerRef}
@@ -96,8 +93,7 @@ export default function GymsForUsersMap(): JSX.Element {
             {(gymsToShow as any).map((gym: any) => {
               return (
                 <Marker
-                  //@ts-ignore  
-                  draggable={false}
+                  // draggable={false}
                   position={[gym.lat, gym.lng]}
                 >
                   <Popup>

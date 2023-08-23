@@ -135,7 +135,6 @@ const CheckoutForm = () => {
         });
       console.log((compra as any).data)
       if ((compra as any).data === 'todomal') {
-        // @ts-ignore
         SweetAlrt(`Su pago fue rechazado ${name}`, "Intente con otra tarjeta")
         return navigate(`/home/${type}/${name}/${usuarioId}/${avatar}`);
       }
