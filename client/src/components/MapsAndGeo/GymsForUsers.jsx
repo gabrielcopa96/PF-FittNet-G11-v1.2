@@ -68,12 +68,12 @@ export default function GymsForUsersMap() {
         <p>
           Aqui usted encontrara marcados los gimnasios que se encuentran mas
           cercanos a su ubicación, <br />
-          de clink en el marcador para ver el nombre y distancia aproximada
+          de click en el marcador para ver el nombre y distancia aproximada
         </p>
       </div>
       <div className={styles.mapContainer} id="map">
         {centerCoords.lat === null || centerCoords.lng === null ? (
-          <div>Loading...</div>
+          <div>Cargando... o debe permitir el acceso a su ubicacion para mostrar el mapa</div>
         ) : (
           <MapContainer center={[centerCoords.lat, centerCoords.lng]} zoom={15}>
             <TileLayer
