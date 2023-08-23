@@ -29,17 +29,18 @@ export function NavBar3({
 
   useEffect(() => {
     let count = 0;
-    cart.forEach((item: any) => {
+    cart?.forEach((item: any) => {
       count += item.qty;
     });
     setCartCount(count);
-  }, [cart, cartCount, id, usuarioId]);
-  //   }, [cart, cartCount])
+  }, [cart])
+  // }, [cart, cartCount, id, usuarioId]);
+  // }, [cart, cartCount])
 
   useEffect(() => {
     let items = 0;
     let price = 0;
-    cart.forEach((item: any) => {
+    cart?.forEach((item: any) => {
       items = item.price.$numberDecimal * item.qty;
       price += item.qty * item.price.$numberDecimal;
     });
@@ -50,8 +51,9 @@ export function NavBar3({
       services: [...cart],
       user: usuarioId,
     } as any));
-    // }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems])
-  }, [cart, totalPrice, totalItems, id, usuarioId]);
+  }, [cart])
+  // }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems])
+  // }, [cart, totalPrice, totalItems, id, usuarioId]);
 
   function handleSubmit() {
     if (cartCount < 1) {
@@ -63,13 +65,13 @@ export function NavBar3({
   }
 
   return (
-    <div className={style.contCarr} style={{backgroundColor: background, color: color}}>
-      <p className={style.titleCarrito} style={{textAlign: align}}>CARRITO DE COMPRAS</p>
-      <div className={style.tablePadre}>        
+    <div className={style.contCarr} style={{ backgroundColor: background, color: color }}>
+      <p className={style.titleCarrito} style={{ textAlign: align }}>CARRITO DE COMPRAS</p>
+      <div className={style.tablePadre}>
         <CardServices title="true" />
         {console.log("cards")}
         {console.log(cart)}
-        {cart.map((e: any) => {
+        {cart?.map((e: any) => {
           return (
             <CardServices
               title="false"

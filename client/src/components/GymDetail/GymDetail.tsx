@@ -25,7 +25,7 @@ export default function GymDetail() {
   // Que se ejecute cuando se desmonte gymDetail y limpie su estado en el reducer
   useEffect((): any => {
     return () => dispatch(clearGymDetail());
-  }, [gymDetail]);
+  }, []);
 
   let usuarioId = localStorage.getItem("userId");
 

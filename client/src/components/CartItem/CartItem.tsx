@@ -32,11 +32,11 @@ export default function CartItem({
               <button onClick={() => handleClick(id)}>+</button>
               <button onClick={() => handleDelete(id)}>-</button>
             </div> 
-            <a href="">Read More</a>
+            {/* <a href="">Read More</a> */}
           </div>
         </div>
       </div>
-      <h3>Clase: {name}</h3>
+      {/* <h3>Clase: {name}</h3>
       <h3>Precio: $ {price}</h3>
       <h3>Descripcion: {description}</h3>
       <h3>Duracion aproximada: {duration} minutos</h3>
@@ -45,7 +45,7 @@ export default function CartItem({
       </div>
       <div>
         <button onClick={() => handleDelete(id)}>-</button>
-      </div>
+      </div> */}
     </div>
   );
 }
