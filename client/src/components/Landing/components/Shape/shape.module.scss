@@ -1,0 +1,110 @@
+.screenBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+
+    & .shapeButtom1 {
+        transform: rotate(12deg);
+        position: absolute;
+        height: 70%;
+        width: 20%;
+        background: var(--light-color);
+        top: 46.5%;
+        right: 13%;
+        border-radius: 0px;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+        animation: slideInButtom 1s forwards 0.1s;
+    }
+
+    & .shapeTop1 {
+        transform: rotate(-12deg);
+        position: absolute;
+        height: 70%;
+        width: 20%;
+        background: var(--light-color);
+        top: -16.5%;
+        right: 13%;
+        border-radius: 0px;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+        animation: slideInTop 1s forwards 0.1s;
+    }
+
+    & .shapeButtom2 {
+        transform: rotate(12deg);
+        position: absolute;
+        height: 70%;
+        width: 20%;
+        background: var(--light-color);
+        top: 46.5%;
+        right: 55%;
+        border-radius: 0px;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+        animation: slideInButtom 1.5s forwards 0.1s;
+    }
+
+    & .shapeTop2 {
+        transform: rotate(-12deg);
+        position: absolute;
+        height: 70%;
+        width: 20%;
+        background: var(--light-color);
+        top: -16.5%;
+        right: 55%;
+        border-radius: 0px;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+        animation: slideInTop 1.5s forwards 0.1s;
+    }
+
+    & .shapeButtom4 {
+        transform: rotate(12deg);
+        position: absolute;
+        height: 70%;
+        width: 20%;
+        background: var(--light-color);
+        top: 46.5%;
+        right: 97%;
+        border-radius: 0px;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+        animation: slideInButtom 1.5s forwards 0.1s;
+    }
+
+    & .shapeTop4 {
+        transform: rotate(-12deg);
+        position: absolute;
+        height: 70%;
+        width: 20%;
+        background: var(--light-color);
+        top: -16.5%;
+        right: 97%;
+        border-radius: 0px;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+        animation: slideInTop 1.5s forwards 0.1s;
+    }
+}
+
+@keyframes slideInTop {
+    0% {
+        transform: translateX(-500px);
+    }
+
+    100% {
+        transform: translateX(0px);
+        transform: rotate(-12deg);
+    }
+}
+
+@keyframes slideInButtom {
+    0% {
+        transform: translateX(-500px);
+    }
+
+    100% {
+        transform: translateX(0px);
+        transform: rotate(12deg);
+    }
+}

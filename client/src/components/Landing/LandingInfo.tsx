@@ -3,12 +3,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUserGoogleForToken, getMarketing } from "../../redux/actions/index";
 import { CardsPlansPartner } from "../../helpers/Cards/Cards";
-import { ButtonPrimary } from "../../helpers/Buttons/Buttons";
 import styleScss from "../Landing/styles/Landing.module.scss";
 import { InfoCards, InfoCardsOfficial } from "./utils/landing-info.util";
-import { CardsPlansPartnerI } from "../../helpers/Cards/interfaces/cards.interface";
 import { Hero } from "./components";
-import Cards from "../organisms/Cards/Cards";
 import { Card } from "../molecules";
 
 const LandingInfo = (): JSX.Element => {
@@ -31,7 +28,7 @@ const LandingInfo = (): JSX.Element => {
   }, []);
 
   return (
-    <section className={styleScss.container}>
+    <>
       {/* PORTADA FITTNET OR HERO */}
       <Hero />
       {/* SECTION CARDS INFO PLANS */}
@@ -47,7 +44,7 @@ const LandingInfo = (): JSX.Element => {
           ))
         }
       </div>
-    </section>
+    </>
   );
 }
 

@@ -13,7 +13,7 @@ const Card = ({ title, pricing, items }: CardProps): JSX.Element => {
         <article className={`${stylesScss.card} ${stylesScss.plan}`}>
             <div className={stylesScss.inner}>
                 <span className={stylesScss.pricing}>
-                    <Text color="black" size="md" weight="bold">$ {pricing} / m</Text>
+                    <Text color="black" size="md" weight="bold">$ {pricing}</Text><small>/ m</small>
                 </span>
                 <div className={stylesScss.title}><Title size="sm">{title}</Title></div>
                 <ul className={stylesScss.features}>
