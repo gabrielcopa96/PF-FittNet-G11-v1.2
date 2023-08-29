@@ -1,6 +1,6 @@
 import style from "./styles/LegendCe.module.css";
-import Slider from "../Slider/Slider";
-import CardPlans from "../CardPlans/CardPlans";
+import Slider from "../../Slider/Slider";
+import CardPlans from "../../CardPlans/CardPlans";
 
 export default function LegendCe(): JSX.Element {
   return (

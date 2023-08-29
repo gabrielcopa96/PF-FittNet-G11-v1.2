@@ -2,7 +2,7 @@ import img from "../../assets/images/benefits(uf).jpg";
 import img2 from "../../assets/images/benefits(uf)2.jpg";
 import img3 from "../../assets/images/benefits(uf)3.jpeg";
 import style from "../LegendUf/style/LegendUf.module.css";
-import { ButtonSecondaryDeslice } from "../../helpers/Buttons/Buttons";
+import { ButtonSecondaryDeslice } from "../../../helpers/Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
 
 export default function LegendUf(): JSX.Element {

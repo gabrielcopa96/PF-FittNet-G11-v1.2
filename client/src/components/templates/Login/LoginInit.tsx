@@ -2,21 +2,22 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getPartnerDetails, getUser } from "../../redux/actions/index";
-import { setUserGeo } from '../../services/servicesQuery';
+import { getPartnerDetails, getUser } from "../../../redux/actions/index";
+import { setUserGeo } from '../../../services/servicesQuery';
 import styles from "./styles/LoginInit.module.css";
 import jwt_decode from "jwt-decode";
 import { useQuery } from "@tanstack/react-query";
 import {
   BackgroundTwo,
   BackgroundOne,
-} from "../../helpers/Backround/Background";
-import { InputPrymary, InputSecond } from "../../helpers/Inputs/Inputs";
+} from "../../../helpers/Backround/Background";
+import { useGoogleOneTapLogin } from '@react-oauth/google';
+import { InputPrymary, InputSecond } from "../../../helpers/Inputs/Inputs";
 
 export default function LoginInit(): JSX.Element {
   const dispatch = useDispatch();
 
-  const [ geo, setGeo ] = useState({
+  const [geo, setGeo] = useState({
     latitude: "",
     longitude: "",
   });
@@ -44,7 +45,7 @@ export default function LoginInit(): JSX.Element {
   }, []);
 
   // @ts-ignore
-  const { data: geoLocalizacion, isLoading: loadingGeo, isError: errorGeo } = useQuery( "geolocalizacion", setUserGeo(geo) )
+  const { data: geoLocalizacion, isLoading: loadingGeo, isError: errorGeo } = useQuery("geolocalizacion", setUserGeo(geo))
 
 
   console.log(geoLocalizacion);
@@ -63,7 +64,6 @@ export default function LoginInit(): JSX.Element {
   const handleCallbackGoogle = async (response: any) => {
     const userObject = jwt_decode(response.credential);
     if (!token || !userId) {
-      console.log("ENTRO A GENERAR TOKEN", response.credential);
       const googleData = await axios.post(`/api/service/google/auth`, {
         tokenId: response.credential,
         data: userObject,
@@ -71,7 +71,6 @@ export default function LoginInit(): JSX.Element {
       const finalizacionData = await googleData.data;
       dispatch((getUser(finalizacionData.usuario._id) as any));
       localStorage.setItem("token", response.credential);
-      (document as any).getElementById("signInDiv").hidden = true;
       localStorage.setItem("userId", finalizacionData.user.userId);
       localStorage.setItem("type", finalizacionData.user.type);
       localStorage.setItem("avatar", finalizacionData.user.avatar);
@@ -84,10 +83,7 @@ export default function LoginInit(): JSX.Element {
         dispatch((getPartnerDetails(userId) as any));
       }
 
-
-      console.log(avatar);
       if (!avatar) {
-        console.log("entro aqui");
         navigate(
           `/home/${finalizacionData.usuario.type}/${finalizacionData.usuario.name}/${finalizacionData.usuario._id}`
         );
@@ -100,23 +96,6 @@ export default function LoginInit(): JSX.Element {
       navigate("/");
     }
   };
-
-  useEffect(() => {
-    (window as any).google?.accounts.id.initialize({
-      client_id:
-        "157510772086-98ehfc8l140rpqoer006k78qugr3e62l.apps.googleusercontent.com",
-      callback: handleCallbackGoogle,
-    });
-
-    (window as any).google?.accounts.id.renderButton(
-      document.getElementById("signInDiv"),
-      {
-        theme: "outline",
-        size: "large",
-        shape: "circle",
-      }
-    );
-  });
 
   async function onSubmit(e: any) {
     e.preventDefault();
@@ -191,6 +170,13 @@ export default function LoginInit(): JSX.Element {
     }
   }
 
+  useGoogleOneTapLogin({
+    onSuccess: async (credentialResponse: any) => await handleCallbackGoogle(credentialResponse),
+    onError: () => {
+      console.log('Login Failed');
+    },
+  });
+
   return (
     <div className={styles.container}>
       <div className={styles.screen}>
@@ -234,7 +220,18 @@ export default function LoginInit(): JSX.Element {
               onClick={(e: any) => onSubmit(e)}
             />
 
-            <div id="signInDiv" style={{ paddingTop: "1.5rem" }}></div>
+
+
+            {/* <GoogleLogin
+              onSuccess={async (credentialResponse: any) => await handleCallbackGoogle(credentialResponse)}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+              theme="outline"
+              shape="pill"
+              useOneTap
+            /> */}
+            {/* <div id="signInDiv" style={{ paddingTop: "1.5rem" }}></div> */}
             <div className={styles.contraseña}>
               <a href="/resetpassword" style={{ color: "#111111" }}>
                 Olvidé mi contraseña

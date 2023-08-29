@@ -1,4 +1,4 @@
-import LoginInit from "../components/Login/LoginInit"
+import LoginInit from "../components/templates/Login/LoginInit"
 
 const Login = (): JSX.Element => <LoginInit />
 

@@ -8,6 +8,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import store from './redux/store/index';
 import axios from 'axios';
 
@@ -21,10 +22,12 @@ root.render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-        <BrowserRouter>
-          <App />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </BrowserRouter>
+        <GoogleOAuthProvider clientId="157510772086-98ehfc8l140rpqoer006k78qugr3e62l.apps.googleusercontent.com">
+          <BrowserRouter>
+            <App />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </BrowserRouter>
+        </GoogleOAuthProvider>
       </Provider>
     </QueryClientProvider>
   </StrictMode>

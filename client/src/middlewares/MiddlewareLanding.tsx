@@ -10,8 +10,8 @@ export const MiddlewareLanding = (): JSX.Element => {
     >
       <Await
         resolve={async () => {
-          await import('../components/LegendCe/LegendCe');
-          await import('../components/LegendUf/LegendUf');
+          await import('../components/templates/LegendCe/LegendCe');
+          await import('../components/templates/LegendUf/LegendUf');
           await import('../components/NavBar/NavBar');
           await import('../pages/Landing');
         }}

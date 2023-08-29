@@ -12,8 +12,8 @@ import InitRegister from "../pages/InitRegister";
 import TestingAtoms from "./TestingAtoms";
 /* ------------------ COMPONENTS LANDING ------------------ */
 const Landing = lazy(() => import("../pages/Landing"));
-const LegendCe = lazy(() => import("../components/LegendCe/LegendCe"));
-const LegendUf = lazy(() => import("../components/LegendUf/LegendUf"));
+const LegendCe = lazy(() => import("../components/templates/LegendCe/LegendCe"));
+const LegendUf = lazy(() => import("../components/templates/LegendUf/LegendUf"));
 /* ------------------ COMPONENTS USER LOGGED ------------------ */
 const Home = lazy(() => import("../pages/Home"));
 const GymDetail = lazy(() => import("../components/GymDetail/GymDetail"));
