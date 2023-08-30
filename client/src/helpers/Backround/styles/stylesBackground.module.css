@@ -1,8 +1,9 @@
 /* BLOQUE DE FONDO DE LOGIN/REGISTER (CUADRADOS MOVIENDOCE) */
 .area {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
+  overflow: hidden;
 }
 
 .circles {
@@ -11,15 +12,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .circles li {
   position: absolute;
   display: block;
   list-style: none;
-  width: 20px;
-  height: 20px;
   background: rgba(255, 255, 255, 0.2);
   animation: animate 25s linear infinite;
   bottom: -150px;
@@ -167,11 +165,11 @@
   transform: rotate(45deg);
   position: absolute;
   height: 331px;
-  width: 200px;
+  width: 190px;
   background: var(--color-primD2);
-  top: 422px;
-  right: 19px;
-  border-radius: 60px;
+  top: 350px;
+  right: -20px;
+  border-radius: 30px;
 }
 
 @keyframes slideUp {

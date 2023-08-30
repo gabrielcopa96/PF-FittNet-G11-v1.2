@@ -11,7 +11,8 @@ const Button = (props: ButtonProps): JSX.Element => {
     effect = "none", 
     shape = "rounded", 
     type = "primary",
-    weight = "bold"
+    weight = "bold",
+    width = "w-md"
   } = props;
 
   return (
@@ -25,6 +26,7 @@ const Button = (props: ButtonProps): JSX.Element => {
         ${shape && stylesScss[shape]}
         ${type && stylesScss[type]}
         ${weight && stylesScss[weight]}
+        ${width && stylesScss[width]}
       `}
     >
       {children}

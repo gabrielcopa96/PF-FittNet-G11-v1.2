@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserGeo } from "../../redux/actions/index";
 import { Link, useNavigate } from "react-router-dom";
@@ -64,8 +64,6 @@ export default function AllRegister() {
     e.preventDefault();
     let userCreate;
 
-    console.log("está saliendo el post ", userCreate);
-
     //---------------------------------------------------------------------
     // La validación de los campos la hace la función validadora
     // llamada desde cada input. Luego si tengo todos los campos completos
@@ -87,9 +85,6 @@ export default function AllRegister() {
       axios
         .post("/api/service/register", userCreate)
         .then((res) => {
-          console.log(res.data, "-> respuesta del post de creación de cuenta");
-          // El nombre de usuario ya existe o es incorrecto, por favor indique otro username
-          //
           if (res.data.created === true) {
             setName("");
             setPassword("");
@@ -99,7 +94,6 @@ export default function AllRegister() {
             navigate('/login');
           }
           if (res.data.created === false) {
-            // window.alert(res.data.message);
             SweetAlrt("Atencion!", res.data.message, "warning");
             setName("");
             setPassword("");
@@ -160,7 +154,6 @@ export default function AllRegister() {
     <div className={styles.container}>
       <div className={styles.screen}>
         <div className={styles.screenContent}>
-          <div className={styles.sign}>
             {/* button navBar */}
             <div className={styles.contentHeading}>
               <Link to="/">
@@ -176,7 +169,6 @@ export default function AllRegister() {
             </div>
 
             {/* Form register */}
-          </div>
           <form className={styles.login}>
             <div className={styles.loginRield}>
               <input

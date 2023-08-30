@@ -29,6 +29,23 @@
         font-size: 1.7rem;
     }
 
+    // WIDTH
+    &.w-sm {
+        width: min-content;
+    }
+
+    &.w-md {
+        width: max-content;
+    }
+
+    &.w-lg {
+        width: 170px;
+    }
+
+    &.w-xl {
+        width: 200px;
+    }
+
     // TYPES
     &.primary {
         &.solid {
@@ -325,6 +342,67 @@
         }
     }
 
+    &.terciary {
+        &.solid {
+            background-color: var(--light-color);
+            color: var(--color-primD1);
+
+            &.none:hover {
+                outline: 1px solid var(--light-color);
+                background-color: var(--color-primD1);
+                color: var(--light-color);
+                transition: all .2s ease-in-out;
+            }
+
+            &.shadow:hover {
+                transition: box-shadow .2s ease-in-out;
+                box-shadow: 0 0 10px var(--light-color);
+            }
+
+            &.slide {
+                display: inline-block;
+                box-shadow: inset 0 0 0 0 var(--color-primD1);
+                color: var(--light-color);
+                -webkit-transition: ease-out 0.9s;
+                -moz-transition: ease-out 0.9s;
+                transition: ease-out 0.9s;
+
+                &:hover {
+                    box-shadow: inset 400px 0 0 0 var(--color-primD1);
+                }
+            }
+        }
+
+        &.ghost {
+            background-color: transparent;
+            color: var(--color-primD1);
+            border: none;
+
+            &.none:hover {
+                color: var(--light-color);
+                background-color: var(--color-primD1);
+            }
+
+            &.shadow:hover {
+                transition: box-shadow .2s ease-in-out;
+                box-shadow: 0 0 10px var(--light-color);
+            }
+
+            &.slide {
+                display: inline-block;
+                box-shadow: inset 0 0 0 0 var(--color-primD1);
+                -webkit-transition: ease 0.7s;
+                -moz-transition: ease 0.7s;
+                transition: ease 0.7s;
+
+                &:hover {
+                    color: var(--light-color);
+                    box-shadow: inset 400px 0 0 0 var(--color-primD1);
+                }
+            }
+        }
+    }
+
     // SHAPES
     &.rounded {
         border-radius: 7px;
@@ -337,17 +415,17 @@
     // WEIGHTS
     &.light {
         font-weight: 300;
-        box-shadow: 0 0 0 1px rgb(250, 2, 2, 0.404);
+        // box-shadow: 0 0 0 1px rgb(250, 2, 2, 0.404);
     }
 
     &.regular {
         font-weight: 400;
-        box-shadow: 0 0 0 3px rgb(250, 2, 2, 0.404);
+        // box-shadow: 0 0 0 3px rgb(250, 2, 2, 0.404);
     }
 
     &.bold {
         font-weight: 600;
-        box-shadow: 0 0 0 5px rgba(250, 2, 2, 0.404);
+        // box-shadow: 0 0 0 5px rgba(250, 2, 2, 0.404);
     }
 
 }
