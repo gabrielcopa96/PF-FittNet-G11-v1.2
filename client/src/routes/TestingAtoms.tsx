@@ -1,5 +1,6 @@
 import { Button, Text, Title } from "../components/atoms";
 import Link from "../components/atoms/Link/Link";
+import Select from "../components/atoms/Select/Select";
 import { Card, UserLogged } from "../components/molecules";
 
 const TestingAtoms = (): JSX.Element => {
@@ -26,6 +27,9 @@ const TestingAtoms = (): JSX.Element => {
         <Link>Hola soy un link</Link>
         <UserLogged />
         <Card title={objCardInfo.title} pricing="9000" items={objCardInfo.items}/>
+        <Select>
+          <Select.Options />
+        </Select>
     </div>
   )
 }

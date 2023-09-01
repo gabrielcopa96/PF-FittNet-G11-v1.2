@@ -7,34 +7,19 @@ import InputPassword from "../../../../atoms/InputPassword/InputPassword";
 
 const FormAuth = (): JSX.Element => {
 
-    const { username, password, error, handleLogin } = useHandleLogin();
+    const { username, password, handleLogin } = useHandleLogin();
 
     return (
         <div className={stylesScss.form}>
-
-            {/* <InputPrymary
-                type="email"
-                value={username.get}
-                name="email"
-                placeholder="Email"
-                required
-                onChange={(e: any) => username.set(e.target.value)}
-            /> */}
             <InputEmail
                 value={username.get}
+                placeholder="Escriba su email..."
                 onChange={(e: any) => username.set(e.target.value)}
             />
 
-            {/* <InputPrymary
-                type="password"
-                value={password.get}
-                name="password"
-                placeholder="Contraseña"
-                required
-                onChange={(e: any) => password.set(e.target.value)}
-            /> */}
             <InputPassword
                 value={password.get}
+                placeholder="Escriba su clave..."
                 onChange={(e: any) => password.set(e.target.value)}
             />
 
