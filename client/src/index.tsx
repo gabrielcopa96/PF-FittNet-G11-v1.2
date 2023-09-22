@@ -10,6 +10,10 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import store from './redux/store/index';
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";     
+//core
+import "primereact/resources/primereact.min.css";   
 import axios from 'axios';
 
 const queryClient: QueryClient = new QueryClient();

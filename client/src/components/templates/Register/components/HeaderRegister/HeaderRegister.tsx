@@ -12,7 +12,7 @@ const HeaderRegister = () => {
             <Button
                 size="sm"
                 type="terciary"
-                onClick={() => navigate("/register", { replace: true })}
+                onClick={() => navigate("/login", { replace: true })}
             >
                 Iniciar sesion
             </Button>

@@ -32,7 +32,6 @@ export default function AllRegister() {
     lng: 0,
   });
   const [error, setError] = useState("");
-  // const [disableSubmit, setDisableSubmit] = useState(true)
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(

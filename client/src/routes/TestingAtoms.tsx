@@ -28,7 +28,7 @@ const TestingAtoms = (): JSX.Element => {
         <UserLogged />
         <Card title={objCardInfo.title} pricing="9000" items={objCardInfo.items}/>
         <Select>
-          <Select.Options />
+          <Select.Options values={["1 - prueba", "2 - prueba 2"]}/>
         </Select>
     </div>
   )

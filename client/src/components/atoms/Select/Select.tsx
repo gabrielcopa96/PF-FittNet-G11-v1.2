@@ -1,17 +1,21 @@
-import { Children, PropsWithChildren } from "react";
+import { Children, PropsWithChildren, useState } from "react";
 import Text from "../Text/Text";
 import stylesScss from "./select.module.scss";
 
 
 const Select = ({ children }: PropsWithChildren): JSX.Element => {
+
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
     return (
         <section>
-            <div className={stylesScss.select}>
+            <div className={stylesScss.select} onClick={() => setIsOpen(!isOpen)}>
                 <Text size="sm">Seleccione un valor ...</Text>
             </div>
             {
-                Children.map(children, (child: any) => {
-                    if(child.type == Options) {
+                isOpen && Children.map(children, (child: any) => {
+                    if (child.type == Options) {
+                        console.log("muestro mis datos")
                         return child;
                     } else {
                         console.warn("Tienes que usar la sintaxis <Select.Options> para poder visualizar las opciones")
@@ -23,9 +27,23 @@ const Select = ({ children }: PropsWithChildren): JSX.Element => {
     )
 }
 
-const Options = (): JSX.Element => {
+interface OptionsProps {
+    values: string[];
+}
+
+const Options = ({ values }: OptionsProps): JSX.Element => {
     return (
-        <div>a</div>
+        <section>
+            {
+                values.map((value, index) => {
+                    return (
+                        <div key={index}>
+                            <Text size="sm">{value}</Text>
+                        </div>
+                    )
+                })
+            }
+        </section>
     )
 }
 
