@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button, Text, Title } from "../components/atoms";
 import Link from "../components/atoms/Link/Link";
 import Select from "../components/atoms/Select/Select";
@@ -19,6 +20,10 @@ const TestingAtoms = (): JSX.Element => {
     ]
   }
 
+  const [data, setData] = useState<any>("") 
+
+  console.log(data, "mirame la data")
+
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "30%", gap: "1rem"}}>
         <Text>Heeeeeellloo</Text>
@@ -27,9 +32,7 @@ const TestingAtoms = (): JSX.Element => {
         <Link>Hola soy un link</Link>
         <UserLogged />
         <Card title={objCardInfo.title} pricing="9000" items={objCardInfo.items}/>
-        <Select>
-          <Select.Options values={["1 - prueba", "2 - prueba 2"]}/>
-        </Select>
+        <Select options={["1 - perro", "2 - gato", "3 - lechuza"]} setValue={setData}/>
     </div>
   )
 }

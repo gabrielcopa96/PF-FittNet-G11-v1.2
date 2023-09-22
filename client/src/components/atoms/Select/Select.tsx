@@ -1,27 +1,32 @@
-import { Children, PropsWithChildren, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Text from "../Text/Text";
 import stylesScss from "./select.module.scss";
+import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs";
 
 
-const Select = ({ children }: PropsWithChildren): JSX.Element => {
+interface SelectProps {
+    options?: string[];
+    value?: string;
+    setValue: Dispatch<SetStateAction<string>>
+}
+
+const Select = ({ options, value, setValue }: SelectProps): JSX.Element => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     return (
-        <section>
+        <section className={stylesScss.container}>
             <div className={stylesScss.select} onClick={() => setIsOpen(!isOpen)}>
-                <Text size="sm">Seleccione un valor ...</Text>
+                <Text size="sm" color="#ff2767">{value ? value : "Seleccione un valor .."}</Text>
+                {
+                    isOpen ? <BsCaretUpFill /> : <BsCaretDownFill />
+                }
             </div>
             {
-                isOpen && Children.map(children, (child: any) => {
-                    if (child.type == Options) {
-                        console.log("muestro mis datos")
-                        return child;
-                    } else {
-                        console.warn("Tienes que usar la sintaxis <Select.Options> para poder visualizar las opciones")
-                        return null
-                    }
-                })
+                isOpen && (<Options values={options ? options : []} setValue={{
+                    setOpen: setIsOpen,
+                    set: setValue
+                }}/>)
             }
         </section>
     )
@@ -29,16 +34,28 @@ const Select = ({ children }: PropsWithChildren): JSX.Element => {
 
 interface OptionsProps {
     values: string[];
+    setValue: {
+        setOpen: Dispatch<SetStateAction<boolean>>;
+        set: Dispatch<SetStateAction<any>>;
+    };
 }
 
-const Options = ({ values }: OptionsProps): JSX.Element => {
+const Options = ({ values, setValue }: OptionsProps): JSX.Element => {
+
     return (
-        <section>
+        <section className={stylesScss.options}>
             {
                 values.map((value, index) => {
                     return (
-                        <div key={index}>
-                            <Text size="sm">{value}</Text>
+                        <div 
+                            key={index} 
+                            className={stylesScss.select_option}
+                            onClick={() => {
+                                setValue.set(value)
+                                setValue.setOpen(false)
+                            }}
+                        >
+                            {value}
                         </div>
                     )
                 })

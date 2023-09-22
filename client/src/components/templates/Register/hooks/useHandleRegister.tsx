@@ -51,8 +51,7 @@ export const useHandleRegister = () => {
         );
     }, []);
 
-    function onSubmit(e: any) {
-        e.preventDefault();
+    function onSubmit() {
         let userCreate;
 
         //---------------------------------------------------------------------
@@ -135,10 +134,6 @@ export const useHandleRegister = () => {
         }
     }
 
-    function onChangeType(value: string) {
-        setType(value);
-    }
-
     return {
         handleRegister: onSubmit,
         name: {
@@ -155,7 +150,7 @@ export const useHandleRegister = () => {
         },
         type: {
             get: type,
-            set: onChangeType
+            set: setType
         },
         error
     }
